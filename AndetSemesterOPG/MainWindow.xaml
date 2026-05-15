@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Label Content="Label" Name="EksempelNavn" HorizontalAlignment="Left" Margin="381,179,0,0" VerticalAlignment="Top" Height="56" Width="73"/>
 
     </Grid>
 </Window>
