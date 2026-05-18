@@ -13,12 +13,12 @@ namespace AndetSemesterOPG.Domain
         ITicket ticketType { get; set; }
         int attendeeID { get; set; }
 
-        public Attendee(string attendeeFirstName, string attendeeLastName, ITicket ticketType, int attendeeID) 
+        public Attendee(string attendeeFirstName, string attendeeLastName) 
         {
             this.attendeeFirstName = attendeeFirstName;
             this.attendeeLastName = attendeeLastName;
-            this.ticketType = ticketType;
-            this.attendeeID = attendeeID;
+            //this.ticketType = ticketType;
+           
         }
     }
 }
