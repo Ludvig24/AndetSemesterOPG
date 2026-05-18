@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AndetSemesterOPG.Application
+namespace AndetSemesterOPG.Applications
 {
-    internal class CampService
+    internal class Sort
     {
     }
 }
