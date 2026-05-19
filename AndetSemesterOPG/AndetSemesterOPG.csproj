@@ -13,7 +13,11 @@
   </ItemGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <Folder Include="Infrastructure\" />
+=======
+    <Folder Include="UI\" />
+>>>>>>> 7f26fa67b3a08424797822f6336829e6d016dc66
   </ItemGroup>
 
 </Project>
