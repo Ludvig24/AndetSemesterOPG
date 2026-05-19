@@ -6,5 +6,8 @@ namespace AndetSemesterOPG.Domain
 {
     internal class EntranceEastCampB
     {
+        string ticketType { get; set; }
+        string entrancetype { get; set; }
+        string campName { get; set; }
     }
 }
