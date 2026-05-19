@@ -1,11 +1,22 @@
-﻿using System;
+﻿using AndetSemesterOPG.Domain;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace AndetSemesterOPG.Infrastructure
 {
-    internal class AttendeeRepository
+    internal class AttendeeRepository : IAttendeeRepository
     {
+        DBConnection connection;
+        public AttendeeRepository(DBConnection connection)
+        {
+            this.connection = connection;
+        }
 
+        public void AddAttendee(Attendee attendee)
+        {
+
+            //save to database på en eller anden måde
+        }
     }
 }
