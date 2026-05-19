@@ -9,6 +9,6 @@ namespace AndetSemesterOPG.Infrastructure
     {
         string connectionString = "Server=localhost\\SQLEXPRESS; Database=AndetSemester;Trusted_Connection=True;TrustServerCertificate=True";
         // her oprettes en SqlConnection objekt ved hjælp af connectionString, som vil blive brugt til at åbne en forbindelse til databasen
-        SqlConnection dataBase = new SqlConnection(connectionString); 
+        SqlConnection dataBase = new SqlConnection(connectionString);  
     }
 }
