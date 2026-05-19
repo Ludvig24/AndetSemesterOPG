@@ -6,10 +6,10 @@ namespace AndetSemesterOPG.Domain
 {
     internal interface ITicket
     {
-        string ticketType { get; set; }
-        string entrancetype { get; set; }
-        string campName { get; set; }
+        int DetermineEntranceType();
+        string DetermineCampName();
 
+        
         
     }
 }

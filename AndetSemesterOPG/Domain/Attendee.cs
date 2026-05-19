@@ -7,16 +7,16 @@ namespace AndetSemesterOPG.Domain
 {
     internal class Attendee
     {
-        string attendeeFirstName { get; set; }
-        string attendeeLastName { get; set; }
+        public string AttendeeFirstName { get; set; }
+        public string AttendeeLastName { get; set; }
 
-        ITicket ticketType { get; set; }
-        int attendeeID { get; set; }
+        public ITicket TicketType { get; set; }
+        public int AttendeeID { get; set; }
 
-        public Attendee(string attendeeFirstName, string attendeeLastName) 
+        public Attendee(string AttendeeFirstName, string AttendeeLastName) 
         {
-            this.attendeeFirstName = attendeeFirstName;
-            this.attendeeLastName = attendeeLastName;
+            this.AttendeeFirstName = AttendeeFirstName;
+            this.AttendeeLastName = AttendeeLastName;
             //this.ticketType = ticketType;
            
         }

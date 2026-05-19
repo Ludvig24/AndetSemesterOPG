@@ -19,8 +19,12 @@ namespace AndetSemesterOPG.Infrastructure
             using (dataBase)
             {
                 dataBase.Open();
-                SqlCommand command = new SqlCommand("INSERT INTO ATTENDEE()");
-
+                SqlCommand command = new SqlCommand("INSERT INTO ATTENDEE(FirstName, LastName, CampName, EntranceId)");
+                command.Parameters.AddWithValue("@FirstName" ,attendee.AttendeeFirstName);
+                command.Parameters.AddWithValue("@LastName", attendee.AttendeeLastName);
+                command.Parameters.AddWithValue("@CampName", attendee.TicketType.DetermineCampName());
+                command.Parameters.AddWithValue("@EntranceId", attendee.TicketType.DetermineEntranceType());
+                command.ExecuteNonQuery();
             }
 
         }

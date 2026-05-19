@@ -12,14 +12,13 @@ namespace AndetSemesterOPG.Applications
         public ITicket CreateCampA()
         {
             EntranceWestCampA entranceWestCampA = new EntranceWestCampA();
-            return (ITicket)entranceWestCampA;
+            return entranceWestCampA;
         }
 
         public ITicket CreateCampB()
         {
             EntranceWestCampB entranceWestCampB = new EntranceWestCampB();
-            //Vær lige ops på parantesen, Den virker ikke uden
-            return (ITicket)entranceWestCampB;
+            return entranceWestCampB;
         }
     }
 }
