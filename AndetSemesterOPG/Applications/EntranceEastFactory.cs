@@ -11,12 +11,12 @@ namespace AndetSemesterOPG.Applications
         public ITicket CreateCampA()
         {
             EntranceEastCampA entranceEastCampA = new EntranceEastCampA();
-            return (ITicket)entranceEastCampA;
+            return entranceEastCampA;
         }
         public ITicket CreateCampB() 
         {
-            EntranceEastCampA entranceEastCampA = new EntranceEastCampA();
-            return (ITicket)entranceEastCampA;
+            EntranceEastCampB entranceEastCampB = new EntranceEastCampB();
+            return entranceEastCampB;
         }
     }
 }

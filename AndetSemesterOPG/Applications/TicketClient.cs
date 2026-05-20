@@ -21,5 +21,7 @@ namespace AndetSemesterOPG.Applications
             ITicket ticketCampB = ticketFactory.CreateCampB();
             return ticketCampB;
         }
+
+
     }
 }

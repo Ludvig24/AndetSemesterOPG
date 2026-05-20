@@ -4,10 +4,16 @@ using System.Text;
 
 namespace AndetSemesterOPG.Domain
 {
-    internal class EntranceEastCampA
+    internal class EntranceEastCampA: ITicket
     {
-        string ticketType { get; set; }
-        string entrancetype { get; set; }
-        string campName { get; set; }
+
+        public int DetermineEntranceType()
+        {
+            return 1;
+        }
+        public string DetermineCampName()
+        {
+            return "Camp A"; 
+        }
     }
 }

@@ -8,6 +8,8 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Label Content="Label" Name="EksempelNavn" HorizontalAlignment="Left" Margin="381,179,0,0" VerticalAlignment="Top" Height="56" Width="73"/>
+        <Label x:Name="camp" Content="Label" HorizontalAlignment="Left" Margin="334,0,0,0" VerticalAlignment="Center"/>
+        <Label x:Name="entrance" Content="Label" HorizontalAlignment="Left" Margin="416,253,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

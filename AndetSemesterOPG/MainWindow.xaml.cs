@@ -9,6 +9,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AndetSemesterOPG.Applications;
+using AndetSemesterOPG.Domain; //FJERN DENNE?!?!?
 using Microsoft.Data.SqlClient;
 
 namespace AndetSemesterOPG
@@ -22,6 +24,19 @@ namespace AndetSemesterOPG
             string connectionString = "Server=localhost; Database=AndetSemester;Trusted_Connection=True;TrustServerCertificate=True";
             // her oprettes en SqlConnection objekt ved hjælp af connectionString, som vil blive brugt til at åbne en forbindelse til databasen
             SqlConnection dataBase = new SqlConnection(connectionString);
+
+
+
+            //TEST FACTORY
+            TicketClient tClient = new TicketClient();
+            EntranceEastFactory en = new EntranceEastFactory();
+            ITicket a = tClient.OrderTicketCampA(en);
+            camp.Content = a.DetermineCampName();
+            entrance.Content = a.DetermineEntranceType();
+            //TEST FACTORY
+
+
+
 
             // Her åbnes forbindelsen og den vil automatisk lukke forbindelsen da der bruges using
             using (dataBase)
