@@ -10,21 +10,22 @@ namespace AndetSemesterOPG.Infrastructure
     {
         //string connectionString = "Server=localhost\\SQLEXPRESS; Database=AndetSemester;Trusted_Connection=True;TrustServerCertificate=True";
         // her oprettes en SqlConnection objekt ved hjælp af connectionString, som vil blive brugt til at åbne en forbindelse til databasen
-        SqlConnection dataBase = new SqlConnection("Server=localhost; Database=AndetSemester;Trusted_Connection=True;TrustServerCertificate=True");  
+          
 
 
         //Create
         public void Insert(Attendee attendee)
         {
-            using (dataBase)
+            using (SqlConnection dataBase = new SqlConnection("Server=localhost; Database=AndetSemester;Trusted_Connection=True;TrustServerCertificate=True"))
             {
                 dataBase.Open();
                 SqlCommand command = new SqlCommand("INSERT INTO ATTENDEE(FirstName, LastName, CampName, EntranceId) VALUES (@FirstName, @LastName, @CampName, @EntranceId)", dataBase);
-                command.Parameters.AddWithValue("@FirstName" ,attendee.AttendeeFirstName);
+                command.Parameters.AddWithValue("@FirstName", attendee.AttendeeFirstName);
                 command.Parameters.AddWithValue("@LastName", attendee.AttendeeLastName);
                 command.Parameters.AddWithValue("@CampName", attendee.TicketType.DetermineCampName());
                 command.Parameters.AddWithValue("@EntranceId", attendee.TicketType.DetermineEntranceType());
                 command.ExecuteNonQuery();
+
             }
 
         }

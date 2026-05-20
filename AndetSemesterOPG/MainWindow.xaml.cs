@@ -37,8 +37,16 @@ namespace AndetSemesterOPG
 
 
             //Test Create and ADD to database
+
             AttendeeCreator attendeeCreator = new AttendeeCreator(new AttendeeRepository(new DBConnection()), new AttendeeTestData(), new TicketClient());
+           
             Attendee attendee = attendeeCreator.CreateAttendee();
+
+            //Attendee attendese = attendeeCreator.CreateAttendee();
+            for (int i = 0; i < 10; i++)
+            {
+                Attendee attendees = attendeeCreator.CreateAttendee();
+            }
 
             // Her åbnes forbindelsen og den vil automatisk lukke forbindelsen da der bruges using
             using (dataBase)
