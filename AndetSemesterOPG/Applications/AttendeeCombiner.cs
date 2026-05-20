@@ -6,5 +6,6 @@ namespace AndetSemesterOPG.Applications
 {
     internal class AttendeeCombiner
     {
+
     }
 }

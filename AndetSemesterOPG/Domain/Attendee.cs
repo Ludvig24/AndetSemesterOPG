@@ -10,15 +10,19 @@ namespace AndetSemesterOPG.Domain
         public string AttendeeFirstName { get; set; }
         public string AttendeeLastName { get; set; }
 
-        public ITicket TicketType { get; set; }
+        //public ITicket TicketType { get; set; }
+
+        public string CampName { get; set; }
+        public int EntranceId { get; set; }
         public int AttendeeID { get; set; }
 
-        public Attendee(string AttendeeFirstName, string AttendeeLastName, ITicket ticketType) 
+        public Attendee(string AttendeeFirstName, string AttendeeLastName, string CampName, int EntranceId)
         {
             this.AttendeeFirstName = AttendeeFirstName;
             this.AttendeeLastName = AttendeeLastName;
-            this.TicketType = ticketType;
-           
+            this.CampName = CampName;
+            this.EntranceId = EntranceId;
+
         }
     }
 }

@@ -35,6 +35,11 @@ namespace AndetSemesterOPG
             camp.Content = a.DetermineCampName();
             entrance.Content = a.DetermineEntranceType();
 
+            //ReadAll
+            DBConnection dbConnection = new DBConnection();
+            
+
+            List<Attendee> allAttendees = dbConnection.ReadAll();
 
             //Test Create and ADD to database
 

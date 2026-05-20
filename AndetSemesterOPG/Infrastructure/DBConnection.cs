@@ -10,20 +10,20 @@ namespace AndetSemesterOPG.Infrastructure
     {
         //string connectionString = "Server=localhost\\SQLEXPRESS; Database=AndetSemester;Trusted_Connection=True;TrustServerCertificate=True";
         // her oprettes en SqlConnection objekt ved hjælp af connectionString, som vil blive brugt til at åbne en forbindelse til databasen
-          
+          string connectionString = "Server=localhost; Database=AndetSemester;Trusted_Connection=True;TrustServerCertificate=True";
 
 
         //Create
         public void Insert(Attendee attendee)
         {
-            using (SqlConnection dataBase = new SqlConnection("Server=localhost; Database=AndetSemester;Trusted_Connection=True;TrustServerCertificate=True"))
+            using (SqlConnection dataBase = new SqlConnection(connectionString))
             {
                 dataBase.Open();
                 SqlCommand command = new SqlCommand("INSERT INTO ATTENDEE(FirstName, LastName, CampName, EntranceId) VALUES (@FirstName, @LastName, @CampName, @EntranceId)", dataBase);
                 command.Parameters.AddWithValue("@FirstName", attendee.AttendeeFirstName);
                 command.Parameters.AddWithValue("@LastName", attendee.AttendeeLastName);
-                command.Parameters.AddWithValue("@CampName", attendee.TicketType.DetermineCampName());
-                command.Parameters.AddWithValue("@EntranceId", attendee.TicketType.DetermineEntranceType());
+                command.Parameters.AddWithValue("@CampName", attendee.CampName);
+                command.Parameters.AddWithValue("@EntranceId", attendee.EntranceId);
                 command.ExecuteNonQuery();
 
             }
@@ -50,9 +50,30 @@ namespace AndetSemesterOPG.Infrastructure
 
         }
 
-        public void ReadAll()
+        public List<Attendee> ReadAll()
         {
+                    List<Attendee> allAttendeesList = new List<Attendee>();
 
+            using (SqlConnection dataBase = new SqlConnection(connectionString))
+            {
+                dataBase.Open();
+                
+                SqlCommand command = new SqlCommand("SELECT * FROM Attendee", dataBase);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read()) 
+                {
+                    string FirstName = reader.GetString(reader.GetOrdinal("FirstName"));
+                    string LastName = reader.GetString(reader.GetOrdinal("LastName"));
+                    string CampName = reader.GetString(reader.GetOrdinal("CampName"));
+                    int EntranceId = reader.GetInt32(reader.GetOrdinal("EntranceId"));
+
+                    Attendee attendee = new Attendee(FirstName, LastName, CampName, EntranceId);
+
+                    allAttendeesList.Add(attendee);
+
+                }
+                return allAttendeesList;
+            }
         }
     }
 }

@@ -26,7 +26,7 @@ namespace AndetSemesterOPG.Applications
             string lastName = attendeeNames[1];
 
             ITicket ticket = ticketClient.CreateTicket();
-            Attendee attendee = new Attendee(firstName, lastName, ticket);
+            Attendee attendee = new Attendee(firstName, lastName, ticket.DetermineCampName(), ticket.DetermineEntranceType());
             attendeeRepository.AddAttendee(attendee);
             return attendee;
         }
