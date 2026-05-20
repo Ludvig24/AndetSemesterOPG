@@ -23,5 +23,43 @@ namespace AndetSemesterOPG.Applications
         }
 
 
+        public int GetRandomNumber()
+        {
+            Random randomiser = new Random();
+            List<int> randomNumber = new List<int>() { 1, 2, 3, 4 };
+
+            return randomNumber[randomiser.Next(0, randomNumber.Count)];
+
+        }
+
+        public ITicket CreateTicket()
+        {
+            ITicketFactory ticketFactory;
+            int randomNumber = GetRandomNumber();
+
+            switch (randomNumber)
+            {
+                case 1:
+                    ticketFactory = new EntranceEastFactory();
+                    return OrderTicketCampA(ticketFactory);
+                case 2:
+                    ticketFactory = new EntranceEastFactory();
+                    return OrderTicketCampB(ticketFactory);
+                case 3:
+                    ticketFactory = new EntranceWestFactory();
+                    return OrderTicketCampA(ticketFactory);
+                case 4:
+                    ticketFactory = new EntranceWestFactory();
+                    return OrderTicketCampB(ticketFactory);
+                default:
+                    throw new Exception("Invalid random number");
+
+
+
+
+
+
+            }
+        }
     }
 }

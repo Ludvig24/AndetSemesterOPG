@@ -15,7 +15,7 @@ namespace AndetSemesterOPG.Infrastructure
 
         public void AddAttendee(Attendee attendee)
         {
-
+            connection.Insert(attendee);
             //save to database på en eller anden måde
         }
     }

@@ -11,6 +11,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AndetSemesterOPG.Applications;
 using AndetSemesterOPG.Domain; //FJERN DENNE?!?!?
+using AndetSemesterOPG.Infrastructure;
 using Microsoft.Data.SqlClient;
 
 namespace AndetSemesterOPG
@@ -21,7 +22,7 @@ namespace AndetSemesterOPG
         {
                 InitializeComponent();
             //Her er connectionstring til databasen, den skal bruges til at åbne en forbindelse til databasen
-            string connectionString = "Server=localhost; Database=AndetSemester;Trusted_Connection=True;TrustServerCertificate=True";
+            string connectionString = "Server=localhost\\SQLEXPRESS; Database=AndetSemester;Trusted_Connection=True;TrustServerCertificate=True";
             // her oprettes en SqlConnection objekt ved hjælp af connectionString, som vil blive brugt til at åbne en forbindelse til databasen
             SqlConnection dataBase = new SqlConnection(connectionString);
 
@@ -33,6 +34,12 @@ namespace AndetSemesterOPG
             ITicket a = tClient.OrderTicketCampA(en);
             camp.Content = a.DetermineCampName();
             entrance.Content = a.DetermineEntranceType();
+
+
+            //Test Create and ADD to database
+            AttendeeCreator attendeeCreator = new AttendeeCreator(new AttendeeRepository(new DBConnection()), new AttendeeTestData(), new TicketClient());
+            Attendee attendee = attendeeCreator.CreateAttendee();
+
             //TEST FACTORY
 
 
@@ -47,9 +54,11 @@ namespace AndetSemesterOPG
                 SqlDataReader reader = command.ExecuteReader();
 
                 if (reader.Read())
-                { 
-                string Name = reader.GetString(reader.GetOrdinal("FirstName"));
-                EksempelNavn.Content = Name;
+                {
+                    string Name = reader.GetString(reader.GetOrdinal("FirstName"));
+                    EksempelNavn.Content = Name;
+
+
                 }
             }
         }
