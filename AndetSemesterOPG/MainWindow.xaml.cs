@@ -10,9 +10,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AndetSemesterOPG.Applications;
+using Microsoft.Data.SqlClient;
 using AndetSemesterOPG.Domain; //FJERN DENNE?!?!?
 using AndetSemesterOPG.Infrastructure;
-using Microsoft.Data.SqlClient;
 
 namespace AndetSemesterOPG
 {
@@ -22,7 +22,7 @@ namespace AndetSemesterOPG
         {
                 InitializeComponent();
             //Her er connectionstring til databasen, den skal bruges til at åbne en forbindelse til databasen
-            string connectionString = "Server=localhost\\SQLEXPRESS; Database=AndetSemester;Trusted_Connection=True;TrustServerCertificate=True";
+            string connectionString = "Server=localhost; Database=AndetSemester;Trusted_Connection=True;TrustServerCertificate=True";
             // her oprettes en SqlConnection objekt ved hjælp af connectionString, som vil blive brugt til at åbne en forbindelse til databasen
             SqlConnection dataBase = new SqlConnection(connectionString);
 
@@ -39,11 +39,6 @@ namespace AndetSemesterOPG
             //Test Create and ADD to database
             AttendeeCreator attendeeCreator = new AttendeeCreator(new AttendeeRepository(new DBConnection()), new AttendeeTestData(), new TicketClient());
             Attendee attendee = attendeeCreator.CreateAttendee();
-
-            //TEST FACTORY
-
-
-
 
             // Her åbnes forbindelsen og den vil automatisk lukke forbindelsen da der bruges using
             using (dataBase)
