@@ -6,13 +6,13 @@ using System.Text;
 
 namespace AndetSemesterOPG.Applications
 {
-    internal class AttendeeCreator
+    internal class AttendeeService
     {
         AttendeeTestData attendeeTestData; //Vil et interface være bedre kodeskik? 
         TicketClient ticketClient;
         IAttendeeRepository attendeeRepository;
 
-        public AttendeeCreator(IAttendeeRepository attendeeRepository, AttendeeTestData attendeeTestData, TicketClient ticketClient)
+        public AttendeeService(IAttendeeRepository attendeeRepository, AttendeeTestData attendeeTestData, TicketClient ticketClient)
         {
             this.attendeeRepository = attendeeRepository;
             this.attendeeTestData = attendeeTestData;
@@ -31,6 +31,11 @@ namespace AndetSemesterOPG.Applications
             return attendee;
         }
 
+        public List<Attendee> RetrieveAllAttendees()
+        {
+            List<Attendee> attendeesList = attendeeRepository.GetAllAttendees();
+            return attendeesList;
+        }
         
 
     }

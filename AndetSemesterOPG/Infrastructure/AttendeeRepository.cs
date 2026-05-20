@@ -18,5 +18,11 @@ namespace AndetSemesterOPG.Infrastructure
             connection.Insert(attendee);
             //save to database på en eller anden måde
         }
+
+        public List<Attendee> GetAllAttendees() 
+        {
+            List<Attendee> attendees = connection.ReadAll();
+            return attendees;
+        }
     }
 }

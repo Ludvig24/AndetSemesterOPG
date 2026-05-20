@@ -7,6 +7,7 @@ namespace AndetSemesterOPG.Domain
 {
     internal class Attendee
     {
+        public int AttendeeID { get; set; }
         public string AttendeeFirstName { get; set; }
         public string AttendeeLastName { get; set; }
 
@@ -14,8 +15,9 @@ namespace AndetSemesterOPG.Domain
 
         public string CampName { get; set; }
         public int EntranceId { get; set; }
-        public int AttendeeID { get; set; }
 
+
+        //måske ekstra constructor der også tager attendeeID så når vi trækker dataet op bliver Attendee oprettet med deres id fra DB
         public Attendee(string AttendeeFirstName, string AttendeeLastName, string CampName, int EntranceId)
         {
             this.AttendeeFirstName = AttendeeFirstName;

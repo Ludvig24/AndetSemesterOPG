@@ -19,15 +19,14 @@ namespace AndetSemesterOPG
 {
     public partial class MainWindow : Window
     {
-            AttendeeWindow attendeeWindow = new AttendeeWindow();
         
         public MainWindow()
         {
                 InitializeComponent();
             //Her er connectionstring til databasen, den skal bruges til at åbne en forbindelse til databasen
-            string connectionString = "Server=localhost; Database=AndetSemester;Trusted_Connection=True;TrustServerCertificate=True";
+            //string connectionString = "Server=localhost\\SQLEXPRESS; Database=AndetSemester;Trusted_Connection=True;TrustServerCertificate=True";
             // her oprettes en SqlConnection objekt ved hjælp af connectionString, som vil blive brugt til at åbne en forbindelse til databasen
-            SqlConnection dataBase = new SqlConnection(connectionString);
+            //SqlConnection dataBase = new SqlConnection(connectionString);
 
 
 
@@ -47,7 +46,7 @@ namespace AndetSemesterOPG
             //Test Create and ADD to database
 
             //Her Laver vi kun en attendee og tilføjer den til databasen
-            //AttendeeCreator attendeeCreator = new AttendeeCreator(new AttendeeRepository(new DBConnection()), new AttendeeTestData(), new TicketClient());
+            //AttendeeService attendeeCreator = new AttendeeService(new AttendeeRepository(new DBConnection()), new AttendeeTestData(), new TicketClient());
             //Attendee attendee = attendeeCreator.CreateAttendee();
 
             //Attendee attendese = attendeeCreator.CreateAttendee();
@@ -57,7 +56,7 @@ namespace AndetSemesterOPG
             //}
 
             // Her åbnes forbindelsen og den vil automatisk lukke forbindelsen da der bruges using
-            using (dataBase)
+            /*using (dataBase)
             {
                 dataBase.Open();
 
@@ -71,11 +70,12 @@ namespace AndetSemesterOPG
 
 
                 }
-            }
+            }*/
         }
 
         private void AttendeeWindowButton_Click(object sender, RoutedEventArgs e)
         {
+            AttendeeWindow attendeeWindow = new AttendeeWindow();
             attendeeWindow.Show();
             this.Close();
         }

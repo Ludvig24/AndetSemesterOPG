@@ -9,6 +9,8 @@ namespace AndetSemesterOPG.Domain
 
         void AddAttendee(Attendee attendee);
 
+        List<Attendee> GetAllAttendees();
+
 
     }
 }

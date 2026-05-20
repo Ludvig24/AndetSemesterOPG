@@ -1,4 +1,7 @@
-﻿using System;
+﻿using AndetSemesterOPG.Applications;
+using AndetSemesterOPG.Domain;
+using AndetSemesterOPG.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -18,9 +21,14 @@ namespace AndetSemesterOPG.UI
     public partial class AttendeeWindow : Window
     {
         MainWindow mainWindow = new MainWindow();
+        AttendeeService attendeeService = new AttendeeService(new AttendeeRepository(new DBConnection()), new AttendeeTestData(), new TicketClient());
+        List<Attendee> attendees;
         public AttendeeWindow()
         {
             InitializeComponent();
+            attendees = attendeeService.RetrieveAllAttendees();
+            AttendeesList.ItemsSource = attendees;
+            totalAttendees.Content =attendees.Count.ToString();
         }
 
         private void AttendeeBackButton_Click(object sender, RoutedEventArgs e)
@@ -28,5 +36,7 @@ namespace AndetSemesterOPG.UI
             mainWindow.Show();
             this.Close();
         }
+
+      
     }
 }
