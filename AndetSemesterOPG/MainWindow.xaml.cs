@@ -13,11 +13,14 @@ using AndetSemesterOPG.Applications;
 using Microsoft.Data.SqlClient;
 using AndetSemesterOPG.Domain; //FJERN DENNE?!?!?
 using AndetSemesterOPG.Infrastructure;
+using AndetSemesterOPG.UI;
 
 namespace AndetSemesterOPG
 {
     public partial class MainWindow : Window
     {
+            AttendeeWindow attendeeWindow = new AttendeeWindow();
+        
         public MainWindow()
         {
                 InitializeComponent();
@@ -43,15 +46,15 @@ namespace AndetSemesterOPG
 
             //Test Create and ADD to database
 
-            AttendeeCreator attendeeCreator = new AttendeeCreator(new AttendeeRepository(new DBConnection()), new AttendeeTestData(), new TicketClient());
-           
-            Attendee attendee = attendeeCreator.CreateAttendee();
+            //Her Laver vi kun en attendee og tilføjer den til databasen
+            //AttendeeCreator attendeeCreator = new AttendeeCreator(new AttendeeRepository(new DBConnection()), new AttendeeTestData(), new TicketClient());
+            //Attendee attendee = attendeeCreator.CreateAttendee();
 
             //Attendee attendese = attendeeCreator.CreateAttendee();
-            for (int i = 0; i < 10; i++)
-            {
-                Attendee attendees = attendeeCreator.CreateAttendee();
-            }
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    Attendee attendees = attendeeCreator.CreateAttendee();
+            //}
 
             // Her åbnes forbindelsen og den vil automatisk lukke forbindelsen da der bruges using
             using (dataBase)
@@ -69,6 +72,12 @@ namespace AndetSemesterOPG
 
                 }
             }
+        }
+
+        private void AttendeeWindowButton_Click(object sender, RoutedEventArgs e)
+        {
+            attendeeWindow.Show();
+            this.Close();
         }
     }
 }
