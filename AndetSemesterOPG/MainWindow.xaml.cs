@@ -75,9 +75,9 @@ namespace AndetSemesterOPG
 
         private void AttendeeWindowButton_Click(object sender, RoutedEventArgs e)
         {
-            AttendeeWindow attendeeWindow = new AttendeeWindow();
+            AttendeeWindow attendeeWindow = new AttendeeWindow(this);
             attendeeWindow.Show();
-            this.Close();
+            this.Hide();
         }
     }
 }

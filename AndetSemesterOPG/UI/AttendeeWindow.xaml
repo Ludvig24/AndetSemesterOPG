@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="AttendeeWindow" Height="450" Width="800">
     <Grid Margin="400,146,0,0">
-		<Button Content="Tilbage" x:Name="AttendeeBackButton" HorizontalAlignment="Left" Margin="-328,-98,0,0" VerticalAlignment="Top" Height="29" Width="60" Click="AttendeeBackButton_Click"/>
+		<Button Content="Tilbage" x:Name="AttendeeBackButton" HorizontalAlignment="Left" Margin="-399,-146,0,0" VerticalAlignment="Top" Height="29" Width="60" Click="AttendeeBackButton_Click"/>
 		<DataGrid x:Name="AttendeesList" AutoGenerateColumns="False"  Margin="-208,-101,149,63" >
 			<DataGrid.Columns>
 				<DataGridTextColumn Header="Id" Binding="{Binding AttendeeID}"></DataGridTextColumn>
@@ -20,5 +20,6 @@
 		</DataGrid>
 		<Label Content="Total antal" HorizontalAlignment="Left" Height="29" Margin="-371,92,0,0" VerticalAlignment="Top" Width="82"/>
 		<Label x:Name="totalAttendees" Content="" HorizontalAlignment="Left" Margin="-298,92,0,0" VerticalAlignment="Top" Width="68"/>
-	</Grid>
+        <Button x:Name="refreshButton"  Content="Refresh" HorizontalAlignment="Left" Margin="-328,-48,0,0" VerticalAlignment="Top" Height="26" Width="60" Click="refreshButton_Click"/>
+    </Grid>
 </Window>
