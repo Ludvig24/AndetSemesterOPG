@@ -14,12 +14,14 @@ using Microsoft.Data.SqlClient;
 using AndetSemesterOPG.Domain; //FJERN DENNE?!?!?
 using AndetSemesterOPG.Infrastructure;
 using AndetSemesterOPG.UI;
+using System.Windows.Threading;
 
 namespace AndetSemesterOPG
 {
     public partial class MainWindow : Window
     {
         
+            AttendeeService attendeeService = new AttendeeService(new AttendeeRepository(new DBConnection()), new AttendeeTestData(), new TicketClient());
         public MainWindow()
         {
                 InitializeComponent();
@@ -29,20 +31,25 @@ namespace AndetSemesterOPG
             //SqlConnection dataBase = new SqlConnection(connectionString);
 
 
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Tick += new EventHandler(AutoCreateAttendee);
+            timer.Interval = new TimeSpan(0, 0, 5); // Her sættes intervallet for timeren til 5 sekunder
+            timer.Start();
 
-            //TEST FACTORY
-            TicketClient tClient = new TicketClient();
-            EntranceEastFactory en = new EntranceEastFactory();
-            ITicket a = tClient.OrderTicketCampA(en);
-            camp.Content = a.DetermineCampName();
-            entrance.Content = a.DetermineEntranceType();
 
-            //ReadAll
-            DBConnection dbConnection = new DBConnection();
             
 
-            List<Attendee> allAttendees = dbConnection.ReadAll();
 
+            //TEST FACTORY
+            //TicketClient tClient = new TicketClient();
+            //EntranceEastFactory en = new EntranceEastFactory();
+            //ITicket a = tClient.OrderTicketCampA(en);
+            //camp.Content = a.DetermineCampName();
+            //entrance.Content = a.DetermineEntranceType();
+
+            //ReadAll
+            //DBConnection dbConnection = new DBConnection();
+            //List<Attendee> allAttendees = dbConnection.ReadAll();
             //Test Create and ADD to database
 
             //Her Laver vi kun en attendee og tilføjer den til databasen
@@ -77,6 +84,18 @@ namespace AndetSemesterOPG
         {
             AttendeeWindow attendeeWindow = new AttendeeWindow(this);
             attendeeWindow.Show();
+            this.Hide();
+        }
+
+        private void AutoCreateAttendee(object sender, EventArgs e)
+        {
+            attendeeService.CreateAttendee();
+        }
+
+        private void FestivalWindowButton_Click(object sender, RoutedEventArgs e)
+        {
+            FestivalWindow festival = new FestivalWindow();
+            festival.Show();
             this.Hide();
         }
     }

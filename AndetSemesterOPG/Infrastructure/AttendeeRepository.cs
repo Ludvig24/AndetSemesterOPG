@@ -24,5 +24,12 @@ namespace AndetSemesterOPG.Infrastructure
             List<Attendee> attendees = connection.ReadAll();
             return attendees;
         }
+
+        public List<Attendee> GetAttendeesByEntranceId(int id)
+        {
+            List<Attendee> attendeesByEntranceId = connection.FindByEntranceId(id);
+            return attendeesByEntranceId;
+        }
+
     }
 }

@@ -11,6 +11,7 @@ namespace AndetSemesterOPG.Domain
 
         List<Attendee> GetAllAttendees();
 
+        List<Attendee> GetAttendeesByEntranceId(int id);
 
     }
 }

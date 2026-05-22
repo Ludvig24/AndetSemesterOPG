@@ -10,7 +10,7 @@ namespace AndetSemesterOPG.Infrastructure
     {
         //string connectionString = "Server=localhost\\SQLEXPRESS; Database=AndetSemester;Trusted_Connection=True;TrustServerCertificate=True";
         // her oprettes en SqlConnection objekt ved hjælp af connectionString, som vil blive brugt til at åbne en forbindelse til databasen
-          string connectionString = "Server=localhost\\SQLEXPRESS; Database=AndetSemester;Trusted_Connection=True;TrustServerCertificate=True";
+          string connectionString = "Server=localhost; Database=AndetSemester;Trusted_Connection=True;TrustServerCertificate=True";
 
 
         //Create
@@ -48,6 +48,35 @@ namespace AndetSemesterOPG.Infrastructure
         public void FindByID(int id)
         {
 
+        }
+
+        public List<Attendee> FindByEntranceId(int id)
+        {
+            List<Attendee> attendeesByEntranceId = new List<Attendee>();
+                using (SqlConnection dataBase = new SqlConnection(connectionString))
+                {
+                    dataBase.Open();
+                    
+                    SqlCommand command = new SqlCommand("SELECT * FROM Attendee WHERE EntranceId = @EntranceId", dataBase);
+                    command.Parameters.AddWithValue("@EntranceId", id);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        int attendeeId = reader.GetInt32(reader.GetOrdinal("AttendeeId"));
+                        string FirstName = reader.GetString(reader.GetOrdinal("FirstName"));
+                        string LastName = reader.GetString(reader.GetOrdinal("LastName"));
+                        string CampName = reader.GetString(reader.GetOrdinal("CampName"));
+                        int EntranceId = reader.GetInt32(reader.GetOrdinal("EntranceId"));
+    
+                        Attendee attendee = new Attendee(FirstName, LastName, CampName, EntranceId);
+                        attendee.AttendeeID = attendeeId; //måske fix ift constructor
+    
+                        attendeesByEntranceId.Add(attendee);
+    
+
+                    }
+                return attendeesByEntranceId;
+            }
         }
 
         public List<Attendee> ReadAll()

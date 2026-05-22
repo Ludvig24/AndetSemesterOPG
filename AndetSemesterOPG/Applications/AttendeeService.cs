@@ -36,7 +36,11 @@ namespace AndetSemesterOPG.Applications
             List<Attendee> attendeesList = attendeeRepository.GetAllAttendees();
             return attendeesList;
         }
-        
+        public List<Attendee> RetrieveAttendeesByEntranceId(int id)
+        {
+            List<Attendee> attendeesByEntranceId = attendeeRepository.GetAttendeesByEntranceId(id);
+            return attendeesByEntranceId;
+        }
 
     }
 }

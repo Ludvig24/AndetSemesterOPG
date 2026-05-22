@@ -11,6 +11,7 @@
         <Label x:Name="camp" Content="Label" HorizontalAlignment="Left" Margin="334,0,0,0" VerticalAlignment="Center"/>
         <Label x:Name="entrance" Content="Label" HorizontalAlignment="Left" Margin="416,253,0,0" VerticalAlignment="Top"/>
         <Button x:Name="AttendeeWindowButton" Content="Festivalsgængere" HorizontalAlignment="Left" Margin="515,131,0,0" VerticalAlignment="Top" Height="36" Width="109" Click="AttendeeWindowButton_Click"/>
+        <Button x:Name="FestivalWindowButton" Content="Festival" HorizontalAlignment="Left" Margin="251,131,0,0" VerticalAlignment="Top" Height="36" Width="70" Click="FestivalWindowButton_Click"/>
 
     </Grid>
 </Window>
