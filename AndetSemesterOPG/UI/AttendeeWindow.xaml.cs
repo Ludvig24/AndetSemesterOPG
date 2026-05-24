@@ -25,6 +25,7 @@ namespace AndetSemesterOPG.UI
         AttendeeService attendeeService = new AttendeeService(new AttendeeRepository(new DBConnection()), new AttendeeTestData(), new TicketClient());
         List<Attendee> attendees = new List<Attendee>();
         MainWindow mainWindow;
+        Sort sort = new Sort();
         
         public AttendeeWindow(MainWindow mainWindow)
         {
@@ -37,7 +38,15 @@ namespace AndetSemesterOPG.UI
             timer.Interval = new TimeSpan(0,0,1);
             timer.Start();
             
-
+            /*Vi kan måske disable det der datagrid
+              og implementere vores egne sorteringsmetoder
+              der sorterer fx navne i alfabetisk rækkefølge,
+              id fra mindst til størst, camp navn alfabetisk osv.
+              så kan vi bare kalde sorterings metoderne på attendees
+              altså selve listen der bruges som ItemSource.
+              Så kan hver type sortering måske bruge hver deres 
+              sorteringsalgoritme.
+            */
         }
 
         private void AttendeeBackButton_Click(object sender, RoutedEventArgs e)
@@ -55,7 +64,14 @@ namespace AndetSemesterOPG.UI
         private void refreshButton_Click(object sender, RoutedEventArgs e)
         {
             AttendeesList.ItemsSource = attendees;
+            
 
+        }
+
+        private void sortNamesButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+            AttendeesList.ItemsSource = sort.SortTest(attendees);
         }
     }
 }
