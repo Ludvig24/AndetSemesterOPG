@@ -10,6 +10,10 @@ namespace AndetSemesterOPG.Applications
         //Den her er til for at kunne stoppe produktionen af en bestem type billet senere
         bool makeTicket;
         //Her er en metode der laver en billet til camp A og en til camp B, den tager en ticketfactory som parameter så den kan lave de forskellige billetter
+
+        //Lav metode der måske tager en int (1,2,3 eller 4) - unlockedTickets erstattes med en liste uden det valgte tal - dermed begrænset ticketproduktion
+        List<int> unlockedTickets = new List<int>() {1,2,3,4 };
+        
         public ITicket OrderTicketCampA(ITicketFactory ticketFactory)
         {
             ITicket ticketCampA = ticketFactory.CreateCampA();
@@ -26,9 +30,9 @@ namespace AndetSemesterOPG.Applications
         public int GetRandomNumber()
         {
             Random randomiser = new Random();
-            List<int> randomNumber = new List<int>() { 1, 2, 3, 4 };
+            
 
-            return randomNumber[randomiser.Next(0, randomNumber.Count)];
+            return unlockedTickets[randomiser.Next(0, unlockedTickets.Count)];
 
         }
 
@@ -53,11 +57,6 @@ namespace AndetSemesterOPG.Applications
                     return OrderTicketCampB(ticketFactory);
                 default:
                     throw new Exception("Invalid random number");
-
-
-
-
-
 
             }
         }

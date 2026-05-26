@@ -14,13 +14,32 @@ namespace AndetSemesterOPG.Applications
         {
             List<Attendee> sortedAttendees;
 
-            sortedAttendees = attendees.OrderBy(o=>o.AttendeeFirstName).ToList();
+            //sortedAttendees = attendees.OrderBy(o=>o.AttendeeFirstName).ToList();
+
+            bool swapped = false;
+            while (swapped == false)
+            {
+                for (int i = 1; i < attendees.Count - 1; i++)
+                {
+
+                    if (attendees[i - 1].EntranceId > attendees[i].EntranceId)
+                    {
+                        Attendee attendee = attendees[i - 1];
+                        attendees[i - 1] = attendees[i];
+                        attendees[i] = attendee;
+                        swapped = true;
 
 
+
+                    }
+                }
+            }
+            return attendees;
             
 
             
-            return sortedAttendees;
+
+            
         }
 
         /*
