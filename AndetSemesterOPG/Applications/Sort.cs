@@ -75,7 +75,7 @@ namespace AndetSemesterOPG.Applications
                 }
                 while(String.Compare(attendees[j].AttendeeFirstName, pivot) > 0)
                 {
-                    j++;
+                    j--;
                 }
 
                 if (i <= j)

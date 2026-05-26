@@ -75,7 +75,7 @@ namespace AndetSemesterOPG.UI
 
             //AttendeesList.ItemsSource = sort.SortByCampName(attendees);
 
-            AttendeesList.ItemsSource = sort.SortByFirstName(attendees,0,attendees.Count);
+            AttendeesList.ItemsSource = sort.SortByFirstName(attendees,0,attendees.Count-1);
         }
     }
 }
