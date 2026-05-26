@@ -94,7 +94,7 @@ namespace AndetSemesterOPG
 
         private void FestivalWindowButton_Click(object sender, RoutedEventArgs e)
         {
-            FestivalWindow festival = new FestivalWindow();
+            FestivalWindow festival = new FestivalWindow(this);
             festival.Show();
             this.Hide();
         }

@@ -79,6 +79,35 @@ namespace AndetSemesterOPG.Infrastructure
             }
         }
 
+        public List<Attendee> FindByCampName(string campName)
+        {
+            List<Attendee> attendeesByCampName = new List<Attendee>();
+            using (SqlConnection dataBase = new SqlConnection(connectionString))
+            {
+                dataBase.Open();
+
+                SqlCommand command = new SqlCommand("SELECT * FROM Attendee WHERE CampName = @CampName", dataBase);
+                command.Parameters.AddWithValue("@CampName", campName);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    int attendeeId = reader.GetInt32(reader.GetOrdinal("AttendeeId"));
+                    string FirstName = reader.GetString(reader.GetOrdinal("FirstName"));
+                    string LastName = reader.GetString(reader.GetOrdinal("LastName"));
+                    string CampName = reader.GetString(reader.GetOrdinal("CampName"));
+                    int EntranceId = reader.GetInt32(reader.GetOrdinal("EntranceId"));
+
+                    Attendee attendee = new Attendee(FirstName, LastName, CampName, EntranceId);
+                    attendee.AttendeeID = attendeeId; //måske fix ift constructor
+
+                    attendeesByCampName.Add(attendee);
+
+
+                }
+                return attendeesByCampName;
+            }
+        }
+
         public List<Attendee> ReadAll()
         {
                     List<Attendee> allAttendeesList = new List<Attendee>();

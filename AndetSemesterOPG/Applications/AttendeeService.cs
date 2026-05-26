@@ -42,5 +42,11 @@ namespace AndetSemesterOPG.Applications
             return attendeesByEntranceId;
         }
 
+        public List<Attendee> RetriveAttendeesByCampName(string campName)
+        {
+            List<Attendee> attendeesByCampName = attendeeRepository.GetAttendeesByCampName(campName);
+            return attendeesByCampName;
+        }
+
     }
 }

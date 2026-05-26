@@ -21,15 +21,21 @@ namespace AndetSemesterOPG.UI
     /// </summary>
     public partial class FestivalWindow : Window
     {
-       
+
+        MainWindow main = new MainWindow();
             AttendeeService attendeeService = new AttendeeService(new AttendeeRepository(new DBConnection()), new AttendeeTestData(), new TicketClient());
-        public FestivalWindow()
+        public FestivalWindow(MainWindow main)
         {
             InitializeComponent();
+            this.main = main;
 
             TotalAttendeeEast.Content = attendeeService.RetrieveAttendeesByEntranceId(1).Count;
 
             TotalAttendeeWest.Content = attendeeService.RetrieveAttendeesByEntranceId(2).Count;
+
+            TotalAttendeeCampA.Content = attendeeService.RetriveAttendeesByCampName("Camp A").Count;
+
+            TotalAttendeeCampB.Content = attendeeService.RetriveAttendeesByCampName("Camp B").Count;
 
             DispatcherTimer timer = new DispatcherTimer();
             timer.Tick += new EventHandler(autoRefresh);
@@ -42,6 +48,15 @@ namespace AndetSemesterOPG.UI
         {
             TotalAttendeeEast.Content = attendeeService.RetrieveAttendeesByEntranceId(1).Count;
             TotalAttendeeWest.Content = attendeeService.RetrieveAttendeesByEntranceId(2).Count;
+
+            TotalAttendeeCampA.Content = attendeeService.RetriveAttendeesByCampName("Camp A").Count;
+            TotalAttendeeCampB.Content = attendeeService.RetriveAttendeesByCampName("Camp B").Count;
+        }
+
+        private void backButtonFestivalWindow_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            main.Show();
         }
     }
     

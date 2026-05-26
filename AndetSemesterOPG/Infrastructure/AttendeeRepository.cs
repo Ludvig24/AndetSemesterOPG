@@ -31,5 +31,11 @@ namespace AndetSemesterOPG.Infrastructure
             return attendeesByEntranceId;
         }
 
+        public List<Attendee> GetAttendeesByCampName(string campName)
+        {
+            List<Attendee> attendeesByCampName = connection.FindByCampName(campName);
+            return attendeesByCampName;
+        }
+
     }
 }

@@ -7,9 +7,22 @@
         mc:Ignorable="d"
         Title="FestivalWindow" Height="450" Width="800">
     <Grid>
-        <Label x:Name="IndgangØstLabel"  Content="Indgang Øst" HorizontalAlignment="Left" Margin="638,186,0,0" VerticalAlignment="Top" Height="54" Width="67"/>
-        <Label x:Name="IndgangVestLabel" Content="Indgang Vest" HorizontalAlignment="Left" Margin="102,191,0,0" VerticalAlignment="Top" Width="94"/>
-        <Label x:Name="TotalAttendeeWest" Content="Her skal der stå antal Attendees" HorizontalAlignment="Left" Margin="102,245,0,0" VerticalAlignment="Top" Height="27" Width="81"/>
-        <Label x:Name="TotalAttendeeEast" Content="Her skal der stå antal Attendee" HorizontalAlignment="Left" Margin="596,231,0,0" VerticalAlignment="Top" Height="41" Width="194"/>
+        <Label x:Name="IndgangØstLabel"  Content="Indgang Øst" HorizontalAlignment="Left" Margin="631,308,0,0" VerticalAlignment="Top" Height="26" Width="91"/>
+        <Label x:Name="IndgangVestLabel" Content="Indgang Vest" HorizontalAlignment="Left" Margin="162,303,0,0" VerticalAlignment="Top" Width="94" RenderTransformOrigin="0.495,0.56"/>
+        <Label x:Name="TotalAttendeeWest" Content="Her skal der stå antal Attendees" HorizontalAlignment="Left" Margin="193,325,0,0" VerticalAlignment="Top" Height="27" Width="81"/>
+        <Label x:Name="TotalAttendeeEast" Content="Her skal der stå antal Attendee" HorizontalAlignment="Left" Margin="662,326,0,0" VerticalAlignment="Top" Height="41" Width="194"/>
+        <Label Content="Antal festivalgængere" HorizontalAlignment="Left" Margin="10,326,0,0" VerticalAlignment="Top"/>
+        <Label Content="Antal festivalgængere" HorizontalAlignment="Left" Margin="494,326,0,0" VerticalAlignment="Top"/>
+        <Button Content="Tilbage" HorizontalAlignment="Left" VerticalAlignment="Top" Height="36" Width="63" x:Name="backButtonFestivalWindow" Click="backButtonFestivalWindow_Click"/>
+        <Label Content="Camp A" HorizontalAlignment="Left" Margin="145,65,0,0" VerticalAlignment="Top"/>
+        <Label Content="Camp B" HorizontalAlignment="Left" Margin="625,65,0,0" VerticalAlignment="Top"/>
+        <Label Content="Antal festivalgængere" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top"/>
+        <Label Content="Antal festivalgængere" HorizontalAlignment="Left" Margin="494,93,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="TotalAttendeeCampA" Content="Antal" HorizontalAlignment="Left" Margin="152,93,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="TotalAttendeeCampB" Content="Antal" HorizontalAlignment="Left" Margin="632,93,0,0" VerticalAlignment="Top"/>
+        <Label Content="/" HorizontalAlignment="Left" Margin="196,93,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="CampACapacity" Content="Capacity" HorizontalAlignment="Left" Margin="221,93,0,0" VerticalAlignment="Top"/>
+        <Label Content="/" HorizontalAlignment="Left" Margin="670,93,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="CampBCapacity" Content="Capacity" HorizontalAlignment="Left" Margin="685,93,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

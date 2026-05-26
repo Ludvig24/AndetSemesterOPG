@@ -13,5 +13,7 @@ namespace AndetSemesterOPG.Domain
 
         List<Attendee> GetAttendeesByEntranceId(int id);
 
+        List<Attendee> GetAttendeesByCampName(string campName);
+
     }
 }
