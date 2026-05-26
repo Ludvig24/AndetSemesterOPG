@@ -9,16 +9,14 @@ namespace AndetSemesterOPG.Applications
     {
 
 
-
-        public List<Attendee> SortTest(List<Attendee> attendees)
+        //Bubblesort
+        public List<Attendee> SortByEntranceId(List<Attendee> attendees)
         {
-            List<Attendee> sortedAttendees;
-
-            //sortedAttendees = attendees.OrderBy(o=>o.AttendeeFirstName).ToList();
-
-            bool swapped = false;
-            while (swapped == false)
+ 
+            bool swapped = true;
+            while (swapped == true)
             {
+                swapped = false;
                 for (int i = 1; i < attendees.Count - 1; i++)
                 {
 
@@ -34,12 +32,7 @@ namespace AndetSemesterOPG.Applications
                     }
                 }
             }
-            return attendees;
-            
-
-            
-
-            
+            return attendees; 
         }
 
         /*
