@@ -23,7 +23,8 @@ namespace AndetSemesterOPG.UI
     {
 
         MainWindow main = new MainWindow();
-            AttendeeService attendeeService = new AttendeeService(new AttendeeRepository(new DBConnection()), new AttendeeTestData(), new TicketClient());
+        AttendeeService attendeeService = new AttendeeService(new AttendeeRepository(new DBConnection()), new AttendeeTestData(), new TicketClient());
+        CampService campService = new CampService(new CampRepository(new DBConnection()));
         public FestivalWindow(MainWindow main)
         {
             InitializeComponent();
@@ -36,6 +37,10 @@ namespace AndetSemesterOPG.UI
             TotalAttendeeCampA.Content = attendeeService.RetriveAttendeesByCampName("Camp A").Count;
 
             TotalAttendeeCampB.Content = attendeeService.RetriveAttendeesByCampName("Camp B").Count;
+
+            CampACapacity.Content = campService.RetrieveCampCapacity("Camp A");
+
+            CampBCapacity.Content = campService.RetrieveCampCapacity("Camp B");
 
             DispatcherTimer timer = new DispatcherTimer();
             timer.Tick += new EventHandler(autoRefresh);
@@ -51,6 +56,9 @@ namespace AndetSemesterOPG.UI
 
             TotalAttendeeCampA.Content = attendeeService.RetriveAttendeesByCampName("Camp A").Count;
             TotalAttendeeCampB.Content = attendeeService.RetriveAttendeesByCampName("Camp B").Count;
+
+            CampACapacity.Content = campService.RetrieveCampCapacity("Camp A");
+            CampBCapacity.Content = campService.RetrieveCampCapacity("Camp B");
         }
 
         private void backButtonFestivalWindow_Click(object sender, RoutedEventArgs e)

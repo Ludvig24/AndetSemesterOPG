@@ -2,6 +2,7 @@
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace AndetSemesterOPG.Infrastructure
@@ -133,6 +134,26 @@ namespace AndetSemesterOPG.Infrastructure
 
                 }
                 return allAttendeesList;
+            }
+        }
+
+
+        public int FindCampCapacity(string campName)
+        {
+            int capacity = 0;
+
+            using (SqlConnection database = new SqlConnection(connectionString))
+            {
+                database.Open();
+                SqlCommand command = new SqlCommand("SELECT CampCapacity FROM Camp WHERE CampName = @CampName", database);
+                command.Parameters.AddWithValue("@CampName", campName);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    capacity = reader.GetInt32(reader.GetOrdinal("CampCapacity"));
+                }
+
+                return capacity;
             }
         }
     }
