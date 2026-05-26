@@ -10,6 +10,8 @@ namespace AndetSemesterOPG.Applications
 
 
         //Bubblesort
+
+        //lav counter der tæller antal sammenligninger - kan bruges som en form for test af hvilken sorting algoritme der er bedst i vores tilfælde - dette kan vi skrive om i rapport
         public List<Attendee> SortByEntranceId(List<Attendee> attendees)
         {
  
@@ -17,7 +19,7 @@ namespace AndetSemesterOPG.Applications
             while (swapped == true)
             {
                 swapped = false;
-                for (int i = 1; i < attendees.Count - 1; i++)
+                for (int i = 1; i < attendees.Count; i++)
                 {
 
                     if (attendees[i - 1].EntranceId > attendees[i].EntranceId)
@@ -27,22 +29,40 @@ namespace AndetSemesterOPG.Applications
                         attendees[i] = attendee;
                         swapped = true;
 
-
-
                     }
                 }
             }
             return attendees; 
         }
 
-        /*
-        public List<T> SortTest<T>(List<T> list) //kunne være sejt med en generisk sortering, men så skal vi have en separat metode til at trække fx alle fornavne fra attendees ud som vi så kan sende til den her metode
+     
+
+        //Insertion sort
+        public List<Attendee> SortByCampName(List<Attendee> attendees)
         {
-            
-            list.Sort();
-            return list;
+
+
+            for(int i = 1; i < attendees.Count; i++)
+            {
+                Attendee attendee = attendees[i];
+                int pointer = i;
+                while (pointer > 0 && attendee.CampName[5] < attendees[pointer - 1].CampName[5])
+                {
+                    attendees[pointer] = attendees[pointer - 1];
+                    pointer = pointer - 1;
+                }
+                attendees[pointer] = attendee;
+            }
+
+            return attendees;
+
         }
-        */
+
+        //Quick sort
+        public List<Attendee> SortByFirstName()
+        {
+            return null;
+        }
 
     }
 }

@@ -70,8 +70,10 @@ namespace AndetSemesterOPG.UI
 
         private void sortNamesButton_Click(object sender, RoutedEventArgs e)
         {
-            
-            AttendeesList.ItemsSource = sort.SortTest(attendees);
+
+            //AttendeesList.ItemsSource = sort.SortByEntranceId(attendees);
+
+            AttendeesList.ItemsSource = sort.SortByCampName(attendees);
         }
     }
 }
