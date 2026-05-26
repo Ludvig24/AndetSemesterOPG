@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using System.Threading;
 
 namespace AndetSemesterOPG.Infrastructure
 {
@@ -13,10 +14,13 @@ namespace AndetSemesterOPG.Infrastructure
         // her oprettes en SqlConnection objekt ved hjælp af connectionString, som vil blive brugt til at åbne en forbindelse til databasen
           string connectionString = "Server=localhost\\SQLEXPRESS; Database=AndetSemester;Trusted_Connection=True;TrustServerCertificate=True";
 
+        
+
 
         //Create
         public void Insert(Attendee attendee)
         {
+            
             using (SqlConnection dataBase = new SqlConnection(connectionString))
             {
                 dataBase.Open();
