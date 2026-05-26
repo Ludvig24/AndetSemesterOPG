@@ -59,9 +59,46 @@ namespace AndetSemesterOPG.Applications
         }
 
         //Quick sort
-        public List<Attendee> SortByFirstName()
+        public List<Attendee> SortByFirstName(List<Attendee> attendees, int left, int right)
         {
-            return null;
+            int i = left;
+            int j = right;
+
+            string pivot = attendees[(left+right)/2].AttendeeFirstName;
+
+            while(i <= j)
+            {
+                //String.Compare returnerer 1, 0 eller -1 -> 0 svarer til ens strings, -1 svarer til at første string skal placeres før den næste string. 1 svarer til at første string skal placeres efter den næste
+                while (String.Compare(attendees[i].AttendeeFirstName, pivot) < 0)
+                {
+                    i++;
+                }
+                while(String.Compare(attendees[j].AttendeeFirstName, pivot) > 0)
+                {
+                    j++;
+                }
+
+                if (i <= j)
+                {
+                    Attendee attendee = attendees[i];
+                    attendees[i] = attendees[j];
+                    attendees[j] = attendee;
+                    i++;
+                    j--;
+                }
+            }
+
+            if(left < j)
+            {
+                SortByFirstName(attendees,left,j);
+            }
+
+            if (i < right)
+            {
+                SortByFirstName(attendees, i, right);
+            }
+
+            return attendees;
         }
 
     }
