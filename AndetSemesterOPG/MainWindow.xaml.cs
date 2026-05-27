@@ -98,5 +98,12 @@ namespace AndetSemesterOPG
             festival.Show();
             this.Hide();
         }
+
+        private void StageArtistWindowButton_Click(object sender, RoutedEventArgs e)
+        {
+            StageArtistWindow stageArtist = new StageArtistWindow();
+            stageArtist.Show();
+            this.Hide();
+        }
     }
 }
