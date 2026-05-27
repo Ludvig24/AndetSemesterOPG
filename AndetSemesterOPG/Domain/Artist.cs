@@ -7,18 +7,17 @@ namespace AndetSemesterOPG.Domain
 {
     internal class Artist
     {
-        string artistName;
-        int artistId;
-        string artistDate;
-        string artistTime;
-        int stageId;
+        public string ArtistName { get; set; }
+        public string ArtistDate { get; set; }
+        public string ArtistTime { get; set; }
+        public int StageId {  get; set; }
 
-        public Artist (string artistName, string artistDate, string artistTime, int stageId)
+        public Artist (string ArtistName, string ArtistDate, string ArtistTime, int StageId)
         {
-            this.artistName = artistName;
-            this.artistDate = artistDate;
-            this.artistTime = artistTime;
-            this.stageId = stageId;
+            this.ArtistName = ArtistName;
+            this.ArtistDate = ArtistDate;
+            this.ArtistTime = ArtistTime;
+            this.StageId = StageId;
         }
     }
 }

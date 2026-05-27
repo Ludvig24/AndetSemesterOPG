@@ -35,6 +35,20 @@ namespace AndetSemesterOPG.Infrastructure
             }
         }
 
+        public void InsertArtist(Artist artist)
+        {
+            using (SqlConnection dataBase = new SqlConnection(connectionString))
+            {
+                dataBase.Open();
+                SqlCommand command = new SqlCommand("INSERT INTO ARTIST(ArtistName, ArtistTime, ArtistDate, StageId) VALUES (@ArtistName, @ArtistTime, @ArtistDate, @StageId)", dataBase);
+                command.Parameters.AddWithValue("@ArtistName", artist.ArtistName);
+                command.Parameters.AddWithValue("ArtistTime", artist.ArtistTime);
+                command.Parameters.AddWithValue("ArtistDate", artist.ArtistDate);
+                command.Parameters.AddWithValue("StageId", artist.StageId);
+                command.ExecuteNonQuery();
+            }
+        }
+
         //Update
         public void Update(Attendee attendee)
         {
@@ -45,6 +59,17 @@ namespace AndetSemesterOPG.Infrastructure
         public void Delete(Attendee attendee)
         {
 
+        }
+
+        public void RemoveArtist (Artist artist)
+        {
+            using(SqlConnection dataBase = new SqlConnection(connectionString))
+            {
+                dataBase.Open();
+                SqlCommand command = new SqlCommand("DELETE FROM Artist WHERE ArtistName = @ArtistName", dataBase);
+                command.Parameters.AddWithValue("@ArtistName", artist.ArtistName);
+                command.ExecuteNonQuery();
+            }
         }
 
 
