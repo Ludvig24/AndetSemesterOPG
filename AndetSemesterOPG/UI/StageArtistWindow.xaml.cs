@@ -1,5 +1,8 @@
-﻿using System;
+﻿using AndetSemesterOPG.Applications;
+using AndetSemesterOPG.Infrastructure;
+using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,6 +23,20 @@ namespace AndetSemesterOPG.UI
         public StageArtistWindow()
         {
             InitializeComponent();
+            
+            ArtistService artistService = new ArtistService(new ArtistRepository(new DBConnection()));
+
+            artistService.RetrieveAllArtists().ForEach(artist =>
+            {
+                LineUp lineUp = new LineUp();
+                lineUp.AddArtistToLineUp(artist, Schedule_Orange);
+            });
+
+
+
+
         }
+
+
     }
 }

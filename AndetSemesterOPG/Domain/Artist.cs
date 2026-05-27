@@ -12,7 +12,7 @@ namespace AndetSemesterOPG.Domain
         public string ArtistTime { get; set; }
         public int StageId {  get; set; }
 
-        public Artist (string ArtistName, string ArtistDate, string ArtistTime, int StageId)
+        public Artist (string ArtistName, string ArtistTime, string ArtistDate, int StageId)
         {
             this.ArtistName = ArtistName;
             this.ArtistDate = ArtistDate;

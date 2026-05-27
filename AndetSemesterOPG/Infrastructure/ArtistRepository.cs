@@ -14,6 +14,7 @@ namespace AndetSemesterOPG.Infrastructure
             this.connection = connection;
         }
 
+
         public void AddArtist(Artist artist)
         {
             connection.InsertArtist(artist);
