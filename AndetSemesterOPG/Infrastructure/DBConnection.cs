@@ -12,12 +12,14 @@ namespace AndetSemesterOPG.Infrastructure
     {
         //string connectionString = "Server=localhost\\SQLEXPRESS; Database=AndetSemester;Trusted_Connection=True;TrustServerCertificate=True";
         // her oprettes en SqlConnection objekt ved hjælp af connectionString, som vil blive brugt til at åbne en forbindelse til databasen
-          string connectionString = "Server=localhost\\SQLEXPRESS; Database=AndetSemester;Trusted_Connection=True;TrustServerCertificate=True";
+          string connectionString = "Server=LAPTOP-KHAURJ1B; Database=AndetSemester;Trusted_Connection=True;TrustServerCertificate=True";
+        //Vi har ikke alle den sammen connectionstring
+        //Ludvig:
+        //Tobias:
+        //Laura: LAPTOP-KHAURJ1B
+        //Emil:
 
-        
-
-
-        //Create
+        //Insert metode, der indsætter Attendee i databasen
         public void Insert(Attendee attendee)
         {
             
@@ -30,9 +32,7 @@ namespace AndetSemesterOPG.Infrastructure
                 command.Parameters.AddWithValue("@CampName", attendee.CampName);
                 command.Parameters.AddWithValue("@EntranceId", attendee.EntranceId);
                 command.ExecuteNonQuery();
-
             }
-
         }
 
         //Update
@@ -55,6 +55,7 @@ namespace AndetSemesterOPG.Infrastructure
 
         }
 
+        //FindByEntranceId metode, som finder Attendees Entrance id i databbasen
         public List<Attendee> FindByEntranceId(int id)
         {
             List<Attendee> attendeesByEntranceId = new List<Attendee>();
@@ -84,6 +85,7 @@ namespace AndetSemesterOPG.Infrastructure
             }
         }
 
+        //FindByCampName metode, som finder Attendees CampName i databasen
         public List<Attendee> FindByCampName(string campName)
         {
             List<Attendee> attendeesByCampName = new List<Attendee>();

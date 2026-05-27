@@ -1,0 +1,29 @@
+﻿<Window x:Class="AndetSemesterOPG.UI.StageArtistWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AndetSemesterOPG.UI"
+        mc:Ignorable="d"
+        Title="StageArtistWindow" Height="450" Width="800">
+    <Grid>
+        <Grid x:Name="Schedule"  HorizontalAlignment="Left" Height="195" Margin="503,191,0,0" VerticalAlignment="Top" Width="252" ShowGridLines="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+        </Grid>
+
+
+
+    </Grid>
+</Window>
