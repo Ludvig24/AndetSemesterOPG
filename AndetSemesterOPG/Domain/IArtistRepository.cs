@@ -8,7 +8,7 @@ namespace AndetSemesterOPG.Domain
     {
         void AddArtist(Artist artist);
 
-        void GetAllArtists();
+        List<Artist> GetAllArtists();
 
         void DeleteArtist(Artist artist);
     }

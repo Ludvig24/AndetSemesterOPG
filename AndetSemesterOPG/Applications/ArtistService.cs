@@ -24,9 +24,9 @@ namespace AndetSemesterOPG.Applications
             artistRepository.DeleteArtist(artist);
         }
 
-        public void RetrieveAllArtists()
+        public List<Artist> RetrieveAllArtists()
         {
-
+            return artistRepository.GetAllArtists();
         }
     }
 }

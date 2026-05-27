@@ -19,9 +19,9 @@ namespace AndetSemesterOPG.Infrastructure
             connection.InsertArtist(artist);
         }
 
-        public void GetAllArtists()
+        public List<Artist> GetAllArtists()
         {
-
+            return connection.ReadAllArtist();
         }
 
         public void DeleteArtist(Artist artist)

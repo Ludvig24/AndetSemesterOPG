@@ -142,7 +142,7 @@ namespace AndetSemesterOPG.Infrastructure
 
         public List<Attendee> ReadAll()
         {
-                    List<Attendee> allAttendeesList = new List<Attendee>();
+            List<Attendee> allAttendeesList = new List<Attendee>();
 
             using (SqlConnection dataBase = new SqlConnection(connectionString))
             {
@@ -187,5 +187,36 @@ namespace AndetSemesterOPG.Infrastructure
                 return capacity;
             }
         }
+
+        public List<Artist> ReadAllArtist()
+        {
+            List<Artist> allArtistsList = new List<Artist>();
+
+            using (SqlConnection dataBase = new SqlConnection(connectionString))
+            {
+                dataBase.Open();
+
+                SqlCommand command = new SqlCommand("SELECT * FROM Artist", dataBase);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    string ArtistName = reader.GetString(reader.GetOrdinal("ArtistName"));
+                    string ArtistTime = reader.GetString(reader.GetOrdinal("ArtistTime"));
+                    string ArtistDate = reader.GetString(reader.GetOrdinal("ArtistDate"));
+                    int StageId = reader.GetInt32(reader.GetOrdinal("StageId"));
+
+                    Artist artist = new Artist(ArtistName, ArtistTime, ArtistDate, StageId);
+
+                    allArtistsList.Add(artist);
+
+                }
+                return allArtistsList;
+            }
+
+
+        }
+
     }
+
+
 }
