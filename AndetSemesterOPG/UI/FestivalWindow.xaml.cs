@@ -47,6 +47,8 @@ namespace AndetSemesterOPG.UI
             timer.Tick += new EventHandler(autoRefresh);
             timer.Interval = new TimeSpan(0, 0, 5);
             timer.Start();
+            campService.CheckCampCapacity("Camp A", attendeeService.RetriveAttendeesByCampName("Camp A").Count);
+            campService.CheckCampCapacity("Camp B", attendeeService.RetriveAttendeesByCampName("Camp B").Count);
         }
 
 

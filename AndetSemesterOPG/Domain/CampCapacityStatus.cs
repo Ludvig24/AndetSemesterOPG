@@ -8,7 +8,6 @@ namespace AndetSemesterOPG.Domain
     {
         public enum CapacityStatus
         {
-            zeroPercent,
             FiftyPercent,
             SeventyFivePercent,
             NinetyPercent,

@@ -6,5 +6,7 @@ namespace AndetSemesterOPG.Domain
 {
     internal interface ICampObserver
     {
+        void Update(string campName, CampCapacityStatus.CapacityStatus campStatus);
+
     }
 }
