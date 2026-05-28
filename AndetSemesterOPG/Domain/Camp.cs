@@ -9,6 +9,7 @@ namespace AndetSemesterOPG.Domain
         int CampId { get; set; }
         int CampCapacity { get; set; }
         string CampName {  get; set; }
+
         CampCapacityStatus.CapacityStatus CampStatus { get; set; }
 
         public Camp(int campId, int campCapacity, string campName, CampCapacityStatus.CapacityStatus campStatus)

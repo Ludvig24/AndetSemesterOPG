@@ -45,7 +45,7 @@ namespace AndetSemesterOPG.UI
 
             DispatcherTimer timer = new DispatcherTimer();
             timer.Tick += new EventHandler(autoRefresh);
-            timer.Interval = new TimeSpan(0, 0, 5);
+            timer.Interval = new TimeSpan(0, 0, 1);
             timer.Start();
 
             CampObserver observer = new CampObserver();
@@ -61,7 +61,7 @@ namespace AndetSemesterOPG.UI
 
             TotalAttendeeCampA.Content = attendeeService.RetriveAttendeesByCampName("Camp A").Count;
             TotalAttendeeCampB.Content = attendeeService.RetriveAttendeesByCampName("Camp B").Count;
-            //
+            
             campService.CheckCampCapacity("Camp A", attendeeService.RetriveAttendeesByCampName("Camp A").Count);
             campService.CheckCampCapacity("Camp B", attendeeService.RetriveAttendeesByCampName("Camp B").Count);
             

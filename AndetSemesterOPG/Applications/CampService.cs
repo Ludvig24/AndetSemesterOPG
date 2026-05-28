@@ -9,10 +9,13 @@ namespace AndetSemesterOPG.Applications
     {
         List<ICampObserver> campObservers;
         ICampRepository campRepository;
+        int lockNumber;
+
         public CampService(ICampRepository campRepository)
         {
             this.campRepository = campRepository;
             this.campObservers = new List<ICampObserver>();
+            lockNumber = 0;
         }
 
         public int RetrieveCampCapacity(string campName)
@@ -45,17 +48,23 @@ namespace AndetSemesterOPG.Applications
             percentageFilled = Double.Round(percentageFilled);
             switch (percentageFilled)
             {
-                case double n when (n == 12):
+                case double n when (n <= 50 && n < 75 && lockNumber <1):
                     NotifyCampObservers(campName, CampCapacityStatus.CapacityStatus.FiftyPercent);
+                    lockNumber = 1;
                     break;
-                case double n when (n > 75 && n < 90):
+                case double n when (n > 75 && n < 90 && lockNumber <2):
                     NotifyCampObservers(campName, CampCapacityStatus.CapacityStatus.SeventyFivePercent);
+                    lockNumber = 2;
                     break;
-                case double n when (n > 90 && n < 100):
+                case double n when (n > 90 && n < 100 && lockNumber <3):
                     NotifyCampObservers(campName, CampCapacityStatus.CapacityStatus.NinetyPercent);
+                    lockNumber = 3;
+                    //Metode til at låse produktion af billetter
                     break;
-                case double n when (n >= 100):
+                case double n when (n >= 100 && lockNumber <4):
                     NotifyCampObservers(campName, CampCapacityStatus.CapacityStatus.OneHundredPercent);
+                    //Også her
+                    lockNumber = 4;
                     break;
             }
         }
