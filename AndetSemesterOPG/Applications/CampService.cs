@@ -42,10 +42,10 @@ namespace AndetSemesterOPG.Applications
         {
             int capacity = RetrieveCampCapacity(campName);
             double percentageFilled = (double)attendeeAmount / capacity * 100;
-
+            percentageFilled = Double.Round(percentageFilled);
             switch (percentageFilled)
             {
-                case double n when (n > 1.7 && n < 75):
+                case double n when (n == 12):
                     NotifyCampObservers(campName, CampCapacityStatus.CapacityStatus.FiftyPercent);
                     break;
                 case double n when (n > 75 && n < 90):
