@@ -63,9 +63,10 @@ namespace AndetSemesterOPG.UI
 
         private void backButtonFestivalWindow_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            this.Hide();
             main.Show();
         }
+
     }
     
 }
