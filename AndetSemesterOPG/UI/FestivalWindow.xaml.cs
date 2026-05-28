@@ -22,7 +22,8 @@ namespace AndetSemesterOPG.UI
     public partial class FestivalWindow : Window
     {
 
-        MainWindow main = new MainWindow();
+        
+        MainWindow main;
         AttendeeService attendeeService = new AttendeeService(new AttendeeRepository(new DBConnection()), new AttendeeTestData(), new TicketClient());
         CampService campService = new CampService(new CampRepository(new DBConnection()));
         public FestivalWindow(MainWindow main)

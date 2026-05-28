@@ -21,18 +21,18 @@ namespace AndetSemesterOPG
     public partial class MainWindow : Window
     {
         
-            AttendeeService attendeeService = new AttendeeService(new AttendeeRepository(new DBConnection()), new AttendeeTestData(), new TicketClient());
+        AttendeeService attendeeService = new AttendeeService(new AttendeeRepository(new DBConnection()), new AttendeeTestData(), new TicketClient());
         FestivalWindow festival;
         public MainWindow()
         {
                 InitializeComponent();
-            festival = new FestivalWindow(this);
-            
+
             //Her er connectionstring til databasen, den skal bruges til at åbne en forbindelse til databasen
             //string connectionString = "Server=localhost\\SQLEXPRESS; Database=AndetSemester;Trusted_Connection=True;TrustServerCertificate=True";
             // her oprettes en SqlConnection objekt ved hjælp af connectionString, som vil blive brugt til at åbne en forbindelse til databasen
             //SqlConnection dataBase = new SqlConnection(connectionString);
 
+            festival = new FestivalWindow(this);
 
             DispatcherTimer timer = new DispatcherTimer();
             timer.Tick += new EventHandler(AutoCreateAttendee);
@@ -83,6 +83,7 @@ namespace AndetSemesterOPG
             }*/
         }
 
+
         private void AttendeeWindowButton_Click(object sender, RoutedEventArgs e)
         {
             AttendeeWindow attendeeWindow = new AttendeeWindow(this);
@@ -97,6 +98,8 @@ namespace AndetSemesterOPG
 
         private void FestivalWindowButton_Click(object sender, RoutedEventArgs e)
         {
+            //FestivalWindow festival = new FestivalWindow(this);
+            
             festival.Show();
             this.Hide();
         }
