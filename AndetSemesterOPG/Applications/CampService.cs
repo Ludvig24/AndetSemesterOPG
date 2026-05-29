@@ -41,47 +41,80 @@ namespace AndetSemesterOPG.Applications
             }
         }
 
-        public void CheckCampCapacity(string campName, int attendeeAmount, AttendeeService attendeeService)
+        public void CheckCampCapacity(Camp camp, int attendeeAmount, AttendeeService attendeeService)
         {
-            int capacity = RetrieveCampCapacity(campName);
+            if (camp.IsLocked == true)
+            {
+                return;
+            }
+
+            int capacity = RetrieveCampCapacity(camp.CampName);
             double percentageFilled = (double)attendeeAmount / capacity * 100;
             percentageFilled = Double.Round(percentageFilled);
             switch (percentageFilled)
             {
                 case double n when (n <= 50 && n < 75 && lockNumber <1):
-                    NotifyCampObservers(campName, CampCapacityStatus.CapacityStatus.FiftyPercent);
+                    NotifyCampObservers(camp.CampName, CampCapacityStatus.CapacityStatus.FiftyPercent);
                     lockNumber = 1;
                     break;
                 case double n when (n > 75 && n < 90 && lockNumber <2):
-                    NotifyCampObservers(campName, CampCapacityStatus.CapacityStatus.SeventyFivePercent);
+                    NotifyCampObservers(camp.CampName, CampCapacityStatus.CapacityStatus.SeventyFivePercent);
                     lockNumber = 2;
                     break;
                 case double n when (n > 90 && n < 100 && lockNumber <3):
-                    NotifyCampObservers(campName, CampCapacityStatus.CapacityStatus.NinetyPercent);
+                    NotifyCampObservers(camp.CampName, CampCapacityStatus.CapacityStatus.NinetyPercent);
                     lockNumber = 3;
-                    LockCamp(campName, attendeeService);
+                    LockCamp(camp, attendeeService);
 
                     break;
                 case double n when (n >= 100 && lockNumber <4):
-                    NotifyCampObservers(campName, CampCapacityStatus.CapacityStatus.OneHundredPercent);
+                    NotifyCampObservers(camp.CampName, CampCapacityStatus.CapacityStatus.OneHundredPercent);
                     lockNumber = 4;
-                    LockCamp(campName, attendeeService);
+                    LockCamp(camp, attendeeService);
                     break;
             }
         }
 
-        public void LockCamp(string campName, AttendeeService attendeeService)
+        public void LockCamp(Camp camp, AttendeeService attendeeService)
         {
-            if (campName == "Camp A")
+            if (camp.CampName == "Camp A")
             {
-                List<int> lockedTickets = new List<int>() { 2, 4 };
-                attendeeService.ticketClient.SetUnlockedTickets(lockedTickets);
+                List<int> currentTickets = attendeeService.ticketClient.GetUnlockedTickets();
+                currentTickets.Remove(1);
+                currentTickets.Remove(3);
+                camp.IsLocked = true;
+                attendeeService.ticketClient.SetUnlockedTickets(currentTickets);
 
             }
-            else if (campName == "Camp B")
+            else if (camp.CampName == "Camp B")
             {
-                List<int> lockedTickets = new List<int>() { 1, 3 };
-                attendeeService.ticketClient.SetUnlockedTickets(lockedTickets);
+                List<int> currentTickets = attendeeService.ticketClient.GetUnlockedTickets();
+                currentTickets.Remove(2);
+                currentTickets.Remove(4);
+                camp.IsLocked = true;
+                attendeeService.ticketClient.SetUnlockedTickets(currentTickets);
+            }
+        }
+
+        public void UnlockCamp(Camp camp, AttendeeService attendeeService)
+        {
+            if (camp.CampName == "Camp A")
+            {
+                
+                List<int>currentTickets = attendeeService.ticketClient.GetUnlockedTickets();
+                currentTickets.Add(1);
+                currentTickets.Add(3);
+                camp.IsLocked = false;
+                attendeeService.ticketClient.SetUnlockedTickets(currentTickets);
+
+            }
+            else if (camp.CampName == "Camp B")
+            {
+                List<int> currentTickets = attendeeService.ticketClient.GetUnlockedTickets();
+                currentTickets.Add(2);
+                currentTickets.Add(4);
+                camp.IsLocked = false;
+                attendeeService.ticketClient.SetUnlockedTickets(currentTickets);
             }
         }
 

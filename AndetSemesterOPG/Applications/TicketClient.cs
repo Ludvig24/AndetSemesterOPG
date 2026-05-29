@@ -29,6 +29,11 @@ namespace AndetSemesterOPG.Applications
 
         public int GetRandomNumber()
         {
+            if(unlockedTickets.Count == 0)
+            {
+                return 0;
+            }
+
             Random randomiser = new Random();
             
 
@@ -56,7 +61,9 @@ namespace AndetSemesterOPG.Applications
                     ticketFactory = new EntranceWestFactory();
                     return OrderTicketCampB(ticketFactory);
                 default:
-                    throw new Exception("Invalid random number");
+                    //throw new Exception("Invalid random number");
+                    //MessageBox - "Der kommer ingen ind i campen" skal nok stå et andet sted.
+                    return null;
 
             }
         }

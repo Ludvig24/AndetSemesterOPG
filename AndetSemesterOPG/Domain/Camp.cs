@@ -6,9 +6,11 @@ namespace AndetSemesterOPG.Domain
 {
     internal class Camp
     {
-        int CampId { get; set; }
-        int CampCapacity { get; set; }
-        string CampName {  get; set; }
+        public int CampId { get; set; }
+        public int CampCapacity { get; set; }
+        public string CampName {  get; set; }
+
+        public bool IsLocked { get; set; }
 
         CampCapacityStatus.CapacityStatus CampStatus { get; set; }
 
@@ -18,6 +20,11 @@ namespace AndetSemesterOPG.Domain
             this.CampCapacity = campCapacity;
             this.CampName = campName;
             this.CampStatus = campStatus;
+        }
+
+        public Camp()
+        {
+
         }
 
 
