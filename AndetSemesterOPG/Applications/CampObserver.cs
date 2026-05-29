@@ -8,6 +8,7 @@ namespace AndetSemesterOPG.Applications
 {
     internal class CampObserver : ICampObserver
     {
+
         public void Update(string campName, CampCapacityStatus.CapacityStatus campStatus)
         {
             switch (campStatus)

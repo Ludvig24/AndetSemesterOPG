@@ -20,12 +20,13 @@ namespace AndetSemesterOPG
 {
     public partial class MainWindow : Window
     {
-        
-        AttendeeService attendeeService = new AttendeeService(new AttendeeRepository(new DBConnection()), new AttendeeTestData(), new TicketClient());
+        TicketClient ticketClient = new TicketClient();
         FestivalWindow festival;
+        AttendeeService attendeeService;
         public MainWindow()
         {
                 InitializeComponent();
+            this.attendeeService = new AttendeeService(new AttendeeRepository(new DBConnection()), new AttendeeTestData(), ticketClient);
 
             festival = new FestivalWindow(this);
 

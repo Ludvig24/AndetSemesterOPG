@@ -12,7 +12,7 @@ namespace AndetSemesterOPG.Applications
         //Her er en metode der laver en billet til camp A og en til camp B, den tager en ticketfactory som parameter så den kan lave de forskellige billetter
 
         //Lav metode der måske tager en int (1,2,3 eller 4) - unlockedTickets erstattes med en liste uden det valgte tal - dermed begrænset ticketproduktion
-        List<int> unlockedTickets = new List<int>() {1,2,3,4 };
+        private List<int> unlockedTickets = new List<int>() { 1, 2, 3, 4 };
         
         public ITicket OrderTicketCampA(ITicketFactory ticketFactory)
         {
@@ -59,6 +59,16 @@ namespace AndetSemesterOPG.Applications
                     throw new Exception("Invalid random number");
 
             }
+        }
+
+        public void SetUnlockedTickets(List<int> allowedTickets)
+        {
+            unlockedTickets = allowedTickets;
+        }
+
+        public List<int> GetUnlockedTickets()
+        {
+            return unlockedTickets;
         }
     }
 }

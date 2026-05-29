@@ -60,6 +60,7 @@ namespace AndetSemesterOPG.Applications
                     NotifyCampObservers(campName, CampCapacityStatus.CapacityStatus.NinetyPercent);
                     lockNumber = 3;
                     //Metode til at låse produktion af billetter
+
                     break;
                 case double n when (n >= 100 && lockNumber <4):
                     NotifyCampObservers(campName, CampCapacityStatus.CapacityStatus.OneHundredPercent);
