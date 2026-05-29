@@ -55,7 +55,7 @@
             <ComboBoxItem Content="Lørdag"></ComboBoxItem>
             <ComboBoxItem Content="Søndag"></ComboBoxItem>
         </ComboBox>
-        <TextBox x:Name="ArtistNameTextBox" HorizontalAlignment="Left" Margin="548,118,0,0" TextWrapping="Wrap" Text="Udfyld" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="ArtistNameTextBox" HorizontalAlignment="Left" Margin="92,56,0,0" TextWrapping="Wrap" Text="Kunsters navn" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="StageNameComboBox" HorizontalAlignment="Left" Margin="244,127,0,0" VerticalAlignment="Top" Width="120" Text="Vælg scene">
             <ComboBoxItem Content="Orange Scene"></ComboBoxItem>
             <ComboBoxItem Content="Arena Scene"></ComboBoxItem>
