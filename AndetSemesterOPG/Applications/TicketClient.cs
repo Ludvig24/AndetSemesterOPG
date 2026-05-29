@@ -61,6 +61,8 @@ namespace AndetSemesterOPG.Applications
             }
         }
 
+
+
         public void SetUnlockedTickets(List<int> allowedTickets)
         {
             unlockedTickets = allowedTickets;

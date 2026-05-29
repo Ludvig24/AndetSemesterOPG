@@ -28,7 +28,7 @@ namespace AndetSemesterOPG
                 InitializeComponent();
             this.attendeeService = new AttendeeService(new AttendeeRepository(new DBConnection()), new AttendeeTestData(), ticketClient);
 
-            festival = new FestivalWindow(this);
+            festival = new FestivalWindow(this, attendeeService);
 
             DispatcherTimer timer = new DispatcherTimer();
             timer.Tick += new EventHandler(AutoCreateAttendee);

@@ -24,12 +24,13 @@ namespace AndetSemesterOPG.UI
 
         
         MainWindow main;
-        AttendeeService attendeeService = new AttendeeService(new AttendeeRepository(new DBConnection()), new AttendeeTestData(), new TicketClient());
+        AttendeeService attendeeService;
         CampService campService = new CampService(new CampRepository(new DBConnection()));
-        public FestivalWindow(MainWindow main)
+        internal FestivalWindow(MainWindow main, AttendeeService attendeeService)
         {
             InitializeComponent();
             this.main = main;
+            this.attendeeService = attendeeService;
 
             TotalAttendeeEast.Content = attendeeService.RetrieveAttendeesByEntranceId(1).Count;
 
@@ -62,9 +63,11 @@ namespace AndetSemesterOPG.UI
             TotalAttendeeCampA.Content = attendeeService.RetriveAttendeesByCampName("Camp A").Count;
             TotalAttendeeCampB.Content = attendeeService.RetriveAttendeesByCampName("Camp B").Count;
             
-            campService.CheckCampCapacity("Camp A", attendeeService.RetriveAttendeesByCampName("Camp A").Count);
-            campService.CheckCampCapacity("Camp B", attendeeService.RetriveAttendeesByCampName("Camp B").Count);
+            campService.CheckCampCapacity("Camp A", attendeeService.RetriveAttendeesByCampName("Camp A").Count, attendeeService);
+            campService.CheckCampCapacity("Camp B", attendeeService.RetriveAttendeesByCampName("Camp B").Count, attendeeService);
+
             
+
             CampACapacity.Content = campService.RetrieveCampCapacity("Camp A");
             CampBCapacity.Content = campService.RetrieveCampCapacity("Camp B");
         }

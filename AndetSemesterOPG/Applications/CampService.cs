@@ -41,7 +41,7 @@ namespace AndetSemesterOPG.Applications
             }
         }
 
-        public void CheckCampCapacity(string campName, int attendeeAmount)
+        public void CheckCampCapacity(string campName, int attendeeAmount, AttendeeService attendeeService)
         {
             int capacity = RetrieveCampCapacity(campName);
             double percentageFilled = (double)attendeeAmount / capacity * 100;
@@ -59,14 +59,29 @@ namespace AndetSemesterOPG.Applications
                 case double n when (n > 90 && n < 100 && lockNumber <3):
                     NotifyCampObservers(campName, CampCapacityStatus.CapacityStatus.NinetyPercent);
                     lockNumber = 3;
-                    //Metode til at låse produktion af billetter
+                    LockCamp(campName, attendeeService);
 
                     break;
                 case double n when (n >= 100 && lockNumber <4):
                     NotifyCampObservers(campName, CampCapacityStatus.CapacityStatus.OneHundredPercent);
-                    //Også her
                     lockNumber = 4;
+                    LockCamp(campName, attendeeService);
                     break;
+            }
+        }
+
+        public void LockCamp(string campName, AttendeeService attendeeService)
+        {
+            if (campName == "Camp A")
+            {
+                List<int> lockedTickets = new List<int>() { 2, 4 };
+                attendeeService.ticketClient.SetUnlockedTickets(lockedTickets);
+
+            }
+            else if (campName == "Camp B")
+            {
+                List<int> lockedTickets = new List<int>() { 1, 3 };
+                attendeeService.ticketClient.SetUnlockedTickets(lockedTickets);
             }
         }
 

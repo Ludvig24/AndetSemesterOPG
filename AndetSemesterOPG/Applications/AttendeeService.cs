@@ -9,7 +9,7 @@ namespace AndetSemesterOPG.Applications
     internal class AttendeeService
     {
         AttendeeTestData attendeeTestData; //Vil et interface være bedre kodeskik? 
-        TicketClient ticketClient;
+        public TicketClient ticketClient { get; set; }
         IAttendeeRepository attendeeRepository;
 
         public AttendeeService(IAttendeeRepository attendeeRepository, AttendeeTestData attendeeTestData, TicketClient ticketClient)
