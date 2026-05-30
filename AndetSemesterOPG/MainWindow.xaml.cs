@@ -30,6 +30,7 @@ namespace AndetSemesterOPG
         CampObserver campObserver;
         Camp campA;
         Camp campB;
+        Sort sort;
 
         public MainWindow() //MainWindow fungerer nu som Composition Root - vi bør lave et separat menu vindue så MainWindow fra nu KUN er Composition Root - intet UI
         {
@@ -46,6 +47,7 @@ namespace AndetSemesterOPG
             campService = new CampService(campRepository);
             artistService = new ArtistService(artistRepository);
             attendeeCreator = new AttendeeCreator(new DispatcherTimer(), attendeeService);
+            sort = new Sort();
 
 
             //Flyt til en CampCreator? - klasse der henter oplysninger om camps fra db og laver x antal camps som svarer til antal i db måske? Så opret CampCreator i CompositionRoot og start den der.
@@ -61,7 +63,7 @@ namespace AndetSemesterOPG
 
 
             festival = new FestivalWindow(this, attendeeService, campService, campA, campA, campObserver);
-            attendeeWindow = new AttendeeWindow(this);
+            attendeeWindow = new AttendeeWindow(this, attendeeService, sort);
             stageArtist = new StageArtistWindow(artistService);
 
 

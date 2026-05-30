@@ -22,17 +22,21 @@ namespace AndetSemesterOPG.UI
     /// </summary>
     public partial class AttendeeWindow : Window
     {
-        AttendeeService attendeeService = new AttendeeService(new AttendeeRepository(new DBConnection()), new AttendeeTestData(), new TicketClient());
+        AttendeeService attendeeService;
         List<Attendee> attendees = new List<Attendee>();
         MainWindow mainWindow;
         Sort sort = new Sort();
         
-        public AttendeeWindow(MainWindow mainWindow)
+        internal AttendeeWindow(MainWindow mainWindow, AttendeeService attendeeService, Sort sort)
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
-            attendees = attendeeService.RetrieveAllAttendees();
+            this.sort = sort;
+            this.attendeeService = attendeeService;
+            this.attendees = attendeeService.RetrieveAllAttendees();
             AttendeesList.ItemsSource = attendees;
+
+
             DispatcherTimer timer = new DispatcherTimer();
             timer.Tick += new EventHandler(Refresh);
             timer.Interval = new TimeSpan(0,0,1);
