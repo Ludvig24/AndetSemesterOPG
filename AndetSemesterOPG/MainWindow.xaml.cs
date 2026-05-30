@@ -22,13 +22,15 @@ namespace AndetSemesterOPG
     {
         AttendeeService attendeeService;
         CampService campService;
+        AttendeeCreator attendeeCreator;
         FestivalWindow festival;
         AttendeeWindow attendeeWindow;
         StageArtistWindow stageArtist;
+        
 
         public MainWindow() //MainWindow fungerer nu som Composition Root - vi bør lave et separat menu vindue så MainWindow fra nu KUN er Composition Root - intet UI
         {
-                InitializeComponent();
+            InitializeComponent();
 
             IDBConnection connection = new DBConnection();
             IAttendeeRepository attendeeRepository = new AttendeeRepository(connection);
@@ -37,6 +39,7 @@ namespace AndetSemesterOPG
 
             attendeeService = new AttendeeService(attendeeRepository, new AttendeeTestData(), new TicketClient());
             campService = new CampService(campRepository);
+            attendeeCreator = new AttendeeCreator(new DispatcherTimer(), attendeeService);
 
             festival = new FestivalWindow(this, attendeeService);
             attendeeWindow = new AttendeeWindow(this);
@@ -46,10 +49,7 @@ namespace AndetSemesterOPG
 
 
 
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Tick += new EventHandler(AutoCreateAttendee);
-            timer.Interval = new TimeSpan(0, 0, 5); // Her sættes intervallet for timeren til 5 sekunder
-            timer.Start();
+            
         }
 
 
@@ -59,15 +59,10 @@ namespace AndetSemesterOPG
             this.Hide();
         }
 
-        private void AutoCreateAttendee(object sender, EventArgs e)
-        {
-            attendeeService.CreateAttendee();
-        }
+       
 
         private void FestivalWindowButton_Click(object sender, RoutedEventArgs e)
-        {
-            //FestivalWindow festival = new FestivalWindow(this);
-            
+        {            
             festival.Show();
             this.Hide();
         }
