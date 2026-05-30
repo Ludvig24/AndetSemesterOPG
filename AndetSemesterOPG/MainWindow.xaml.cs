@@ -20,15 +20,31 @@ namespace AndetSemesterOPG
 {
     public partial class MainWindow : Window
     {
-        TicketClient ticketClient = new TicketClient();
-        FestivalWindow festival;
         AttendeeService attendeeService;
-        public MainWindow()
+        CampService campService;
+        FestivalWindow festival;
+        AttendeeWindow attendeeWindow;
+        StageArtistWindow stageArtist;
+
+        public MainWindow() //MainWindow fungerer nu som Composition Root - vi bør lave et separat menu vindue så MainWindow fra nu KUN er Composition Root - intet UI
         {
                 InitializeComponent();
-            this.attendeeService = new AttendeeService(new AttendeeRepository(new DBConnection()), new AttendeeTestData(), ticketClient);
+
+            IDBConnection connection = new DBConnection();
+            IAttendeeRepository attendeeRepository = new AttendeeRepository(connection);
+            IArtistRepository artistRepository = new ArtistRepository(connection);
+            ICampRepository campRepository = new CampRepository(connection);
+
+            attendeeService = new AttendeeService(attendeeRepository, new AttendeeTestData(), new TicketClient());
+            campService = new CampService(campRepository);
 
             festival = new FestivalWindow(this, attendeeService);
+            attendeeWindow = new AttendeeWindow(this);
+            stageArtist = new StageArtistWindow();
+
+
+
+
 
             DispatcherTimer timer = new DispatcherTimer();
             timer.Tick += new EventHandler(AutoCreateAttendee);
@@ -39,7 +55,6 @@ namespace AndetSemesterOPG
 
         private void AttendeeWindowButton_Click(object sender, RoutedEventArgs e)
         {
-            AttendeeWindow attendeeWindow = new AttendeeWindow(this);
             attendeeWindow.Show();
             this.Hide();
         }
@@ -59,7 +74,6 @@ namespace AndetSemesterOPG
 
         private void StageArtistWindowButton_Click(object sender, RoutedEventArgs e)
         {
-            StageArtistWindow stageArtist = new StageArtistWindow();
             stageArtist.Show();
             this.Hide();
         }
