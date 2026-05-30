@@ -14,9 +14,9 @@ namespace AndetSemesterOPG.Applications
             this.timer = timer;
             this.attendeeService = attendeeService;
 
-            timer.Tick += new EventHandler(AutoCreateAttendee);
-            timer.Interval = new TimeSpan(0, 0, 5); // Her sættes intervallet for timeren til 5 sekunder
-            timer.Start();
+            this.timer.Tick += new EventHandler(AutoCreateAttendee);
+            this.timer.Interval = new TimeSpan(0, 0, 5); // Her sættes intervallet for timeren til 5 sekunder
+            this.timer.Start();
         }
 
 

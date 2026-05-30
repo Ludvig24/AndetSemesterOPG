@@ -41,7 +41,7 @@
             </Grid.RowDefinitions>
         </Grid>
         <Button x:Name="BackButtoninStage" Content="Tilbage" HorizontalAlignment="Left" Height="41" VerticalAlignment="Top" Width="111"/>
-        <Button x:Name="AddArtistButton" Content="Tilføj" HorizontalAlignment="Left" Height="43" Margin="373,118,0,0" VerticalAlignment="Top" Width="104"/>
+        <Button x:Name="AddArtistButton" Content="Tilføj" HorizontalAlignment="Left" Height="43" Margin="373,118,0,0" VerticalAlignment="Top" Width="104" Click="AddArtistButton_Click"/>
         <ComboBox x:Name="ArtistTimeCombobox" HorizontalAlignment="Left" Height="34" Margin="379,79,0,0" VerticalAlignment="Top" Width="92" Text="Tid">
             <ComboBoxItem Content="16:00"></ComboBoxItem>
             <ComboBoxItem Content="18:00"></ComboBoxItem>
@@ -57,8 +57,8 @@
         </ComboBox>
         <TextBox x:Name="ArtistNameTextBox" HorizontalAlignment="Left" Margin="92,56,0,0" TextWrapping="Wrap" Text="Kunsters navn" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="StageNameComboBox" HorizontalAlignment="Left" Margin="244,127,0,0" VerticalAlignment="Top" Width="120" Text="Vælg scene">
-            <ComboBoxItem Content="Orange Scene"></ComboBoxItem>
-            <ComboBoxItem Content="Arena Scene"></ComboBoxItem>
+            <ComboBoxItem Content="Orange Scene" ></ComboBoxItem>
+            <ComboBoxItem Content="Arena Scene" ></ComboBoxItem>
         </ComboBox>
 
 

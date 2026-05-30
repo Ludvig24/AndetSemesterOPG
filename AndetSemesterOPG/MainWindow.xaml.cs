@@ -22,11 +22,14 @@ namespace AndetSemesterOPG
     {
         AttendeeService attendeeService;
         CampService campService;
+        ArtistService artistService;
         AttendeeCreator attendeeCreator;
         FestivalWindow festival;
         AttendeeWindow attendeeWindow;
         StageArtistWindow stageArtist;
-        
+        CampObserver campObserver;
+        Camp campA;
+        Camp campB;
 
         public MainWindow() //MainWindow fungerer nu som Composition Root - vi bør lave et separat menu vindue så MainWindow fra nu KUN er Composition Root - intet UI
         {
@@ -37,19 +40,35 @@ namespace AndetSemesterOPG
             IArtistRepository artistRepository = new ArtistRepository(connection);
             ICampRepository campRepository = new CampRepository(connection);
 
+            campObserver = new CampObserver();
+
             attendeeService = new AttendeeService(attendeeRepository, new AttendeeTestData(), new TicketClient());
             campService = new CampService(campRepository);
+            artistService = new ArtistService(artistRepository);
             attendeeCreator = new AttendeeCreator(new DispatcherTimer(), attendeeService);
 
-            festival = new FestivalWindow(this, attendeeService);
+
+            //Flyt til en CampCreator? - klasse der henter oplysninger om camps fra db og laver x antal camps som svarer til antal i db måske? Så opret CampCreator i CompositionRoot og start den der.
+            campA = new Camp();
+            campA.CampId = 1;
+            campA.CampName = "Camp A";
+            campA.CampCapacity = campService.RetrieveCampCapacity(campA.CampName);
+
+            campB = new Camp();
+            campB.CampId = 2;
+            campB.CampName = "Camp B";
+            campB.CampCapacity = campService.RetrieveCampCapacity(campB.CampName);
+
+
+            festival = new FestivalWindow(this, attendeeService, campService, campA, campA, campObserver);
             attendeeWindow = new AttendeeWindow(this);
-            stageArtist = new StageArtistWindow();
+            stageArtist = new StageArtistWindow(artistService);
 
 
 
 
+            campService.SubscribeCampObserver(campObserver);
 
-            
         }
 
 

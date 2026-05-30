@@ -25,24 +25,24 @@ namespace AndetSemesterOPG.UI
         
         MainWindow main;
         AttendeeService attendeeService;
-        CampService campService = new CampService(new CampRepository(new DBConnection()));
+        CampService campService;
         Camp campA;
         Camp campB;
         CampObserver campObserver;
-        internal FestivalWindow(MainWindow main, AttendeeService attendeeService)
+        internal FestivalWindow(MainWindow main, AttendeeService attendeeService, CampService campService, Camp campA, Camp campB, CampObserver campObserver)
         {
             InitializeComponent();
             this.main = main;
             this.attendeeService = attendeeService;
-            campA = new Camp();
-            campA.CampId = 1;
-            campA.CampName = "Camp A";
-            campA.CampCapacity = campService.RetrieveCampCapacity(campA.CampName);
+            this.campA = campA;
+            this.campB = campB;
+            this.campObserver = campObserver;
+            this.campService = campService;
 
-            campB = new Camp();
-            campB.CampId = 2;
-            campB.CampName = "Camp B";
-            campB.CampCapacity = campService.RetrieveCampCapacity(campB.CampName);
+
+            
+
+
 
             TotalAttendeeEast.Content = attendeeService.RetrieveAttendeesByEntranceId(1).Count;
 
@@ -61,8 +61,8 @@ namespace AndetSemesterOPG.UI
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Start();
 
-            campObserver = new CampObserver();
-            campService.SubscribeCampObserver(campObserver);
+            
+            
 
         }
 
@@ -75,6 +75,8 @@ namespace AndetSemesterOPG.UI
             TotalAttendeeCampA.Content = attendeeService.RetriveAttendeesByCampName("Camp A").Count;
             TotalAttendeeCampB.Content = attendeeService.RetriveAttendeesByCampName("Camp B").Count;
             
+
+            //Dette bør være et andet sted - det andet med timeren er fint nok da det bare er UI gøgl
             campService.CheckCampCapacity(campA, attendeeService.RetriveAttendeesByCampName("Camp A").Count, attendeeService);
             campService.CheckCampCapacity(campB, attendeeService.RetriveAttendeesByCampName("Camp B").Count, attendeeService);
 
