@@ -7,9 +7,9 @@ namespace AndetSemesterOPG.Infrastructure
 {
     internal class ArtistRepository : IArtistRepository
     {
-        DBConnection connection;
+        IDBConnection connection;
 
-        public ArtistRepository(DBConnection connection)
+        public ArtistRepository(IDBConnection connection)
         {
             this.connection = connection;
         }

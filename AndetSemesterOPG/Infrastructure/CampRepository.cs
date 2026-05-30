@@ -7,9 +7,9 @@ namespace AndetSemesterOPG.Infrastructure
 {
     internal class CampRepository : ICampRepository
     {
-        DBConnection connection;
+        IDBConnection connection;
 
-        public CampRepository(DBConnection connection)
+        public CampRepository(IDBConnection connection)
         {
             this.connection = connection;
         }

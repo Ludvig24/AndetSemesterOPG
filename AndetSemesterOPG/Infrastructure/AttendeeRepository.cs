@@ -8,8 +8,8 @@ namespace AndetSemesterOPG.Infrastructure
 {
     internal class AttendeeRepository : IAttendeeRepository
     {
-        DBConnection connection;
-        public AttendeeRepository(DBConnection connection)
+        IDBConnection connection;
+        public AttendeeRepository(IDBConnection connection)
         {
             this.connection = connection;
         }
