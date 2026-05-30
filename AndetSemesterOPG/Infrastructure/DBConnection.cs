@@ -188,7 +188,7 @@ namespace AndetSemesterOPG.Infrastructure
             }
         }
 
-        public List<Artist> ReadAllArtist()
+        public List<Artist> ReadAllArtist() 
         {
             List<Artist> allArtistsList = new List<Artist>();
 
