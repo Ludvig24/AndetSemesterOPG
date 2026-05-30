@@ -40,7 +40,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
         </Grid>
-        <Button x:Name="BackButtoninStage" Content="Tilbage" HorizontalAlignment="Left" Height="41" VerticalAlignment="Top" Width="111"/>
+        <Button x:Name="BackButtoninStage" Content="Tilbage" HorizontalAlignment="Left" Height="41" VerticalAlignment="Top" Width="111" Click="BackButtoninStage_Click"/>
         <Button x:Name="AddArtistButton" Content="Tilføj" HorizontalAlignment="Left" Height="43" Margin="373,118,0,0" VerticalAlignment="Top" Width="104" Click="AddArtistButton_Click"/>
         <ComboBox x:Name="ArtistTimeCombobox" HorizontalAlignment="Left" Height="34" Margin="379,79,0,0" VerticalAlignment="Top" Width="92" Text="Tid">
             <ComboBoxItem Content="16:00"></ComboBoxItem>

@@ -64,7 +64,7 @@ namespace AndetSemesterOPG
 
             festival = new FestivalWindow(this, attendeeService, campService, campA, campA, campObserver);
             attendeeWindow = new AttendeeWindow(this, attendeeService, sort);
-            stageArtist = new StageArtistWindow(artistService);
+            stageArtist = new StageArtistWindow(this, artistService);
 
 
 

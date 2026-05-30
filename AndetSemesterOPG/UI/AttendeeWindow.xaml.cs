@@ -56,7 +56,7 @@ namespace AndetSemesterOPG.UI
         private void AttendeeBackButton_Click(object sender, RoutedEventArgs e)
         {
             mainWindow.Show();
-            this.Close();
+            this.Hide();
         }
 
         private void Refresh(object sender, EventArgs e)
