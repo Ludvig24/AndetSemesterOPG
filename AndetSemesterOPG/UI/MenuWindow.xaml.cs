@@ -1,4 +1,5 @@
-﻿using AndetSemesterOPG.Domain;
+﻿using AndetSemesterOPG.Applications;
+using AndetSemesterOPG.Domain;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,32 +19,28 @@ namespace AndetSemesterOPG.UI
     /// </summary>
     public partial class MenuWindow : Window
     {
-        AttendeeWindow attendeeWindow;
-        FestivalWindow festivalWindow;
-        StageArtistWindow stageArtistWindow;
-        public MenuWindow(AttendeeWindow attendeeWindow, FestivalWindow festivalWindow, StageArtistWindow stageArtistWindow)
+        WindowNavigator windowNavigator;
+        internal MenuWindow(WindowNavigator windowNavigator)
         {
             InitializeComponent();
-            this.attendeeWindow = attendeeWindow;
-            this.festivalWindow = festivalWindow;
-            this.stageArtistWindow = stageArtistWindow;
+            this.windowNavigator = windowNavigator;
         }
 
         private void AttendeeWindowButton_Click(object sender, RoutedEventArgs e)
         {
-            attendeeWindow.Show();
+            windowNavigator.OpenAttendeeWindow();
             this.Hide();
         }
 
         private void FestivalWindowButton_Click(object sender, RoutedEventArgs e)
         {
-            festivalWindow.Show();
+            windowNavigator.OpenFestivalWindow();
             this.Hide();
         }
 
         private void StageArtistWindowButton_Click(object sender, RoutedEventArgs e)
         {
-            stageArtistWindow.Show();
+            windowNavigator.OpenStageArtistWindow();
             this.Hide();
         }
     }

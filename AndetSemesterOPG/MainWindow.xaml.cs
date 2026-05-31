@@ -29,6 +29,7 @@ namespace AndetSemesterOPG
         StageArtistWindow stageArtist;
         MenuWindow menu;
         CampObserver campObserver;
+        WindowNavigator windowNavigator;
         Camp campA;
         Camp campB;
         Sort sort;
@@ -63,11 +64,13 @@ namespace AndetSemesterOPG
             campB.CampName = "Camp B";
             campB.CampCapacity = campService.RetrieveCampCapacity(campB.CampName);
 
+            windowNavigator = new WindowNavigator();
 
             attendeeWindow = new AttendeeWindow(this, attendeeService, sort);
             festival = new FestivalWindow(this, attendeeService, campService, campA, campA, campObserver);
-            stageArtist = new StageArtistWindow(menu, artistService);
-            menu = new MenuWindow(attendeeWindow, festival, stageArtist);
+            stageArtist = new StageArtistWindow(windowNavigator, artistService);
+            menu = new MenuWindow(windowNavigator);
+            windowNavigator.SetWindows(attendeeWindow, festival, menu, stageArtist);
             
 
 

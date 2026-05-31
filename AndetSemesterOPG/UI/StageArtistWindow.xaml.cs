@@ -21,15 +21,15 @@ namespace AndetSemesterOPG.UI
     /// </summary>
     public partial class StageArtistWindow : Window
     {
-        MenuWindow menu;
+        WindowNavigator windowNavigator;
         ArtistService artistService;
         List<Artist> artists;
         LineUp lineUp = new LineUp();
-        internal StageArtistWindow(MenuWindow menu, ArtistService artistService)
+        internal StageArtistWindow(WindowNavigator windowNavigator, ArtistService artistService)
         {
             InitializeComponent();
 
-            this.menu = menu;
+            this.windowNavigator = windowNavigator;
             this.artists = artistService.RetrieveAllArtists();
 
             foreach(Artist artist in artists)
@@ -64,7 +64,7 @@ namespace AndetSemesterOPG.UI
 
         private void BackButtoninStage_Click(object sender, RoutedEventArgs e)
         {
-            menu.Show();
+            windowNavigator.OpenMenuWindow();
             this.Hide();
         }
     }
