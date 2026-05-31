@@ -64,10 +64,10 @@ namespace AndetSemesterOPG
             campB.CampCapacity = campService.RetrieveCampCapacity(campB.CampName);
 
 
-            festival = new FestivalWindow(this, attendeeService, campService, campA, campA, campObserver);
             attendeeWindow = new AttendeeWindow(this, attendeeService, sort);
-            stageArtist = new StageArtistWindow(this, artistService);
-            menu = new MenuWindow();
+            festival = new FestivalWindow(this, attendeeService, campService, campA, campA, campObserver);
+            stageArtist = new StageArtistWindow(menu, artistService);
+            menu = new MenuWindow(attendeeWindow, festival, stageArtist);
             
 
 

@@ -7,6 +7,8 @@
         mc:Ignorable="d"
         Title="MenuWindow" Height="450" Width="800">
     <Grid>
-        
+        <Button x:Name="AttendeeWindowButton" Content="Festivalsdeltager data" HorizontalAlignment="Left" Margin="562,281,0,0" VerticalAlignment="Top" Height="36" Width="125" Click="AttendeeWindowButton_Click"/>
+        <Button x:Name="FestivalWindowButton" Content="Festivalsplads" HorizontalAlignment="Center" Margin="0,281,0,0" VerticalAlignment="Top" Height="36" Width="125" Click="FestivalWindowButton_Click"/>
+        <Button x:Name="StageArtistWindowButton" Content="Planlæg Line-Up" HorizontalAlignment="Left" Margin="117,281,0,0" VerticalAlignment="Top" Height="36" Width="125" Click="StageArtistWindowButton_Click"/>
     </Grid>
 </Window>
