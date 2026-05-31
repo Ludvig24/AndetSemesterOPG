@@ -66,8 +66,8 @@ namespace AndetSemesterOPG
 
             windowNavigator = new WindowNavigator();
 
-            attendeeWindow = new AttendeeWindow(this, attendeeService, sort);
-            festival = new FestivalWindow(this, attendeeService, campService, campA, campA, campObserver);
+            attendeeWindow = new AttendeeWindow(windowNavigator, attendeeService, sort);
+            festival = new FestivalWindow(windowNavigator, attendeeService, campService, campA, campA, campObserver);
             stageArtist = new StageArtistWindow(windowNavigator, artistService);
             menu = new MenuWindow(windowNavigator);
             windowNavigator.SetWindows(attendeeWindow, festival, menu, stageArtist);
@@ -80,25 +80,5 @@ namespace AndetSemesterOPG
 
         }
 
-
-        private void AttendeeWindowButton_Click(object sender, RoutedEventArgs e)
-        {
-            attendeeWindow.Show();
-            this.Hide();
-        }
-
-       
-
-        private void FestivalWindowButton_Click(object sender, RoutedEventArgs e)
-        {            
-            festival.Show();
-            this.Hide();
-        }
-
-        private void StageArtistWindowButton_Click(object sender, RoutedEventArgs e)
-        {
-            stageArtist.Show();
-            this.Hide();
-        }
     }
 }

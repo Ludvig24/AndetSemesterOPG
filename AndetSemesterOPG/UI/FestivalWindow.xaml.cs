@@ -23,16 +23,16 @@ namespace AndetSemesterOPG.UI
     {
 
         
-        MainWindow main;
+        WindowNavigator windowNavigator;
         AttendeeService attendeeService;
         CampService campService;
         Camp campA;
         Camp campB;
         CampObserver campObserver;
-        internal FestivalWindow(MainWindow main, AttendeeService attendeeService, CampService campService, Camp campA, Camp campB, CampObserver campObserver)
+        internal FestivalWindow(WindowNavigator windowNavigator, AttendeeService attendeeService, CampService campService, Camp campA, Camp campB, CampObserver campObserver)
         {
             InitializeComponent();
-            this.main = main;
+            this.windowNavigator = windowNavigator;
             this.attendeeService = attendeeService;
             this.campA = campA;
             this.campB = campB;
@@ -89,7 +89,7 @@ namespace AndetSemesterOPG.UI
         private void backButtonFestivalWindow_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
-            main.Show();
+            windowNavigator.OpenMenuWindow();
         }
 
         private void LockCampAButton_Click(object sender, RoutedEventArgs e)

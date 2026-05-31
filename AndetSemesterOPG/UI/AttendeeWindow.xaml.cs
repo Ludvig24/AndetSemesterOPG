@@ -24,13 +24,13 @@ namespace AndetSemesterOPG.UI
     {
         AttendeeService attendeeService;
         List<Attendee> attendees = new List<Attendee>();
-        MainWindow mainWindow;
+        WindowNavigator windowNavigator;
         Sort sort = new Sort();
         
-        internal AttendeeWindow(MainWindow mainWindow, AttendeeService attendeeService, Sort sort)
+        internal AttendeeWindow(WindowNavigator windowNavigator, AttendeeService attendeeService, Sort sort)
         {
             InitializeComponent();
-            this.mainWindow = mainWindow;
+            this.windowNavigator = windowNavigator;
             this.sort = sort;
             this.attendeeService = attendeeService;
             this.attendees = attendeeService.RetrieveAllAttendees();
@@ -55,7 +55,7 @@ namespace AndetSemesterOPG.UI
 
         private void AttendeeBackButton_Click(object sender, RoutedEventArgs e)
         {
-            mainWindow.Show();
+            windowNavigator.OpenMenuWindow();
             this.Hide();
         }
 
