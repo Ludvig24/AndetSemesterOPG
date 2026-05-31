@@ -11,7 +11,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AndetSemesterOPG.Applications;
 using Microsoft.Data.SqlClient;
-using AndetSemesterOPG.Domain; //FJERN DENNE?!?!?
+using AndetSemesterOPG.Domain;
 using AndetSemesterOPG.Infrastructure;
 using AndetSemesterOPG.UI;
 using System.Windows.Threading;
@@ -27,6 +27,7 @@ namespace AndetSemesterOPG
         FestivalWindow festival;
         AttendeeWindow attendeeWindow;
         StageArtistWindow stageArtist;
+        MenuWindow menu;
         CampObserver campObserver;
         Camp campA;
         Camp campB;
@@ -35,6 +36,7 @@ namespace AndetSemesterOPG
         public MainWindow() //MainWindow fungerer nu som Composition Root - vi bør lave et separat menu vindue så MainWindow fra nu KUN er Composition Root - intet UI
         {
             InitializeComponent();
+            this.Hide();
 
             IDBConnection connection = new DBConnection();
             IAttendeeRepository attendeeRepository = new AttendeeRepository(connection);
@@ -65,11 +67,13 @@ namespace AndetSemesterOPG
             festival = new FestivalWindow(this, attendeeService, campService, campA, campA, campObserver);
             attendeeWindow = new AttendeeWindow(this, attendeeService, sort);
             stageArtist = new StageArtistWindow(this, artistService);
-
-
+            menu = new MenuWindow();
+            
 
 
             campService.SubscribeCampObserver(campObserver);
+
+            menu.Show();
 
         }
 
