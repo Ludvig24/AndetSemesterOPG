@@ -30,7 +30,8 @@ namespace AndetSemesterOPG.UI
             InitializeComponent();
 
             this.windowNavigator = windowNavigator;
-            this.artists = artistService.RetrieveAllArtists();
+            this.artistService = artistService;
+            this.artists = this.artistService.RetrieveAllArtists();
 
             foreach(Artist artist in artists)
             {
@@ -56,9 +57,8 @@ namespace AndetSemesterOPG.UI
         //Vi kan nu med en knap også tilføje artists til schedule, men måske er det lidt for møj for en ui klasse. Vi kan heller ikke endnu styre hvilken scene de ender på.
         private void AddArtistButton_Click(object sender, RoutedEventArgs e)
         {
+            //Bør nok være en metode et eller andet sted (ArtistService?) der kaldes i stedet for at det bliver lavet herinde
             Artist artist = new Artist(ArtistNameTextBox.Text, ArtistTimeCombobox.Text, ArtistDateCombobox.Text, StageNameComboBox.SelectedIndex+1);
-
-
             lineUp.AddArtistToLineUp(artist, Schedule_Orange);
         }
 
