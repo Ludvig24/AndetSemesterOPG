@@ -25,13 +25,14 @@ namespace AndetSemesterOPG.UI
         ArtistService artistService;
         List<Artist> artists;
         LineUp lineUp = new LineUp();
-        internal StageArtistWindow(WindowNavigator windowNavigator, ArtistService artistService)
+        internal StageArtistWindow(WindowNavigator windowNavigator, ArtistService artistService, LineUp lineUp)
         {
             InitializeComponent();
 
             this.windowNavigator = windowNavigator;
             this.artistService = artistService;
             this.artists = this.artistService.RetrieveAllArtists();
+            this.lineUp = lineUp;
 
             foreach(Artist artist in artists)
             {

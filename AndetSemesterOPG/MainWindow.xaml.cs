@@ -24,16 +24,18 @@ namespace AndetSemesterOPG
         CampService campService;
         ArtistService artistService;
         AttendeeCreator attendeeCreator;
-        FestivalWindow festival;
+        FestivalWindow festivalWindow;
         AttendeeWindow attendeeWindow;
-        StageArtistWindow stageArtist;
-        MenuWindow menu;
+        StageArtistWindow stageArtistWindow;
+        MenuWindow menuWindow;
         CampObserver campObserver;
         WindowNavigator windowNavigator;
+        LineUp lineUp;
         Camp campA;
         Camp campB;
         Sort sort;
 
+        //Vi har valgt MainWindow som composition root da det er vinduet der starter som det første i programmet. <-- smid det et smart sted i rapport
         public MainWindow() //MainWindow fungerer nu som Composition Root - vi bør lave et separat menu vindue så MainWindow fra nu KUN er Composition Root - intet UI
         {
             InitializeComponent();
@@ -51,6 +53,7 @@ namespace AndetSemesterOPG
             artistService = new ArtistService(artistRepository);
             attendeeCreator = new AttendeeCreator(new DispatcherTimer(), attendeeService);
             sort = new Sort();
+            lineUp = new LineUp();
 
 
             //Flyt til en CampCreator? - klasse der henter oplysninger om camps fra db og laver x antal camps som svarer til antal i db måske? Så opret CampCreator i CompositionRoot og start den der.
@@ -67,16 +70,16 @@ namespace AndetSemesterOPG
             windowNavigator = new WindowNavigator();
 
             attendeeWindow = new AttendeeWindow(windowNavigator, attendeeService, sort);
-            festival = new FestivalWindow(windowNavigator, attendeeService, campService, campA, campA, campObserver);
-            stageArtist = new StageArtistWindow(windowNavigator, artistService);
-            menu = new MenuWindow(windowNavigator);
-            windowNavigator.SetWindows(attendeeWindow, festival, menu, stageArtist);
+            festivalWindow = new FestivalWindow(windowNavigator, attendeeService, campService, campA, campA, campObserver);
+            stageArtistWindow = new StageArtistWindow(windowNavigator, artistService, lineUp);
+            menuWindow = new MenuWindow(windowNavigator);
+            windowNavigator.SetWindows(attendeeWindow, festivalWindow, menuWindow, stageArtistWindow);
             
 
 
             campService.SubscribeCampObserver(campObserver);
 
-            menu.Show();
+            menuWindow.Show();
 
         }
 
