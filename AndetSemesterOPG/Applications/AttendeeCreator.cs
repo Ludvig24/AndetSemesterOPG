@@ -5,7 +5,7 @@ using System.Windows.Threading;
 
 namespace AndetSemesterOPG.Applications
 {
-    internal class AttendeeCreator
+    internal class AttendeeCreator //Flyt til festival?
     {
         DispatcherTimer timer;
         AttendeeService attendeeService;

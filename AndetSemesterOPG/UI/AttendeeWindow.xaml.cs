@@ -25,7 +25,7 @@ namespace AndetSemesterOPG.UI
         AttendeeService attendeeService;
         List<Attendee> attendees = new List<Attendee>();
         WindowNavigator windowNavigator;
-        Sort sort = new Sort();
+        Sort sort;
         
         internal AttendeeWindow(WindowNavigator windowNavigator, AttendeeService attendeeService, Sort sort)
         {
