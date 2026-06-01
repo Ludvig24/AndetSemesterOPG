@@ -12,6 +12,8 @@ namespace AndetSemesterOPG.Domain
         void Delete(Attendee attendee);
         void RemoveArtist(Artist artist);
         void FindByID(int id);
+
+        List<Camp> ReadAllCamps();
         List<Attendee> FindByEntranceId(int id);
         List<Attendee> FindByCampName(string campName);
         List<Attendee> ReadAll();

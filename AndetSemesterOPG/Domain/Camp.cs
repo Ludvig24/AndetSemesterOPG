@@ -21,13 +21,20 @@ namespace AndetSemesterOPG.Domain
             this.CampName = campName;
             this.CampStatus = campStatus;
         }
-
-        public Camp()
+        public Camp() 
         {
+        
+        }
 
+        public Camp(int campId, int campCapacity, string campName)
+        {
+            this.CampId = campId;
+            this.CampCapacity = campCapacity;
+            this.CampName = campName;
+            
         }
 
 
-        
+
     }
 }

@@ -12,7 +12,7 @@ namespace AndetSemesterOPG.Infrastructure
     {
         //string connectionString = "Server=localhost\\SQLEXPRESS; Database=AndetSemester;Trusted_Connection=True;TrustServerCertificate=True";
         // her oprettes en SqlConnection objekt ved hjælp af connectionString, som vil blive brugt til at åbne en forbindelse til databasen
-          string connectionString = "Server=localhost\\SQLEXPRESS; Database=AndetSemester;Trusted_Connection=True;TrustServerCertificate=True";
+          string connectionString = "Server=localhost; Database=AndetSemester;Trusted_Connection=True;TrustServerCertificate=True";
         //Vi har ikke alle den sammen connectionstring
         //Ludvig: LOCALHOST
         //Tobias:
@@ -185,6 +185,26 @@ namespace AndetSemesterOPG.Infrastructure
                 }
 
                 return capacity;
+            }
+        }
+
+        public List<Camp> ReadAllCamps()
+        {
+            List<Camp> allCampsList = new List<Camp>();
+            using (SqlConnection dataBase = new SqlConnection(connectionString))
+            {
+                dataBase.Open();
+                SqlCommand command = new SqlCommand("SELECT * FROM Camp", dataBase);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    int CampId = reader.GetInt32(reader.GetOrdinal("CampId"));
+                    string CampName = reader.GetString(reader.GetOrdinal("CampName"));
+                    int CampCapacity = reader.GetInt32(reader.GetOrdinal("CampCapacity"));
+                    Camp camp = new Camp(CampId, CampCapacity, CampName);
+                    allCampsList.Add(camp);
+                }
+                return allCampsList;
             }
         }
 

@@ -18,5 +18,10 @@ namespace AndetSemesterOPG.Infrastructure
         {
             return connection.FindCampCapacity(campName);
         }
+
+        public List<Camp> GetAllCamps()
+        {
+            return connection.ReadAllCamps();
+        }
     }
 }

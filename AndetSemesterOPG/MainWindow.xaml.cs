@@ -70,7 +70,7 @@ namespace AndetSemesterOPG
             windowNavigator = new WindowNavigator();
 
             attendeeWindow = new AttendeeWindow(windowNavigator, attendeeService, sort);
-            festivalWindow = new FestivalWindow(windowNavigator, attendeeService, campService, campA, campA, campObserver);
+            festivalWindow = new FestivalWindow(windowNavigator, attendeeService, campService, campA, campB, campObserver);
             stageArtistWindow = new StageArtistWindow(windowNavigator, artistService, lineUp);
             menuWindow = new MenuWindow(windowNavigator);
             windowNavigator.SetWindows(attendeeWindow, festivalWindow, menuWindow, stageArtistWindow);

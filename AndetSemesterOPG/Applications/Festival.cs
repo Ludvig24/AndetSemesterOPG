@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AndetSemesterOPG.Domain
+namespace AndetSemesterOPG.Applications
 {
     internal class Festival
     {

@@ -7,5 +7,7 @@ namespace AndetSemesterOPG.Domain
     internal interface ICampRepository
     {
         int GetCampCapacity(string campName);
+
+        List<Camp> GetAllCamps();
     }
 }
