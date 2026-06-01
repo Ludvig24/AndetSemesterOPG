@@ -8,13 +8,11 @@ namespace AndetSemesterOPG.Applications
     internal class AttendeeCreator //Flyt til festival?
     {
         private int totalCampCapacity;
+        private int currentAttendeeCount;
         CampService campService;
         DispatcherTimer timer;
         AttendeeService attendeeService;
         static Semaphore CreateAttendeeSemaphore = new Semaphore(10, 10); // Starter med 10 tilladelser, og maks er også 10
-        static Semaphore AutoCreateAttendeeSemaphore = new Semaphore(0, 5);
-        private bool isRunning = true;
-        private int currentAttendeeCount;
 
         public AttendeeCreator(DispatcherTimer timer, AttendeeService attendeeService, CampService campService)
         {
@@ -22,8 +20,8 @@ namespace AndetSemesterOPG.Applications
             this.timer = timer;
             this.attendeeService = attendeeService;
 
-            this.timer.Tick += new EventHandler(AutoCreateAttendeeStart);
-            this.timer.Interval = new TimeSpan(0, 0, 5); // Her sættes intervallet for timeren til 5 sekunder
+            this.timer.Tick += new EventHandler(AutoCreateAttendee);
+            this.timer.Interval = new TimeSpan(0, 0, 1); // Her sættes intervallet for timeren til 5 sekunder
             this.timer.Start();
 
 
@@ -32,30 +30,11 @@ namespace AndetSemesterOPG.Applications
             totalCampCapacity = campService.RetriveTotalCampCapacity();
             currentAttendeeCount = attendeeService.RetrieveAllAttendees().Count;
 
-
-            //AutoCreateAttendeeStart();
-
-
+            
 
         }
-        public void AutoCreateAttendeeStart(object sender, EventArgs e)
-        {
-            for (int i = 0; i < 5; i++) 
-            {
-                new Thread(AutoCreateAttendee).Start();
+       
 
-            }
-            AutoCreateAttendeeSemaphore.Release(5);
-
-        }
-        public void AutoCreateAttendee()
-        {
-            AutoCreateAttendeeSemaphore.WaitOne();
-            attendeeService.CreateAttendee();
-            AutoCreateAttendeeSemaphore.Release();
-            Thread.Sleep(1000); // Simulerer en forsinkelse mellem oprettelserne af attendees
-
-        }
 
         public void SemaphoreStart()
         {
@@ -63,7 +42,7 @@ namespace AndetSemesterOPG.Applications
             {
                 SemaphoreCreateAttendee();
             }
-            CreateAttendeeSemaphore.Release(10);
+            
         }
 
 
@@ -74,11 +53,11 @@ namespace AndetSemesterOPG.Applications
             attendeeService.CreateAttendee();
 
             CreateAttendeeSemaphore.Release();
-                Thread.Sleep(1000); // Simulerer en forsinkelse mellem oprettelserne af attendees
+                
         }
 
 
-
+        
         public void AutoCreateAttendee(object sender, EventArgs e)
         {
             attendeeService.CreateAttendee();

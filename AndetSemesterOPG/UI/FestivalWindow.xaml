@@ -30,5 +30,6 @@
         <Button x:Name="OpenCampBButton" Content="Åben Camp B" HorizontalAlignment="Left" Margin="662,129,0,0" VerticalAlignment="Top" Height="35" Width="125" Click="OpenCampBButton_Click"/>
         <Button x:Name="SubscribeToCamps" Content="Notifikation ja" HorizontalAlignment="Center" VerticalAlignment="Center" Height="37" Width="106" Click="SubscribeToCamps_Click"/>
         <Button x:Name="UnsubscribeFromCamps" Content="Unsubscribe" HorizontalAlignment="Center" VerticalAlignment="Top" Height="37" Width="106" Margin="0,241,0,0" Click="UnsubscribeFromCamps_Click"/>
+        <Button x:Name="AttendeeSimulationButton" Content="Attendee Simulation" HorizontalAlignment="Left" Margin="685,-2,0,0" VerticalAlignment="Top" Height="43" Width="114" Click="AttendeeSimulationButton_Click"/>
     </Grid>
 </Window>

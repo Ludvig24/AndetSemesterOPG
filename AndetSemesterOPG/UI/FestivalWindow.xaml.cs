@@ -25,15 +25,17 @@ namespace AndetSemesterOPG.UI
         
         WindowNavigator windowNavigator;
         AttendeeService attendeeService;
+        AttendeeCreator attendeeCreator;
         CampService campService;
         Camp campA;
         Camp campB;
         CampObserver campObserver;
-        internal FestivalWindow(WindowNavigator windowNavigator, AttendeeService attendeeService, CampService campService, Camp campA, Camp campB, CampObserver campObserver)
+        internal FestivalWindow(WindowNavigator windowNavigator, AttendeeService attendeeService, CampService campService, Camp campA, Camp campB, CampObserver campObserver, AttendeeCreator attendeeCreator)
         {
             InitializeComponent();
             this.windowNavigator = windowNavigator;
             this.attendeeService = attendeeService;
+            this.attendeeCreator = attendeeCreator;
             this.campA = campA;
             this.campB = campB;
             this.campObserver = campObserver;
@@ -129,6 +131,11 @@ namespace AndetSemesterOPG.UI
         {
             campService.SubscribeCampObserver(campObserver);
 
+        }
+
+        private void AttendeeSimulationButton_Click(object sender, RoutedEventArgs e)
+        {
+            attendeeCreator.SemaphoreStart();
         }
     }
     

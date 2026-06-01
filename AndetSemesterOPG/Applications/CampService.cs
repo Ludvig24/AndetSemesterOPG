@@ -67,7 +67,6 @@ namespace AndetSemesterOPG.Applications
 
             int capacity = RetrieveCampCapacity(camp.CampName);
             double percentageFilled = (double)attendeeAmount / capacity * 100;
-            percentageFilled = Double.Round(percentageFilled);
             switch (percentageFilled)
             {
                 case double n when (n >= 50 && n < 75 && lockNumber < 1):
@@ -79,15 +78,15 @@ namespace AndetSemesterOPG.Applications
                     lockNumber = 2;
                     break;
                 case double n when (n >= 90 && n < 100 && lockNumber <3):
-                    NotifyCampObservers(camp.CampName, CampCapacityStatus.CapacityStatus.NinetyPercent);
-                    lockNumber = 3;
                     LockCamp(camp, attendeeService);
+                    lockNumber = 3;
+                    NotifyCampObservers(camp.CampName, CampCapacityStatus.CapacityStatus.NinetyPercent);
 
                     break;
                 case double n when (n >= 100 && lockNumber <4):
-                    NotifyCampObservers(camp.CampName, CampCapacityStatus.CapacityStatus.OneHundredPercent);
-                    lockNumber = 4;
                     LockCamp(camp, attendeeService);
+                    lockNumber = 4;
+                    NotifyCampObservers(camp.CampName, CampCapacityStatus.CapacityStatus.OneHundredPercent);
                     break;
             }
         }
