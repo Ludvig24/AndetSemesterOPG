@@ -74,7 +74,7 @@ namespace AndetSemesterOPG.Applications
                     lockNumber = 1;
                     break;
                 case double n when (n > 75 && n < 90 && lockNumber < 2):
-                    NotifyCampObservers(camp.CampName, CampCapacityStatus.CapacityStatus.SeventyFivePercent);
+                    NotifyCampObservers(camp.CampName, CampCapacityStatus.CapacityStatus.SeventyFivePercent); 
                     lockNumber = 2;
                     break;
                 case double n when (n >= 90 && n < 100 && lockNumber <3):
