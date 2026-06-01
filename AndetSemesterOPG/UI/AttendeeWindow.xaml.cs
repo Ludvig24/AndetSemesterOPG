@@ -68,18 +68,21 @@ namespace AndetSemesterOPG.UI
         private void refreshButton_Click(object sender, RoutedEventArgs e)
         {
             AttendeesList.ItemsSource = attendees;
-            
-
         }
 
         private void sortNamesButton_Click(object sender, RoutedEventArgs e)
         {
-
-            //AttendeesList.ItemsSource = sort.SortByEntranceId(attendees);
-
-            //AttendeesList.ItemsSource = sort.SortByCampName(attendees);
-
             AttendeesList.ItemsSource = sort.SortByFirstName(attendees,0,attendees.Count-1);
+        }
+
+        private void sortByEntranceIdButton_Click(object sender, RoutedEventArgs e)
+        {
+            AttendeesList.ItemsSource = sort.SortByEntranceId(attendees);
+        }
+
+        private void sortByCampNameButton_Click(object sender, RoutedEventArgs e)
+        {
+            AttendeesList.ItemsSource = sort.SortByCampName(attendees);
         }
     }
 }

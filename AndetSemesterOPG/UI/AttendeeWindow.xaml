@@ -20,7 +20,10 @@
 		</DataGrid>
 		<Label Content="Total antal" HorizontalAlignment="Left" Height="29" Margin="-371,92,0,0" VerticalAlignment="Top" Width="82"/>
 		<Label x:Name="totalAttendees" Content="" HorizontalAlignment="Left" Margin="-298,92,0,0" VerticalAlignment="Top" Width="68"/>
-        <Button x:Name="refreshButton"  Content="Refresh" HorizontalAlignment="Left" Margin="-328,-48,0,0" VerticalAlignment="Top" Height="26" Width="60" Click="refreshButton_Click"/>
-		<Button x:Name="sortNamesButton" Content="Sort Names" HorizontalAlignment="Left" Margin="-330,15,0,0" VerticalAlignment="Top" Click="sortNamesButton_Click"/>
-	</Grid>
+        <Button x:Name="refreshButton"  Content="Opdater" HorizontalAlignment="Left" Margin="-328,-48,0,0" VerticalAlignment="Top" Height="26" Width="60" Click="refreshButton_Click"/>
+		<Button x:Name="sortNamesButton" Content="Sorter: Fornavn" HorizontalAlignment="Left" Margin="-330,15,0,0" VerticalAlignment="Top" Click="sortNamesButton_Click"/>
+        <Button x:Name="sortByEntranceIdButton" Content="Sorter: Indgang" HorizontalAlignment="Left" Margin="-328,160,0,0" VerticalAlignment="Top" Click="sortByEntranceIdButton_Click"/>
+        <Button x:Name="sortByCampNameButton" Content="Sorter: Camp Navn" HorizontalAlignment="Left" Margin="-372,205,0,0" VerticalAlignment="Top" Click="sortByCampNameButton_Click"/>
+
+    </Grid>
 </Window>
