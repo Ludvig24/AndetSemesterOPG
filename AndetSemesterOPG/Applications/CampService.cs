@@ -10,13 +10,14 @@ namespace AndetSemesterOPG.Applications
     {
         List<ICampObserver> campObservers;
         ICampRepository campRepository;
-        int lockNumber;
-        
+        Dictionary<string, int> campCapacityStatuses;
+
         public CampService(ICampRepository campRepository)
         {
             this.campRepository = campRepository;
             this.campObservers = new List<ICampObserver>();
-            lockNumber = 0;
+            this.campCapacityStatuses = new Dictionary<string, int>();
+
         }
 
         public int RetrieveCampCapacity(string campName)
@@ -60,32 +61,39 @@ namespace AndetSemesterOPG.Applications
 
         public void CheckCampCapacity(Camp camp, int attendeeAmount, AttendeeService attendeeService)
         {
+
             if (camp.IsLocked == true)
             {
                 return;
             }
+            if (!campCapacityStatuses.ContainsKey(camp.CampName))
+            {
+                campCapacityStatuses[camp.CampName] = 0;
+            }
+
+            int state = campCapacityStatuses[camp.CampName];
 
             int capacity = RetrieveCampCapacity(camp.CampName);
             double percentageFilled = (double)attendeeAmount / capacity * 100;
             switch (percentageFilled)
             {
-                case double n when (n >= 50 && n < 75 && lockNumber < 1):
+                case double n when (n >= 50 && n < 75 && state < 1):
                     NotifyCampObservers(camp.CampName, CampCapacityStatus.CapacityStatus.FiftyPercent);
-                    lockNumber = 1;
+                    campCapacityStatuses[camp.CampName] = 1;
                     break;
-                case double n when (n > 75 && n < 90 && lockNumber < 2):
+                case double n when (n > 75 && n < 90 && state < 2):
                     NotifyCampObservers(camp.CampName, CampCapacityStatus.CapacityStatus.SeventyFivePercent); 
-                    lockNumber = 2;
+                    campCapacityStatuses[camp.CampName] = 2;
                     break;
-                case double n when (n >= 90 && n < 100 && lockNumber <3):
+                case double n when (n >= 90 && n < 100 && state <3):
                     LockCamp(camp, attendeeService);
-                    lockNumber = 3;
+                    campCapacityStatuses[camp.CampName] = 3;
                     NotifyCampObservers(camp.CampName, CampCapacityStatus.CapacityStatus.NinetyPercent);
 
                     break;
-                case double n when (n >= 100 && lockNumber <4):
+                case double n when (n >= 100 && state <4):
                     LockCamp(camp, attendeeService);
-                    lockNumber = 4;
+                    campCapacityStatuses[camp.CampName] = 4;
                     NotifyCampObservers(camp.CampName, CampCapacityStatus.CapacityStatus.OneHundredPercent);
                     break;
             }
