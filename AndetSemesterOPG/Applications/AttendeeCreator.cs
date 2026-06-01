@@ -8,14 +8,15 @@ namespace AndetSemesterOPG.Applications
     internal class AttendeeCreator //Flyt til festival?
     {
         private int totalCampCapacity;
-
+        CampService campService;
         DispatcherTimer timer;
         AttendeeService attendeeService;
         static Semaphore CreateAttendeeSemaphore = new Semaphore(10, 10); // Starter med 10 tilladelser, og maks er også 10
         static Semaphore AutoCreateAttendeeSemaphore = new Semaphore(5, 5);
         private bool isRunning = true;
+        private int currentAttendeeCount;
 
-        public AttendeeCreator(DispatcherTimer timer, AttendeeService attendeeService)
+        public AttendeeCreator(DispatcherTimer timer, AttendeeService attendeeService, CampService campService)
         {
 
             this.timer = timer;
@@ -24,6 +25,10 @@ namespace AndetSemesterOPG.Applications
             this.timer.Tick += new EventHandler(AutoCreateAttendee);
             this.timer.Interval = new TimeSpan(0, 0, 5); // Her sættes intervallet for timeren til 5 sekunder
             this.timer.Start();
+            this.campService = campService;
+            totalCampCapacity = campService.RetriveTotalCampCapacity();
+            currentAttendeeCount = attendeeService.RetrieveAllAttendees().Count;
+
 
             //AutoCreateAttendeeStart();
 
@@ -32,7 +37,7 @@ namespace AndetSemesterOPG.Applications
         }
         public void AutoCreateAttendeeStart()
         {
-            while (isRunning) 
+            for (int i = currentAttendeeCount; i < totalCampCapacity; i++) 
             {
                 new Thread(AutoCreateAttendee).Start();
 
