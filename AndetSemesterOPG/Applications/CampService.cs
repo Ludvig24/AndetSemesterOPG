@@ -17,7 +17,6 @@ namespace AndetSemesterOPG.Applications
             this.campRepository = campRepository;
             this.campObservers = new List<ICampObserver>();
             this.campCapacityStatuses = new Dictionary<string, int>();
-
         }
 
         public int RetrieveCampCapacity(string campName)

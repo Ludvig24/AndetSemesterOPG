@@ -7,11 +7,13 @@ namespace AndetSemesterOPG.Domain
 {
     internal class Artist
     {
+        //Properties for Artist
         public string ArtistName { get; set; }
         public string ArtistDate { get; set; }
         public string ArtistTime { get; set; }
         public int StageId {  get; set; }
 
+        //Contructor Artist, som tager understående argumenter med.
         public Artist (string ArtistName, string ArtistTime, string ArtistDate, int StageId)
         {
             this.ArtistName = ArtistName;
