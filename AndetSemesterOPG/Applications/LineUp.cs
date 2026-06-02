@@ -65,8 +65,6 @@ namespace AndetSemesterOPG.Applications
                         TextBlock text = new TextBlock();
                         text.Text = artistList[j].ArtistName;
 
-
-
                         stages[i-1].Children.Add(text);
                         Grid.SetColumn(text, column);
                         Grid.SetRow(text, row);
@@ -76,7 +74,10 @@ namespace AndetSemesterOPG.Applications
                 
             }
 
-            
+        }
+
+        public void RemoveArtistFromLineUp()
+        {
 
         }
 

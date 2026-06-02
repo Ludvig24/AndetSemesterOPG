@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AndetSemesterOPG.UI"
         mc:Ignorable="d"
-        Title="StageArtistWindow" Height="450" Width="800">
-    
+        Title="StageArtistWindow" Height="500" Width="1000">
+
     <Grid>
-        <Grid x:Name="Schedule_Arena"  HorizontalAlignment="Left" Height="240" Margin="450,170,0,0" VerticalAlignment="Top" Width="310" ShowGridLines="True">
+        <Grid x:Name="Schedule_Arena"  HorizontalAlignment="Left" Height="240" Margin="544,230,0,0" VerticalAlignment="Top" Width="440" ShowGridLines="True">
             <Rectangle StrokeThickness="1" Stroke= "Black" Grid.ColumnSpan="5" Grid.RowSpan="4" />
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -24,7 +24,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
         </Grid>
-        <Grid x:Name="Schedule_Orange"  HorizontalAlignment="Left" Height="240" Margin="52,170,0,0" VerticalAlignment="Top" Width="320" ShowGridLines="True">
+        <Grid x:Name="Schedule_Orange"  HorizontalAlignment="Left" Height="240" Margin="50,230,0,0" VerticalAlignment="Top" Width="440" ShowGridLines="True">
             <Rectangle StrokeThickness="1" Stroke= "Black" Grid.ColumnSpan="5" Grid.RowSpan="4" />
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -41,25 +41,26 @@
             </Grid.RowDefinitions>
         </Grid>
         <Button x:Name="BackButtoninStage" Content="Tilbage" HorizontalAlignment="Left" Height="41" VerticalAlignment="Top" Width="111" Click="BackButtoninStage_Click"/>
-        <Button x:Name="AddArtistButton" Content="Tilføj" HorizontalAlignment="Left" Height="43" Margin="373,118,0,0" VerticalAlignment="Top" Width="104" Click="AddArtistButton_Click"/>
-        <ComboBox x:Name="ArtistTimeCombobox" HorizontalAlignment="Left" Height="34" Margin="379,79,0,0" VerticalAlignment="Top" Width="92" Text="Tid">
+        <Button x:Name="AddArtistButton" Content="Tilføj" HorizontalAlignment="Left" Height="43" Margin="660,14,0,0" VerticalAlignment="Top" Width="104" Click="AddArtistButton_Click"/>
+        <ComboBox x:Name="ArtistTimeCombobox" HorizontalAlignment="Left" Height="34" Margin="544,14,0,0" VerticalAlignment="Top" Width="92" Text="Tid">
             <ComboBoxItem Content="16:00"></ComboBoxItem>
             <ComboBoxItem Content="18:00"></ComboBoxItem>
             <ComboBoxItem Content="20:00"></ComboBoxItem>
             <ComboBoxItem Content="22:00"></ComboBoxItem>
         </ComboBox>
-        <ComboBox x:Name="ArtistDateCombobox" HorizontalAlignment="Left" Height="30" Margin="373,44,0,0" VerticalAlignment="Top" Width="110" Text="Dato">
+        <ComboBox x:Name="ArtistDateCombobox" HorizontalAlignment="Left" Height="30" Margin="412,13,0,0" VerticalAlignment="Top" Width="110" Text="Dato">
             <ComboBoxItem Content="Onsdag"></ComboBoxItem>
             <ComboBoxItem Content="Torsdag"></ComboBoxItem>
             <ComboBoxItem Content="Fredag"></ComboBoxItem>
             <ComboBoxItem Content="Lørdag"></ComboBoxItem>
             <ComboBoxItem Content="Søndag"></ComboBoxItem>
         </ComboBox>
-        <TextBox x:Name="ArtistNameTextBox" HorizontalAlignment="Left" Margin="92,56,0,0" TextWrapping="Wrap" Text="Kunstners navn" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="StageNameComboBox" HorizontalAlignment="Left" Margin="244,127,0,0" VerticalAlignment="Top" Width="120" Text="Vælg scene">
+        <TextBox x:Name="ArtistNameTextBox" HorizontalAlignment="Left" Margin="133,21,0,0" TextWrapping="Wrap" Text="Kunstners navn" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="StageNameComboBox" HorizontalAlignment="Left" Margin="270,17,0,0" VerticalAlignment="Top" Width="120" Text="Vælg scene">
             <ComboBoxItem Content="Orange Scene" ></ComboBoxItem>
             <ComboBoxItem Content="Arena Scene" ></ComboBoxItem>
         </ComboBox>
+        <ListBox x:Name="ArtistListBox" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,46,867,280"/>
 
 
 

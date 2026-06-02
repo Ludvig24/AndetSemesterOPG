@@ -42,7 +42,7 @@ namespace AndetSemesterOPG.UI
             stages.Add(Schedule_Orange);
             stages.Add(Schedule_Arena);
 
-            
+            lineUp.AddArtistToLineUp(stages);
 
                 
 
