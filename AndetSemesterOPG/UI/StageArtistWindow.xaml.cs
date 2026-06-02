@@ -12,7 +12,9 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace AndetSemesterOPG.UI
 {
@@ -24,7 +26,8 @@ namespace AndetSemesterOPG.UI
         WindowNavigator windowNavigator;
         ArtistService artistService;
         List<Artist> artists;
-        LineUp lineUp = new LineUp();
+        LineUp lineUp;
+        List<Grid> stages;
         internal StageArtistWindow(WindowNavigator windowNavigator, ArtistService artistService, LineUp lineUp)
         {
             InitializeComponent();
@@ -34,12 +37,16 @@ namespace AndetSemesterOPG.UI
             this.artists = this.artistService.RetrieveAllArtists();
             this.lineUp = lineUp;
 
-            foreach(Artist artist in artists)
-            {
-                
-                lineUp.AddArtistToLineUp(artist, Schedule_Orange);
+            
+            stages = new List<Grid>();
+            stages.Add(Schedule_Orange);
+            stages.Add(Schedule_Arena);
 
-            }
+            
+
+                
+
+            
 
 
             /*
@@ -60,7 +67,19 @@ namespace AndetSemesterOPG.UI
         {
             //Bør nok være en metode et eller andet sted (ArtistService?) der kaldes i stedet for at det bliver lavet herinde
             Artist artist = new Artist(ArtistNameTextBox.Text, ArtistTimeCombobox.Text, ArtistDateCombobox.Text, StageNameComboBox.SelectedIndex+1);
-            lineUp.AddArtistToLineUp(artist, Schedule_Orange);
+            artistService.CreateArtist(artist);
+            lineUp.AddArtistToLineUp(stages);
+            
+            Refresh();
+            
+        }
+
+        public void Refresh()
+        {
+            artists = artistService.RetrieveAllArtists();
+            ArtistNameTextBox.Clear();
+            
+            
         }
 
         private void BackButtoninStage_Click(object sender, RoutedEventArgs e)

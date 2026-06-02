@@ -53,7 +53,7 @@ namespace AndetSemesterOPG
             artistService = new ArtistService(artistRepository);
             attendeeCreator = new AttendeeCreator(new DispatcherTimer(), attendeeService, campService);
             sort = new Sort();
-            lineUp = new LineUp();
+            lineUp = new LineUp(artistService);
 
 
             //Flyt til en CampCreator? - klasse der henter oplysninger om camps fra db og laver x antal camps som svarer til antal i db måske? Så opret CampCreator i CompositionRoot og start den der.

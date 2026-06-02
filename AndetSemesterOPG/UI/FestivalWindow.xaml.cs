@@ -59,7 +59,7 @@ namespace AndetSemesterOPG.UI
             CampBCapacity.Content = campService.RetrieveCampCapacity("Camp B");
 
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Tick += new EventHandler(autoRefresh);
+            timer.Tick += new EventHandler(AutoRefresh);
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Start();
 
@@ -69,7 +69,7 @@ namespace AndetSemesterOPG.UI
         }
 
 
-        public void autoRefresh(object sender, EventArgs e)
+        public void AutoRefresh(object sender, EventArgs e)
         {
             TotalAttendeeEast.Content = attendeeService.RetrieveAttendeesByEntranceId(1).Count;
             TotalAttendeeWest.Content = attendeeService.RetrieveAttendeesByEntranceId(2).Count;
