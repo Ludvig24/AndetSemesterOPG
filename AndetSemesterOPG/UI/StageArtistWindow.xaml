@@ -8,8 +8,26 @@
         Title="StageArtistWindow" Height="500" Width="1000">
 
     <Grid>
-        <Grid x:Name="Schedule_Arena"  HorizontalAlignment="Left" Height="240" Margin="544,230,0,0" VerticalAlignment="Top" Width="440" ShowGridLines="True">
-            <Rectangle StrokeThickness="1" Stroke= "Black" Grid.ColumnSpan="5" Grid.RowSpan="4" />
+
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="240" Margin="544,230,0,0" VerticalAlignment="Top" Width="440">
+            <Grid x:Name="Schedule_Arena"  HorizontalAlignment="Left" Height="240"  VerticalAlignment="Top" Width="440" ShowGridLines="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+            </Grid>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="240" Margin="50,230,0,0" VerticalAlignment="Top" Width="440">
+            <Grid x:Name="Schedule_Orange" HorizontalAlignment="Left" Height="240" VerticalAlignment="Top" Width="440" ShowGridLines="True">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -24,22 +42,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
         </Grid>
-        <Grid x:Name="Schedule_Orange"  HorizontalAlignment="Left" Height="240" Margin="50,230,0,0" VerticalAlignment="Top" Width="440" ShowGridLines="True">
-            <Rectangle StrokeThickness="1" Stroke= "Black" Grid.ColumnSpan="5" Grid.RowSpan="4" />
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-        </Grid>
+        </Border>
         <Button x:Name="BackButtoninStage" Content="Tilbage" HorizontalAlignment="Left" Height="41" VerticalAlignment="Top" Width="111" Click="BackButtoninStage_Click"/>
         <Button x:Name="AddArtistButton" Content="Tilføj" HorizontalAlignment="Left" Height="43" Margin="660,14,0,0" VerticalAlignment="Top" Width="104" Click="AddArtistButton_Click"/>
         <ComboBox x:Name="ArtistTimeCombobox" HorizontalAlignment="Left" Height="34" Margin="544,14,0,0" VerticalAlignment="Top" Width="92" Text="Tid">

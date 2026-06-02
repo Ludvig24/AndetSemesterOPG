@@ -77,16 +77,16 @@ namespace AndetSemesterOPG.UI
         public void Refresh()
         {
             
+            foreach (Grid grid in stages)
+            {
+
+                grid.Children.Clear();
+
+            }
             lineUp.AddArtistToLineUp(stages);
             artists = artistService.RetrieveAllArtists();
             ArtistNameTextBox.Clear();
             ArtistListBox.ItemsSource = artists;
-            foreach (Grid grid in stages)
-            {
-               
-                grid.ColumnDefinitions.Clear();
-
-            }
         }
 
         private void BackButtoninStage_Click(object sender, RoutedEventArgs e)
