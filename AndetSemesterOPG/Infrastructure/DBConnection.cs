@@ -22,29 +22,41 @@ namespace AndetSemesterOPG.Infrastructure
         //Insert metode, der indsætter Attendee i databasen
         public void Insert(Attendee attendee)
         {
-            
+            //Opretter forbindelsen til databasen. Vi bruger en using block så forbindelsen automatisk lukkes ved slutningen af using blokken
             using (SqlConnection dataBase = new SqlConnection(connectionString))
             {
+                //Åbner forbindelsen til databasen
                 dataBase.Open();
+
+                //Opretter et command objekt der indeholder den SQL query vi gerne vil sende til databasen
+                //Querien gemmer en attendee i tabellen ATTENDEE i databasen.
                 SqlCommand command = new SqlCommand("INSERT INTO ATTENDEE(FirstName, LastName, CampName, EntranceId) VALUES (@FirstName, @LastName, @CampName, @EntranceId)", dataBase);
+                //Tilføjer værdierne gemt i Attendee objektet til vores SQLCommand objekt
                 command.Parameters.AddWithValue("@FirstName", attendee.AttendeeFirstName);
                 command.Parameters.AddWithValue("@LastName", attendee.AttendeeLastName);
                 command.Parameters.AddWithValue("@CampName", attendee.CampName);
                 command.Parameters.AddWithValue("@EntranceId", attendee.EntranceId);
+                //Eksekverer kommandoen
                 command.ExecuteNonQuery();
             }
         }
 
         public void InsertArtist(Artist artist)
         {
+            //Opretter forbindelsen til databasen. Vi bruger en using block så forbindelsen automatisk lukkes ved slutningen af using blokken
             using (SqlConnection dataBase = new SqlConnection(connectionString))
             {
+                //Åbner forbindelsen til databasen
                 dataBase.Open();
+                //Opretter et command objekt der indeholder den SQL query vi gerne vil sende til databasen
+                //Querien gemmer en artist i tabellen ARTIST i databasen
                 SqlCommand command = new SqlCommand("INSERT INTO ARTIST(ArtistName, ArtistTime, ArtistDate, StageId) VALUES (@ArtistName, @ArtistTime, @ArtistDate, @StageId)", dataBase);
+                //Tilføjer værdierne gemt i Artist objektet til vores SQLCommand objekt
                 command.Parameters.AddWithValue("@ArtistName", artist.ArtistName);
                 command.Parameters.AddWithValue("ArtistTime", artist.ArtistTime);
                 command.Parameters.AddWithValue("ArtistDate", artist.ArtistDate);
                 command.Parameters.AddWithValue("StageId", artist.StageId);
+                //Eksekverer kommandoen
                 command.ExecuteNonQuery();
             }
         }
@@ -63,11 +75,17 @@ namespace AndetSemesterOPG.Infrastructure
 
         public void RemoveArtist (Artist artist)
         {
-            using(SqlConnection dataBase = new SqlConnection(connectionString))
+            //Opretter forbindelsen til databasen. Vi bruger en using block så forbindelsen automatisk lukkes ved slutningen af using blokken
+            using (SqlConnection dataBase = new SqlConnection(connectionString))
             {
+                //Åbner forbindelsen til databasen
                 dataBase.Open();
+                //Opretter et command objekt der indeholder den SQL query vi gerne vil sende til databasen
+                //Querien fjerner en artist i tabellen Artist fra databasen ud fra et ArtistName
                 SqlCommand command = new SqlCommand("DELETE FROM Artist WHERE ArtistName = @ArtistName", dataBase);
+                //Tilføjer værdien ArtistName fra Artist objektet til vores SQLCommand objekt
                 command.Parameters.AddWithValue("@ArtistName", artist.ArtistName);
+                //Kører commanden
                 command.ExecuteNonQuery();
             }
         }
@@ -80,17 +98,23 @@ namespace AndetSemesterOPG.Infrastructure
 
         }
 
-        //FindByEntranceId metode, som finder Attendees Entrance id i databbasen
+        //FindByEntranceId metode, som finder alle Attendees med et bestemt EntranceId i databbasen
         public List<Attendee> FindByEntranceId(int id)
         {
+            //Opretter liste af attendees der skal udfyldes med Attendees hvis EntranceId svarer til id
             List<Attendee> attendeesByEntranceId = new List<Attendee>();
+                //Opretter forbindelsen til databasen.
                 using (SqlConnection dataBase = new SqlConnection(connectionString))
                 {
                     dataBase.Open();
-                    
+
+                    //Opretter SqlCommand. Querien henter alle Attendees hvis EntranceId property er lig parameteren EntranceId
                     SqlCommand command = new SqlCommand("SELECT * FROM Attendee WHERE EntranceId = @EntranceId", dataBase);
+                    //Tilføjer parameteren EntranceId med værdien id
                     command.Parameters.AddWithValue("@EntranceId", id);
+                    //Sender vores Sql query til databasen og der returneres en SqlDataReader
                     SqlDataReader reader = command.ExecuteReader();
+                    //Vi læser hver række der bliver returneret med reader objektet og gemmer hver oplysning i variabler der bruges til at oprette en attendee
                     while (reader.Read())
                     {
                         int attendeeId = reader.GetInt32(reader.GetOrdinal("AttendeeId"));
@@ -98,14 +122,17 @@ namespace AndetSemesterOPG.Infrastructure
                         string LastName = reader.GetString(reader.GetOrdinal("LastName"));
                         string CampName = reader.GetString(reader.GetOrdinal("CampName"));
                         int EntranceId = reader.GetInt32(reader.GetOrdinal("EntranceId"));
-    
+                        
+                        //Attendee objekt oprettes
                         Attendee attendee = new Attendee(FirstName, LastName, CampName, EntranceId);
                         attendee.AttendeeID = attendeeId; //måske fix ift constructor
     
+                        //Attendee objekt tilføjes til listen
                         attendeesByEntranceId.Add(attendee);
     
 
                     }
+                    //Listen af Attendees returneres
                 return attendeesByEntranceId;
             }
         }
