@@ -43,7 +43,7 @@ namespace AndetSemesterOPG.UI
             stages.Add(Schedule_Arena);
 
             lineUp.AddArtistToLineUp(stages);
-
+            ArtistListBox.ItemsSource = artists;
                 
 
             
@@ -68,7 +68,7 @@ namespace AndetSemesterOPG.UI
             //Bør nok være en metode et eller andet sted (ArtistService?) der kaldes i stedet for at det bliver lavet herinde
             Artist artist = new Artist(ArtistNameTextBox.Text, ArtistTimeCombobox.Text, ArtistDateCombobox.Text, StageNameComboBox.SelectedIndex+1);
             artistService.CreateArtist(artist);
-            lineUp.AddArtistToLineUp(stages);
+            
             
             Refresh();
             
@@ -76,16 +76,32 @@ namespace AndetSemesterOPG.UI
 
         public void Refresh()
         {
+            
+            lineUp.AddArtistToLineUp(stages);
             artists = artistService.RetrieveAllArtists();
             ArtistNameTextBox.Clear();
-            
-            
+            ArtistListBox.ItemsSource = artists;
+            foreach (Grid grid in stages)
+            {
+               
+                grid.ColumnDefinitions.Clear();
+
+            }
         }
 
         private void BackButtoninStage_Click(object sender, RoutedEventArgs e)
         {
             windowNavigator.OpenMenuWindow();
             this.Hide();
+        }
+
+        private void RemoveArtistButton_Click(object sender, RoutedEventArgs e)
+        {
+            Artist artist = ArtistListBox.SelectedItem as Artist;
+            artistService.RemoveArtist(artist);
+            
+            artists = artistService.RetrieveAllArtists();
+            Refresh();
         }
     }
 }

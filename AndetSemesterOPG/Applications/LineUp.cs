@@ -76,9 +76,14 @@ namespace AndetSemesterOPG.Applications
 
         }
 
-        public void RemoveArtistFromLineUp()
+        public void RemoveArtistFromLineUp(List<Grid> stages)
         {
+            foreach(Grid grid in stages)
+            {
+                grid.RowDefinitions = null;
+                grid.ColumnDefinitions = null;
 
+            }
         }
 
     }
