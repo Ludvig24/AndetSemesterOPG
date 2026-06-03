@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace AndetSemesterOPG.UI
 {
@@ -107,6 +108,10 @@ namespace AndetSemesterOPG.UI
         private void UpdateArtistButton_Click(object sender, RoutedEventArgs e)
         {
             Artist artist = ArtistListBox.SelectedItem as Artist;
+            artist.ArtistName = ArtistNameTextBox.Text;
+            artist.ArtistTime = ArtistTimeCombobox.Text;
+            artist.ArtistDate = ArtistDateCombobox.Text;
+            artist.StageId = StageNameComboBox.SelectedIndex+1;
 
             artistService.ModifyArtist(artist);
 
