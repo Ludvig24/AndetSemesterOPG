@@ -146,15 +146,17 @@ namespace AndetSemesterOPG.Infrastructure
             }
         }
 
-        //FindByCampName metode, som finder Attendees CampName i databasen
+        //FindByCampName metode, som finder alle Attendees med et bestemt CampName i databasen
         public List<Attendee> FindByCampName(string campName)
         {
             List<Attendee> attendeesByCampName = new List<Attendee>();
+            //Opretter forbindelse til databasen
             using (SqlConnection dataBase = new SqlConnection(connectionString))
             {
                 dataBase.Open();
-
+                //SqlCommand objekt med query der henter alle attendees fra ATTENDEE tabellen hvor CampName er lig CampName i metodens parameter
                 SqlCommand command = new SqlCommand("SELECT * FROM Attendee WHERE CampName = @CampName", dataBase);
+                //
                 command.Parameters.AddWithValue("@CampName", campName);
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
