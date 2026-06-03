@@ -8,8 +8,7 @@ namespace AndetSemesterOPG.Domain
     {
         void Insert(Attendee attendee);
         void InsertArtist(Artist artist);
-        void Update(Attendee attendee);
-        void Delete(Attendee attendee);
+        void UpdateArtist (Artist artist);
         void RemoveArtist(Artist artist);
         void FindByID(int id);
 

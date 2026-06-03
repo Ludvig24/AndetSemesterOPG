@@ -29,5 +29,10 @@ namespace AndetSemesterOPG.Infrastructure
         {
             connection.RemoveArtist(artist);
         }
+
+        public void EditArtist (Artist artist) 
+        {
+            connection.UpdateArtist(artist);
+        }
     }
 }
