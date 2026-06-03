@@ -63,7 +63,7 @@
             <ComboBoxItem Content="Orange Scene" ></ComboBoxItem>
             <ComboBoxItem Content="Arena Scene" ></ComboBoxItem>
         </ComboBox>
-        <ListBox x:Name="ArtistListBox" DisplayMemberPath="ArtistName"  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,46,807,280" SelectionChanged="ArtistListBox_SelectionChanged"/>
+        <ListBox x:Name="ArtistListBox" DisplayMemberPath="ArtistName"  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,46,807,280" SelectionChanged="ArtistListBox_SelectionChanged" />
         <Button  x:Name="RemoveArtistButton" Content="Fjern Kunstner" HorizontalAlignment="Left" Margin="291,125,0,0" VerticalAlignment="Top" Height="45" Width="120" Click="RemoveArtistButton_Click"/>
         <Button x:Name="UpdateArtistButton" Content="Update" HorizontalAlignment="Left" Margin="699,125,0,0" VerticalAlignment="Top" Click="UpdateArtistButton_Click"/>
 
