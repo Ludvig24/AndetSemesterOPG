@@ -11,5 +11,7 @@ namespace AndetSemesterOPG.Domain
         List<Artist> GetAllArtists();
 
         void DeleteArtist(Artist artist);
+
+        void EditArtist(Artist artist);
     }
 }

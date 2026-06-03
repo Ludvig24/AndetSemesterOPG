@@ -12,13 +12,14 @@ namespace AndetSemesterOPG.Infrastructure
     {
         //string connectionString = "Server=localhost\\SQLEXPRESS; Database=AndetSemester;Trusted_Connection=True;TrustServerCertificate=True";
         // her oprettes en SqlConnection objekt ved hjælp af connectionString, som vil blive brugt til at åbne en forbindelse til databasen
-          string connectionString = "Server=localhost\\SQLEXPRESS; Database=AndetSemester;Trusted_Connection=True;TrustServerCertificate=True";
+          string connectionString = "Server=LAPTOP-KHAURJ1B; Database=AndetSemester;Trusted_Connection=True;TrustServerCertificate=True";
         //Vi har ikke alle den sammen connectionstring
         //Ludvig: LOCALHOST
         //Tobias: localhost\\SQLEXPRESS
         //Laura: LAPTOP-KHAURJ1B
         //Emil:
 
+        // -------- CREATE ------------
         //Insert metode, der indsætter Attendee i databasen
         public void Insert(Attendee attendee)
         {
@@ -62,16 +63,24 @@ namespace AndetSemesterOPG.Infrastructure
         }
 
         //Update
-        public void Update(Attendee attendee)
+        public void UpdateArtist(Artist artist)
         {
-
+            using (SqlConnection dataBase = new SqlConnection(connectionString)) 
+            {
+                dataBase.Open();
+                SqlCommand command = new SqlCommand("UPDATE ARTIST SET (ArtistName, ArtistTime, ArtistDate, StageId) VALUES (@ArtistName, @ArtistTime, @ArtistDate, @StageId) WHERE ArtistName = @ArtistName", dataBase);
+                //Tilføjer værdierne gemt i Artist objektet til vores SQLCommand objekt
+                command.Parameters.AddWithValue("@ArtistName", artist.ArtistName);
+                command.Parameters.AddWithValue("ArtistTime", artist.ArtistTime);
+                command.Parameters.AddWithValue("ArtistDate", artist.ArtistDate);
+                command.Parameters.AddWithValue("StageId", artist.StageId);
+                //Eksekverer kommandoen
+                command.ExecuteNonQuery();
+            }
         }
 
         //Delete
-        public void Delete(Attendee attendee)
-        {
-
-        }
+       
 
         public void RemoveArtist (Artist artist)
         {
