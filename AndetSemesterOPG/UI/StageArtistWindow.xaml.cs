@@ -108,6 +108,7 @@ namespace AndetSemesterOPG.UI
         private void UpdateArtistButton_Click(object sender, RoutedEventArgs e)
         {
             Artist artist = ArtistListBox.SelectedItem as Artist;
+            ArtistListBox.UnselectAll();
             artist.ArtistName = ArtistNameTextBox.Text;
             artist.ArtistTime = ArtistTimeCombobox.Text;
             artist.ArtistDate = ArtistDateCombobox.Text;
@@ -126,6 +127,7 @@ namespace AndetSemesterOPG.UI
             StageNameComboBox.SelectedIndex = artist.StageId -1;
             ArtistDateCombobox.Text = artist.ArtistDate;
             ArtistTimeCombobox.Text = artist.ArtistTime;
+
         }
     }
 }

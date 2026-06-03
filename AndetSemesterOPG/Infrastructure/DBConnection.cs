@@ -79,10 +79,10 @@ namespace AndetSemesterOPG.Infrastructure
 
                 //Tilføjer værdierne gemt i Artist objektet til vores SQLCommand objekt
                 command.Parameters.AddWithValue("@ArtistName", artist.ArtistName);
-               // command.Parameters.AddWithValue("@OldArtistName", oldArtistName);
                 command.Parameters.AddWithValue("ArtistTime", artist.ArtistTime);
                 command.Parameters.AddWithValue("ArtistDate", artist.ArtistDate);
                 command.Parameters.AddWithValue("StageId", artist.StageId);
+                command.Parameters.AddWithValue("ArtistId", artist.ArtistId);
                 //Eksekverer kommandoen
                 command.ExecuteNonQuery();
             }
