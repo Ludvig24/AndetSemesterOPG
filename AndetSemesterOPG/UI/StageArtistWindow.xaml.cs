@@ -88,6 +88,7 @@ namespace AndetSemesterOPG.UI
             artists = artistService.RetrieveAllArtists();
             ArtistNameTextBox.Clear();
             ArtistListBox.ItemsSource = artists;
+
         }
 
         private void BackButtoninStage_Click(object sender, RoutedEventArgs e)
@@ -108,7 +109,6 @@ namespace AndetSemesterOPG.UI
         private void UpdateArtistButton_Click(object sender, RoutedEventArgs e)
         {
             Artist artist = ArtistListBox.SelectedItem as Artist;
-            ArtistListBox.UnselectAll();
             artist.ArtistName = ArtistNameTextBox.Text;
             artist.ArtistTime = ArtistTimeCombobox.Text;
             artist.ArtistDate = ArtistDateCombobox.Text;
@@ -122,12 +122,33 @@ namespace AndetSemesterOPG.UI
 
         private void ArtistListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            
             Artist artist = ArtistListBox.SelectedItem as Artist;
+            //måske dårligt solid
+            if(artist == null) 
+            {
+                return;
+            }
             ArtistNameTextBox.Text = artist.ArtistName;
             StageNameComboBox.SelectedIndex = artist.StageId -1;
             ArtistDateCombobox.Text = artist.ArtistDate;
             ArtistTimeCombobox.Text = artist.ArtistTime;
 
         }
+
+
+
+      
+
+        private void ArtistListBox_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            /*Artist artist = ArtistListBox.SelectedItem as Artist;
+            ArtistNameTextBox.Text = artist.ArtistName;
+            StageNameComboBox.SelectedIndex = artist.StageId - 1;
+            ArtistDateCombobox.Text = artist.ArtistDate;
+            ArtistTimeCombobox.Text = artist.ArtistTime;*/
+        }
+
+       
     }
 }
