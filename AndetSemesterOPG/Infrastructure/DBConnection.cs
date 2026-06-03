@@ -74,7 +74,7 @@ namespace AndetSemesterOPG.Infrastructure
           ArtistTime = @ArtistTime,
           ArtistDate = @ArtistDate,
           StageId = @StageId
-      WHERE ArtistName = @ArtistName",
+      WHERE ArtistId = @ArtistId",
     dataBase);
 
                 //Tilføjer værdierne gemt i Artist objektet til vores SQLCommand objekt
