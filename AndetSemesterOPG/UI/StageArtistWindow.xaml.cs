@@ -12,7 +12,9 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace AndetSemesterOPG.UI
 {
@@ -24,7 +26,8 @@ namespace AndetSemesterOPG.UI
         WindowNavigator windowNavigator;
         ArtistService artistService;
         List<Artist> artists;
-        LineUp lineUp = new LineUp();
+        LineUp lineUp;
+        List<Grid> stages;
         internal StageArtistWindow(WindowNavigator windowNavigator, ArtistService artistService, LineUp lineUp)
         {
             InitializeComponent();
@@ -34,12 +37,16 @@ namespace AndetSemesterOPG.UI
             this.artists = this.artistService.RetrieveAllArtists();
             this.lineUp = lineUp;
 
-            foreach(Artist artist in artists)
-            {
-                
-                lineUp.AddArtistToLineUp(artist, Schedule_Orange);
+            
+            stages = new List<Grid>();
+            stages.Add(Schedule_Orange);
+            stages.Add(Schedule_Arena);
 
-            }
+            lineUp.AddArtistToLineUp(stages);
+            ArtistListBox.ItemsSource = artists;
+                
+
+            
 
 
             /*
@@ -60,13 +67,41 @@ namespace AndetSemesterOPG.UI
         {
             //Bør nok være en metode et eller andet sted (ArtistService?) der kaldes i stedet for at det bliver lavet herinde
             Artist artist = new Artist(ArtistNameTextBox.Text, ArtistTimeCombobox.Text, ArtistDateCombobox.Text, StageNameComboBox.SelectedIndex+1);
-            lineUp.AddArtistToLineUp(artist, Schedule_Orange);
+            artistService.CreateArtist(artist);
+            
+            
+            Refresh();
+            
+        }
+
+        public void Refresh()
+        {
+            
+            foreach (Grid grid in stages)
+            {
+
+                grid.Children.Clear();
+
+            }
+            lineUp.AddArtistToLineUp(stages);
+            artists = artistService.RetrieveAllArtists();
+            ArtistNameTextBox.Clear();
+            ArtistListBox.ItemsSource = artists;
         }
 
         private void BackButtoninStage_Click(object sender, RoutedEventArgs e)
         {
             windowNavigator.OpenMenuWindow();
             this.Hide();
+        }
+
+        private void RemoveArtistButton_Click(object sender, RoutedEventArgs e)
+        {
+            Artist artist = ArtistListBox.SelectedItem as Artist;
+            artistService.RemoveArtist(artist);
+            
+            artists = artistService.RetrieveAllArtists();
+            Refresh();
         }
     }
 }

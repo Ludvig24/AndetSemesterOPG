@@ -9,6 +9,12 @@ namespace AndetSemesterOPG.Applications
 {
     internal class LineUp
     {
+        ArtistService artistService;
+        List<Artist> artistList;
+        public LineUp(ArtistService artistService)
+        {
+            this.artistService = artistService;
+        }
         public int GetRowFromTime(string time)
         {
             switch (time)
@@ -43,16 +49,41 @@ namespace AndetSemesterOPG.Applications
             throw new ArgumentException("Invalid dag");
         }
 
-        public void AddArtistToLineUp(Artist artist, Grid grid)
+        public void AddArtistToLineUp(List<Grid> stages)
         {
-            int row = GetRowFromTime(artist.ArtistTime);
-            int column = GetColumnFromDate(artist.ArtistDate);
-            TextBlock text = new TextBlock();
-            text.Text = artist.ArtistName;
-            grid.Children.Add(text);
-            Grid.SetColumn(text, column);
-            Grid.SetRow(text, row);
+            artistList = artistService.RetrieveAllArtists();
 
+            for(int i = 1; i < stages.Count+1; i++)
+            {
+                
+                for(int j = 0; j < artistList.Count; j++)
+                {
+                    if (artistList[j].StageId == i)
+                    {
+                        int row = GetRowFromTime(artistList[j].ArtistTime);
+                        int column = GetColumnFromDate(artistList[j].ArtistDate);
+                        TextBlock text = new TextBlock();
+                        text.Text = artistList[j].ArtistName;
+
+                        stages[i-1].Children.Add(text);
+                        Grid.SetColumn(text, column);
+                        Grid.SetRow(text, row);
+                    }
+                }
+
+                
+            }
+
+        }
+
+        public void RemoveArtistFromLineUp(List<Grid> stages)
+        {
+            foreach(Grid grid in stages)
+            {
+                grid.RowDefinitions = null;
+                grid.ColumnDefinitions = null;
+
+            }
         }
 
     }

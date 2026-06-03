@@ -11,13 +11,13 @@
         <Label x:Name="IndgangVestLabel" Content="Indgang Vest" HorizontalAlignment="Left" Margin="162,303,0,0" VerticalAlignment="Top" Width="94" RenderTransformOrigin="0.495,0.56"/>
         <Label x:Name="TotalAttendeeWest" Content="Her skal der stå antal Attendees" HorizontalAlignment="Left" Margin="193,325,0,0" VerticalAlignment="Top" Height="27" Width="81"/>
         <Label x:Name="TotalAttendeeEast" Content="Her skal der stå antal Attendee" HorizontalAlignment="Left" Margin="662,326,0,0" VerticalAlignment="Top" Height="41" Width="194"/>
-        <Label Content="Antal festivalgængere" HorizontalAlignment="Left" Margin="10,326,0,0" VerticalAlignment="Top"/>
-        <Label Content="Antal festivalgængere" HorizontalAlignment="Left" Margin="494,326,0,0" VerticalAlignment="Top"/>
+        <Label Content="Antal festivaldeltagere" HorizontalAlignment="Left" Margin="10,326,0,0" VerticalAlignment="Top"/>
+        <Label Content="Antal festivaldeltagere" HorizontalAlignment="Left" Margin="494,326,0,0" VerticalAlignment="Top"/>
         <Button Content="Tilbage" HorizontalAlignment="Left" VerticalAlignment="Top" Height="36" Width="63" x:Name="backButtonFestivalWindow" Click="backButtonFestivalWindow_Click"/>
         <Label Content="Camp A" HorizontalAlignment="Left" Margin="145,65,0,0" VerticalAlignment="Top"/>
         <Label Content="Camp B" HorizontalAlignment="Left" Margin="625,65,0,0" VerticalAlignment="Top"/>
-        <Label Content="Antal festivalgængere" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top"/>
-        <Label Content="Antal festivalgængere" HorizontalAlignment="Left" Margin="494,93,0,0" VerticalAlignment="Top"/>
+        <Label Content="Antal festivaldeltagere" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top"/>
+        <Label Content="Antal festivaldeltagere" HorizontalAlignment="Left" Margin="494,93,0,0" VerticalAlignment="Top"/>
         <Label x:Name="TotalAttendeeCampA" Content="Antal" HorizontalAlignment="Left" Margin="152,93,0,0" VerticalAlignment="Top"/>
         <Label x:Name="TotalAttendeeCampB" Content="Antal" HorizontalAlignment="Left" Margin="632,93,0,0" VerticalAlignment="Top"/>
         <Label Content="/" HorizontalAlignment="Left" Margin="196,93,0,0" VerticalAlignment="Top"/>

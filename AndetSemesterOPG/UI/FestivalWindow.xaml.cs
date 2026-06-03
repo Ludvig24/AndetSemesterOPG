@@ -42,10 +42,6 @@ namespace AndetSemesterOPG.UI
             this.campService = campService;
 
 
-            
-
-
-
             TotalAttendeeEast.Content = attendeeService.RetrieveAttendeesByEntranceId(1).Count;
 
             TotalAttendeeWest.Content = attendeeService.RetrieveAttendeesByEntranceId(2).Count;
@@ -59,17 +55,14 @@ namespace AndetSemesterOPG.UI
             CampBCapacity.Content = campService.RetrieveCampCapacity("Camp B");
 
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Tick += new EventHandler(autoRefresh);
+            timer.Tick += new EventHandler(AutoRefresh);
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Start();
-
-            
-            
 
         }
 
 
-        public void autoRefresh(object sender, EventArgs e)
+        public void AutoRefresh(object sender, EventArgs e)
         {
             TotalAttendeeEast.Content = attendeeService.RetrieveAttendeesByEntranceId(1).Count;
             TotalAttendeeWest.Content = attendeeService.RetrieveAttendeesByEntranceId(2).Count;
@@ -77,7 +70,6 @@ namespace AndetSemesterOPG.UI
             TotalAttendeeCampA.Content = attendeeService.RetriveAttendeesByCampName("Camp A").Count;
             TotalAttendeeCampB.Content = attendeeService.RetriveAttendeesByCampName("Camp B").Count;
             
-
             //Dette bør være et andet sted - det andet med timeren er fint nok da det bare er UI gøgl
             campService.CheckCampCapacity(campA, attendeeService.RetriveAttendeesByCampName("Camp A").Count, attendeeService);
             campService.CheckCampCapacity(campB, attendeeService.RetriveAttendeesByCampName("Camp B").Count, attendeeService);
