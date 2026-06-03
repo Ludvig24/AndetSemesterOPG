@@ -137,18 +137,6 @@ namespace AndetSemesterOPG.UI
         }
 
 
-
-      
-
-        private void ArtistListBox_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            /*Artist artist = ArtistListBox.SelectedItem as Artist;
-            ArtistNameTextBox.Text = artist.ArtistName;
-            StageNameComboBox.SelectedIndex = artist.StageId - 1;
-            ArtistDateCombobox.Text = artist.ArtistDate;
-            ArtistTimeCombobox.Text = artist.ArtistTime;*/
-        }
-
        
     }
 }
