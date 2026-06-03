@@ -103,5 +103,24 @@ namespace AndetSemesterOPG.UI
             artists = artistService.RetrieveAllArtists();
             Refresh();
         }
+
+        private void UpdateArtistButton_Click(object sender, RoutedEventArgs e)
+        {
+            Artist artist = ArtistListBox.SelectedItem as Artist;
+
+            artistService.ModifyArtist(artist);
+
+            artists = artistService.RetrieveAllArtists();
+            Refresh();
+        }
+
+        private void ArtistListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Artist artist = ArtistListBox.SelectedItem as Artist;
+            ArtistNameTextBox.Text = artist.ArtistName;
+            StageNameComboBox.SelectedIndex = artist.StageId + 1;
+            ArtistDateCombobox.Text = artist.ArtistDate;
+            ArtistTimeCombobox.Text = artist.ArtistTime;
+        }
     }
 }
