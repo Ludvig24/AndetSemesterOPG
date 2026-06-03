@@ -10,6 +10,7 @@ namespace AndetSemesterOPG.Domain
         void InsertArtist(Artist artist);
         void UpdateArtist (Artist artist);
         void RemoveArtist(Artist artist);
+        void ResetAttendeeAmount();
         void FindByID(int id);
 
         List<Camp> ReadAllCamps();

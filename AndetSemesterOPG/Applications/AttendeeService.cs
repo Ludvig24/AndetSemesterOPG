@@ -54,5 +54,10 @@ namespace AndetSemesterOPG.Applications
             return attendeesByCampName;
         }
 
+        public void ResetAttendee()
+        {
+            attendeeRepository.ResetAttendeeCount();
+        }
+
     }
 }

@@ -34,6 +34,11 @@ namespace AndetSemesterOPG.Infrastructure
             return attendees;
         }
 
+        public void ResetAttendeeCount()
+        {
+            connection.ResetAttendeeAmount();
+        }
+
         public List<Attendee> GetAttendeesByEntranceId(int id)
         {
             List<Attendee> attendeesByEntranceId = connection.FindByEntranceId(id);

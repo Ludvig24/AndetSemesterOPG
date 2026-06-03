@@ -68,13 +68,7 @@ namespace AndetSemesterOPG.Infrastructure
             using (SqlConnection dataBase = new SqlConnection(connectionString)) 
             {
                 dataBase.Open();
-                SqlCommand command = new SqlCommand(
-    @"UPDATE ARTIST
-      SET ArtistName = @ArtistName,
-          ArtistTime = @ArtistTime,
-          ArtistDate = @ArtistDate,
-          StageId = @StageId
-      WHERE ArtistId = @ArtistId",
+                SqlCommand command = new SqlCommand(@"UPDATE ARTIST SET ArtistName = @ArtistName, ArtistTime = @ArtistTime, ArtistDate = @ArtistDate, StageId = @StageId WHERE ArtistId = @ArtistId",
     dataBase);
 
                 //Tilføjer værdierne gemt i Artist objektet til vores SQLCommand objekt
@@ -108,7 +102,19 @@ namespace AndetSemesterOPG.Infrastructure
             }
         }
 
-
+        public void ResetAttendeeAmount()
+        {
+            using (SqlConnection dataBase = new SqlConnection(connectionString))
+            {
+                //Åbner forbindelsen til databasen
+                dataBase.Open();
+                //Opretter et command objekt der indeholder den SQL query vi gerne vil sende til databasen
+                //Querien fjerner alle Attendees med id større end 104
+                SqlCommand command = new SqlCommand("DELETE FROM Attendee WHERE AttendeeId > 104", dataBase);
+                //Kører commanden
+                command.ExecuteNonQuery();
+            }
+        }
 
         //READ
         public void FindByID(int id)

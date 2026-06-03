@@ -84,5 +84,12 @@ namespace AndetSemesterOPG.UI
         {
             AttendeesList.ItemsSource = sort.SortByCampName(attendees);
         }
+
+
+
+        private void AdminResetButton_Click(object sender, RoutedEventArgs e)
+        {
+            attendeeService.ResetAttendee();
+        }
     }
 }
