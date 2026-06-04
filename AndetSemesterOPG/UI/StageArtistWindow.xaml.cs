@@ -66,8 +66,31 @@ namespace AndetSemesterOPG.UI
         //Vi kan nu med en knap også tilføje artists til schedule, men måske er det lidt for møj for en ui klasse. Vi kan heller ikke endnu styre hvilken scene de ender på.
         private void AddArtistButton_Click(object sender, RoutedEventArgs e)
         {
-            //Bør nok være en metode et eller andet sted (ArtistService?) der kaldes i stedet for at det bliver lavet herinde
             Artist artist = new Artist(ArtistNameTextBox.Text, ArtistTimeCombobox.Text, ArtistDateCombobox.Text, StageNameComboBox.SelectedIndex+1);
+            
+            if (artist.ArtistName == "")
+            {
+                MessageBox.Show("Angiv Kunstnerens navn");
+                return;
+            }
+            if (StageNameComboBox.Text == "")
+            {
+                MessageBox.Show("Angiv hvilkoen scene kunstneren skal spille på");
+                return;
+            }
+            if (ArtistTimeCombobox.Text == "")
+            {
+                MessageBox.Show("Angiv et tidspunkt kunstneren skal spille");
+                return;
+            }
+            if (ArtistDateCombobox.Text == "")
+            {
+                MessageBox.Show("Angiv hvilken dag kunstneren skal spille");
+                return;
+            }
+
+            //Bør nok være en metode et eller andet sted (ArtistService?) der kaldes i stedet for at det bliver lavet herinde
+
             artistService.CreateArtist(artist);
             
             
@@ -101,7 +124,6 @@ namespace AndetSemesterOPG.UI
         {
             Artist artist = ArtistListBox.SelectedItem as Artist;
             artistService.RemoveArtist(artist);
-            
             artists = artistService.RetrieveAllArtists();
             Refresh();
         }
@@ -109,11 +131,24 @@ namespace AndetSemesterOPG.UI
         private void UpdateArtistButton_Click(object sender, RoutedEventArgs e)
         {
             Artist artist = ArtistListBox.SelectedItem as Artist;
+            if (artist != null)
+            {
+                return;
+            }
+            if (artist.ArtistName == null)
+            {
+                MessageBox.Show("Husk at angiv kunstnerens navn");
+                return;
+            }
             artist.ArtistName = ArtistNameTextBox.Text;
             artist.ArtistTime = ArtistTimeCombobox.Text;
             artist.ArtistDate = ArtistDateCombobox.Text;
             artist.StageId = StageNameComboBox.SelectedIndex+1;
-
+            if (artist.ArtistName == null)
+            {
+                MessageBox.Show("Angiv kunstnerens navn");
+                return;
+            }
             artistService.ModifyArtist(artist);
 
             artists = artistService.RetrieveAllArtists();

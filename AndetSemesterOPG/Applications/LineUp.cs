@@ -27,6 +27,8 @@ namespace AndetSemesterOPG.Applications
                     return 2;
                 case "22:00":
                     return 3;
+                case "":
+                    break;
             }
             throw new ArgumentException("Invalid tid");
         }
@@ -45,7 +47,11 @@ namespace AndetSemesterOPG.Applications
                     return 3;
                 case "Søndag":
                     return 4;
+                case "":
+                    break;
+
             }
+            
             throw new ArgumentException("Invalid dag");
         }
 
