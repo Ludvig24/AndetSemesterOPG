@@ -43,7 +43,7 @@
             </Grid.RowDefinitions>
         </Grid>
         </Border>
-        <Button x:Name="BackButtoninStage" Content="Tilbage" HorizontalAlignment="Left" Height="41" VerticalAlignment="Top" Width="111" Click="BackButtoninStage_Click"/>
+        <Button x:Name="BackButtoninStage" Content="Tilbage" HorizontalAlignment="Left" Height="36" Width="63" VerticalAlignment="Top" Click="BackButtoninStage_Click"/>
         <Button x:Name="AddArtistButton" Content="Tilføj" HorizontalAlignment="Left" Height="43" Margin="660,14,0,0" VerticalAlignment="Top" Width="104" Click="AddArtistButton_Click"/>
         <ComboBox x:Name="ArtistTimeCombobox" HorizontalAlignment="Left" Height="34" Margin="544,14,0,0" VerticalAlignment="Top" Width="92" Text="Tid">
             <ComboBoxItem Content="16:00"></ComboBoxItem>

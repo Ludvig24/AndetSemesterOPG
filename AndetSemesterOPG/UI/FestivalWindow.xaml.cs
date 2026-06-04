@@ -54,10 +54,21 @@ namespace AndetSemesterOPG.UI
 
             CampBCapacity.Content = campService.RetrieveCampCapacity("Camp B");
 
+            SubscribeToCamps.IsEnabled = false;
+
             DispatcherTimer timer = new DispatcherTimer();
             timer.Tick += new EventHandler(AutoRefresh);
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Start();
+
+            if (campA.IsLocked == false)
+            {
+                OpenCampAButton.IsEnabled = false;
+            }
+            if (campB.IsLocked == false)
+            {
+                OpenCampBButton.IsEnabled = false;
+            }
 
         }
 
@@ -113,17 +124,25 @@ namespace AndetSemesterOPG.UI
             LockCampBButton.IsEnabled = true;
             OpenCampBButton.IsEnabled = false;
         }
+        private void SubscribeToCamps_Click(object sender, RoutedEventArgs e)
+        {
+            campService.SubscribeCampObserver(campObserver);
+            SubscribeToCamps.IsEnabled = false;
+            UnsubscribeFromCamps.IsEnabled = true;
+            SubscribtionstatusLabel.Content = "Du er Subscribed";
+            MessageBox.Show("Du er nu subscribed til at få beskeder om de forskellige camps");
+
+        }
 
         private void UnsubscribeFromCamps_Click(object sender, RoutedEventArgs e)
         {
             campService.UnsubscribeCampObserver(campObserver);
+            SubscribeToCamps.IsEnabled = true;
+            UnsubscribeFromCamps.IsEnabled = false;
+            SubscribtionstatusLabel.Content = "Du er Unsubscribed";
+            MessageBox.Show("Du er nu unsubscribed, og vil ikke længere få beskeder om de forskellige camps");
         }
 
-        private void SubscribeToCamps_Click(object sender, RoutedEventArgs e)
-        {
-            campService.SubscribeCampObserver(campObserver);
-
-        }
 
         private void AttendeeSimulationButton_Click(object sender, RoutedEventArgs e)
         {

@@ -31,5 +31,6 @@
         <Button x:Name="SubscribeToCamps" Content="Tilmeld notifikation" HorizontalAlignment="Center" VerticalAlignment="Center" Height="37" Width="106" Click="SubscribeToCamps_Click"/>
         <Button x:Name="UnsubscribeFromCamps" Content="Afmeld notifikation" HorizontalAlignment="Center" VerticalAlignment="Top" Height="37" Width="106" Margin="0,241,0,0" Click="UnsubscribeFromCamps_Click"/>
         <Button x:Name="AttendeeSimulationButton" Content="Attendee Simulation" HorizontalAlignment="Left" Margin="685,-2,0,0" VerticalAlignment="Top" Height="43" Width="114" Click="AttendeeSimulationButton_Click"/>
+        <Label x:Name="SubscribtionstatusLabel" Content="Du er Subscribed" HorizontalAlignment="Center" Margin="0,158,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
