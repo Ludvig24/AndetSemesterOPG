@@ -28,44 +28,66 @@
         </Border>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="240" Margin="50,230,0,0" VerticalAlignment="Top" Width="440">
             <Grid x:Name="Schedule_Orange" HorizontalAlignment="Left" Height="240" VerticalAlignment="Top" Width="440" ShowGridLines="True">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-        </Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+            </Grid>
         </Border>
         <Button x:Name="BackButtoninStage" Content="Tilbage" HorizontalAlignment="Left" Height="36" Width="63" VerticalAlignment="Top" Click="BackButtoninStage_Click"/>
-        <Button x:Name="AddArtistButton" Content="Tilføj" HorizontalAlignment="Left" Height="43" Margin="660,14,0,0" VerticalAlignment="Top" Width="104" Click="AddArtistButton_Click"/>
-        <ComboBox x:Name="ArtistTimeCombobox" HorizontalAlignment="Left" Height="34" Margin="544,14,0,0" VerticalAlignment="Top" Width="92" Text="Tid">
+        <Button x:Name="AddArtistButton" Content="Tilføj Kunstner" HorizontalAlignment="Left" Margin="576,22,0,0" VerticalAlignment="Top" Width="108" Height="20" Click="AddArtistButton_Click"/>
+        <ComboBox x:Name="ArtistTimeCombobox" HorizontalAlignment="Left" Margin="456,22,0,0" VerticalAlignment="Top" Width="108" Height="20" Text="Tid">
             <ComboBoxItem Content="16:00"></ComboBoxItem>
             <ComboBoxItem Content="18:00"></ComboBoxItem>
             <ComboBoxItem Content="20:00"></ComboBoxItem>
             <ComboBoxItem Content="22:00"></ComboBoxItem>
         </ComboBox>
-        <ComboBox x:Name="ArtistDateCombobox" HorizontalAlignment="Left" Height="30" Margin="412,13,0,0" VerticalAlignment="Top" Width="110" Text="Dato">
+        <ComboBox x:Name="ArtistDateCombobox" HorizontalAlignment="Left" Margin="337,22,0,0" VerticalAlignment="Top" Width="108" Height="20" Text="Dato">
             <ComboBoxItem Content="Onsdag"></ComboBoxItem>
             <ComboBoxItem Content="Torsdag"></ComboBoxItem>
             <ComboBoxItem Content="Fredag"></ComboBoxItem>
             <ComboBoxItem Content="Lørdag"></ComboBoxItem>
             <ComboBoxItem Content="Søndag"></ComboBoxItem>
         </ComboBox>
-        <TextBox x:Name="ArtistNameTextBox" HorizontalAlignment="Left" Margin="133,21,0,0" TextWrapping="Wrap" Text="Kunstners navn" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="StageNameComboBox" HorizontalAlignment="Left" Margin="270,17,0,0" VerticalAlignment="Top" Width="120" Text="Vælg scene">
+        <TextBox x:Name="ArtistNameTextBox" HorizontalAlignment="Left" Margin="89,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="StageNameComboBox" HorizontalAlignment="Left" Margin="219,22,0,0" VerticalAlignment="Top" Width="108" Height="20" Text="Vælg scene" RenderTransformOrigin="0.833,0.539">
             <ComboBoxItem Content="Orange Scene" ></ComboBoxItem>
             <ComboBoxItem Content="Arena Scene" ></ComboBoxItem>
         </ComboBox>
         <ListBox x:Name="ArtistListBox" DisplayMemberPath="ArtistName"  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,46,807,280" SelectionChanged="ArtistListBox_SelectionChanged"/>
-        <Button  x:Name="RemoveArtistButton" Content="Fjern Kunstner" HorizontalAlignment="Left" Margin="291,125,0,0" VerticalAlignment="Top" Height="45" Width="120" Click="RemoveArtistButton_Click"/>
-        <Button x:Name="UpdateArtistButton" Content="Update" HorizontalAlignment="Left" Margin="699,125,0,0" VerticalAlignment="Top" Click="UpdateArtistButton_Click"/>
+        <Button  x:Name="RemoveArtistButton" Content="Fjern Kunstner" HorizontalAlignment="Left" Margin="819,22,0,0" VerticalAlignment="Top" Width="108" Height="20" Click="RemoveArtistButton_Click"/>
+        <Button x:Name="UpdateArtistButton" Content="Opdater Kunstner" HorizontalAlignment="Left" Margin="696,22,0,0" VerticalAlignment="Top" Click="UpdateArtistButton_Click" Width="108" Height="20"/>
+        <Label x:Name="WednesDayLabel_OrangeScene" Content="Onsdag"  HorizontalAlignment="Left" Margin="71,204,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="WednesDayLabel_Arena" Content="Onsdag"  HorizontalAlignment="Left" Margin="564,204,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="ThursdayLabel_OrangeScene" Content="Torsdag"  HorizontalAlignment="Left" Margin="157,204,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="FridayLabel_OrangeScene" Content="Fredag"  HorizontalAlignment="Left" Margin="244,204,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="SaturdayLabel_OrangeScene" Content="Lørdag"  HorizontalAlignment="Left" Margin="330,204,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="SundayLabel_OrangeScene" Content="Søndag"  HorizontalAlignment="Left" Margin="423,204,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="ThursdayLabel_Arena" Content="Torsdag"  HorizontalAlignment="Left" Margin="651,204,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="FridayLabel_Arena" Content="Fredag"  HorizontalAlignment="Left" Margin="738,204,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="SaturdayLabel_Arena" Content="Lørdag"  HorizontalAlignment="Left" Margin="826,204,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="SundayLabel_Arena" Content="Søndag"  HorizontalAlignment="Left" Margin="916,204,0,0" VerticalAlignment="Top"/>
+        <Label Content="kl 16:00" HorizontalAlignment="Left" Margin="0,252,0,0" VerticalAlignment="Top"/>
+        <Label Content="kl 18:00" HorizontalAlignment="Left" Margin="-1,309,0,0" VerticalAlignment="Top"/>
+        <Label Content="kl 20:00" HorizontalAlignment="Left" Margin="-1,369,0,0" VerticalAlignment="Top"/>
+        <Label Content="kl 22:00" HorizontalAlignment="Left" Margin="0,430,0,0" VerticalAlignment="Top"/>
+        <Label Content="kl 16:00" HorizontalAlignment="Left" Margin="490,252,0,0" VerticalAlignment="Top"/>
+        <Label Content="kl 18:00" HorizontalAlignment="Left" Margin="490,309,0,0" VerticalAlignment="Top"/>
+        <Label Content="kl 20:00" HorizontalAlignment="Left" Margin="490,369,0,0" VerticalAlignment="Top"/>
+        <Label Content="kl 22:00" HorizontalAlignment="Left" Margin="488,430,0,0" VerticalAlignment="Top"/>
+        <Label Content="Kunstners Navn" HorizontalAlignment="Left" Margin="89,1,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.485,-1.327"/>
+        <Label Content="Scene" HorizontalAlignment="Left" Margin="219,-1,0,0" VerticalAlignment="Top"/>
+        <Label Content="Dag" HorizontalAlignment="Left" Margin="338,-1,0,0" VerticalAlignment="Top"/>
+        <Label Content="Tidspunkt" HorizontalAlignment="Left" Margin="456,1,0,0" VerticalAlignment="Top"/>
 
 
 
