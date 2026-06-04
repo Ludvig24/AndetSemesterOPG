@@ -61,14 +61,7 @@ namespace AndetSemesterOPG.UI
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Start();
 
-            if (campA.IsLocked == false)
-            {
-                OpenCampAButton.IsEnabled = false;
-            }
-            if (campB.IsLocked == false)
-            {
-                OpenCampBButton.IsEnabled = false;
-            }
+            
 
         }
 
@@ -85,7 +78,34 @@ namespace AndetSemesterOPG.UI
             campService.CheckCampCapacity(campA, attendeeService.RetriveAttendeesByCampName("Camp A").Count, attendeeService);
             campService.CheckCampCapacity(campB, attendeeService.RetriveAttendeesByCampName("Camp B").Count, attendeeService);
 
-            
+
+            //Her er if sætninger der styre om en knap er låst eller åben afhægig af om campen er låst eller ej
+            if (campA.IsLocked == true)
+            {
+                LockCampAButton.IsEnabled = false;
+                
+            }
+            if (campA.IsLocked == false)
+            {
+                OpenCampAButton.IsEnabled = false; 
+            }
+            if (campB.IsLocked == true)
+            {
+                LockCampBButton.IsEnabled = false;
+            }
+            if (campB.IsLocked ==false)
+            {
+                OpenCampBButton.IsEnabled = false;
+            }
+            if (attendeeService.RetriveAttendeesByCampName("Camp A").Count >= campA.CampCapacity)
+            {
+                OpenCampAButton.IsEnabled = false;
+            }
+            if (attendeeService.RetriveAttendeesByCampName("Camp B").Count >= campB.CampCapacity)
+            {
+                OpenCampBButton.IsEnabled = false;
+            }
+
 
             CampACapacity.Content = campService.RetrieveCampCapacity("Camp A");
             CampBCapacity.Content = campService.RetrieveCampCapacity("Camp B");

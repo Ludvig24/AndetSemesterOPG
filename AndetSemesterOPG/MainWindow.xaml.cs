@@ -51,7 +51,6 @@ namespace AndetSemesterOPG
             attendeeService = new AttendeeService(attendeeRepository, new AttendeeTestData(), new TicketClient());
             campService = new CampService(campRepository);
             artistService = new ArtistService(artistRepository);
-            attendeeCreator = new AttendeeCreator(new DispatcherTimer(), attendeeService, campService);
             sort = new Sort();
             lineUp = new LineUp(artistService);
 
@@ -78,6 +77,9 @@ namespace AndetSemesterOPG
 
 
             campService.SubscribeCampObserver(campObserver);
+
+            //Har flyttet AttendeeCreator ned under CampObserver så den ikke først laver en attendee og så ser om der er låst for så at låse. Det gjorde at selvom campen er fyldt, så ville den kunne nå at lave en attendee imens programet åbnede
+            attendeeCreator = new AttendeeCreator(new DispatcherTimer(), attendeeService, campService);
 
             menuWindow.Show();
 
