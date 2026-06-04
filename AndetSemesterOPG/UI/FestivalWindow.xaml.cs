@@ -78,25 +78,49 @@ namespace AndetSemesterOPG.UI
             campService.CheckCampCapacity(campA, attendeeService.RetriveAttendeesByCampName("Camp A").Count, attendeeService);
             campService.CheckCampCapacity(campB, attendeeService.RetriveAttendeesByCampName("Camp B").Count, attendeeService);
 
+            //Her ændre Cam status labelsnee for at fortælle brugeren om en camp er låst eller ej
+            switch(campA.IsLocked)
+            {
+                case true:
+                    CampA_StatusLabel.Content = "Camp A er låst";
+                    break;
 
-            //Her er if sætninger der styre om en knap er låst eller åben afhægig af om campen er låst eller ej
-            if (campA.IsLocked == true)
-            {
-                LockCampAButton.IsEnabled = false;
-                
+                case false:
+                    CampA_StatusLabel.Content = "Camp A er åben";
+                    break;
+
             }
-            if (campA.IsLocked == false)
+            switch (campB.IsLocked)
             {
-                OpenCampAButton.IsEnabled = false; 
+                case true:
+                    CampB_StatusLabel.Content = "Camp B er låst";
+                    break;
+
+                case false:
+                    CampB_StatusLabel.Content = "Camp B er åben";
+                    break;
+
             }
-            if (campB.IsLocked == true)
+
+
+            //Her er Simulation knappen låst eller åben afhægig af om alle camps er låste eller ej
+            if (campA.IsLocked == true && campB.IsLocked == true)
             {
-                LockCampBButton.IsEnabled = false;
+                AttendeeSimulationButton.IsEnabled = false;
             }
-            if (campB.IsLocked ==false)
+            if (campA.IsLocked == false || campB.IsLocked == false)
             {
-                OpenCampBButton.IsEnabled = false;
+                AttendeeSimulationButton.IsEnabled = true;
             }
+            //Knapper bliver låst elller åbnet afhængig af om pladserne er låste eller åbne
+            
+            LockCampAButton.IsEnabled = !campA.IsLocked;
+            OpenCampAButton.IsEnabled = campA.IsLocked;
+
+            LockCampBButton.IsEnabled = !campB.IsLocked;
+            OpenCampBButton.IsEnabled = campB.IsLocked;
+
+            //Her bliver knappen også låst hvis en camps kapasitet er fyldt
             if (attendeeService.RetriveAttendeesByCampName("Camp A").Count >= campA.CampCapacity)
             {
                 OpenCampAButton.IsEnabled = false;
