@@ -67,7 +67,14 @@ namespace AndetSemesterOPG.UI
         private void AddArtistButton_Click(object sender, RoutedEventArgs e)
         {
             Artist artist = new Artist(ArtistNameTextBox.Text, ArtistTimeCombobox.Text, ArtistDateCombobox.Text, StageNameComboBox.SelectedIndex+1);
-            
+
+            if (artistService.IsSlotTaken(artist))
+            {
+                MessageBox.Show("Der er allerede en kunstner på denne scene, dato og tidspunkt.");
+                return;
+            }
+
+
             if (artist.ArtistName == "")
             {
                 MessageBox.Show("Angiv Kunstnerens navn");
@@ -78,17 +85,17 @@ namespace AndetSemesterOPG.UI
                 MessageBox.Show("Angiv hvilkoen scene kunstneren skal spille på");
                 return;
             }
-            if (ArtistTimeCombobox.Text == "")
-            {
-                MessageBox.Show("Angiv et tidspunkt kunstneren skal spille");
-                return;
-            }
             if (ArtistDateCombobox.Text == "")
             {
                 MessageBox.Show("Angiv hvilken dag kunstneren skal spille");
                 return;
             }
 
+            if (ArtistTimeCombobox.Text == "")
+            {
+                MessageBox.Show("Angiv et tidspunkt kunstneren skal spille");
+                return;
+            }
             //Bør nok være en metode et eller andet sted (ArtistService?) der kaldes i stedet for at det bliver lavet herinde
 
             artistService.CreateArtist(artist);
@@ -131,13 +138,26 @@ namespace AndetSemesterOPG.UI
         private void UpdateArtistButton_Click(object sender, RoutedEventArgs e)
         {
             Artist artist = ArtistListBox.SelectedItem as Artist;
-            if (artist != null)
+            if (artist == null)
             {
+                MessageBox.Show("Vælg en kunstner du vil ændre på");
                 return;
             }
-            if (artist.ArtistName == null)
+            if (artist.ArtistName == "")
             {
-                MessageBox.Show("Husk at angiv kunstnerens navn");
+                MessageBox.Show("Angiv Kunstnerens navn");
+                return;
+            }
+            if (ArtistNameTextBox.Text == "")
+
+            {
+                MessageBox.Show("Angiv kunstnerens navn");
+                return;
+            }
+
+            if (artistService.IsSlotTaken(artist))
+            {
+                MessageBox.Show("Der er allerede en kunstner på denne scene, dato og tidspunkt.");
                 return;
             }
             artist.ArtistName = ArtistNameTextBox.Text;

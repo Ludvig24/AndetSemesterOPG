@@ -45,13 +45,13 @@
         </Border>
         <Button x:Name="BackButtoninStage" Content="Tilbage" HorizontalAlignment="Left" Height="36" Width="63" VerticalAlignment="Top" Click="BackButtoninStage_Click"/>
         <Button x:Name="AddArtistButton" Content="Tilføj Kunstner" HorizontalAlignment="Left" Margin="576,22,0,0" VerticalAlignment="Top" Width="108" Height="20" Click="AddArtistButton_Click"/>
-        <ComboBox x:Name="ArtistTimeCombobox" HorizontalAlignment="Left" Margin="456,22,0,0" VerticalAlignment="Top" Width="108" Height="20" Text="Tid">
+        <ComboBox x:Name="ArtistTimeCombobox" HorizontalAlignment="Left" Margin="456,22,0,0" VerticalAlignment="Top" Width="108" Height="20" >
             <ComboBoxItem Content="16:00"></ComboBoxItem>
             <ComboBoxItem Content="18:00"></ComboBoxItem>
             <ComboBoxItem Content="20:00"></ComboBoxItem>
             <ComboBoxItem Content="22:00"></ComboBoxItem>
         </ComboBox>
-        <ComboBox x:Name="ArtistDateCombobox" HorizontalAlignment="Left" Margin="337,22,0,0" VerticalAlignment="Top" Width="108" Height="20" Text="Dato">
+        <ComboBox x:Name="ArtistDateCombobox" HorizontalAlignment="Left" Margin="337,22,0,0" VerticalAlignment="Top" Width="108" Height="20" >
             <ComboBoxItem Content="Onsdag"></ComboBoxItem>
             <ComboBoxItem Content="Torsdag"></ComboBoxItem>
             <ComboBoxItem Content="Fredag"></ComboBoxItem>
@@ -59,7 +59,7 @@
             <ComboBoxItem Content="Søndag"></ComboBoxItem>
         </ComboBox>
         <TextBox x:Name="ArtistNameTextBox" HorizontalAlignment="Left" Margin="89,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="StageNameComboBox" HorizontalAlignment="Left" Margin="219,22,0,0" VerticalAlignment="Top" Width="108" Height="20" Text="Vælg scene" RenderTransformOrigin="0.833,0.539">
+        <ComboBox x:Name="StageNameComboBox" HorizontalAlignment="Left" Margin="219,22,0,0" VerticalAlignment="Top" Width="108" Height="20" RenderTransformOrigin="0.833,0.539">
             <ComboBoxItem Content="Orange Scene" ></ComboBoxItem>
             <ComboBoxItem Content="Arena Scene" ></ComboBoxItem>
         </ComboBox>

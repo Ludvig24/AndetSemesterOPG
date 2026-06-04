@@ -21,6 +21,7 @@ namespace AndetSemesterOPG.Applications
         //CreateArtist metode, som kalder AddArtist metoden fra Interfacet IArtist Repository
         public void CreateArtist(Artist artist)
         {
+
             artistRepository.AddArtist(artist);
         }
 
@@ -61,6 +62,19 @@ namespace AndetSemesterOPG.Applications
                 return; 
             }
             artistRepository.EditArtist(artist);
+        }
+
+        //Er lavet for at der ikke kan laves flere kunstnere på samme dag,tid og scene
+        public bool IsSlotTaken(Artist newArtist)
+        {
+            List<Artist> artistsListe = RetrieveAllArtists();
+            //Any ser igennem listen og retunere en bool afhægig af om den indeholder det krav der kommer. Og lamda udtrykket => betyder "for hver Artist i listen, kør disse krav
+            return artistsListe.Any(artist =>
+            //Den første er til for at hvis vi kalder update, og ikke ændre tid,dato og scene, så kan den stadig opdatere den kunstner på samme plads i skemaet
+                artist.ArtistId != newArtist.ArtistId &&
+                artist.StageId == newArtist.StageId &&
+                artist.ArtistDate == newArtist.ArtistDate &&
+                artist.ArtistTime == newArtist.ArtistTime);
         }
     }
 }
