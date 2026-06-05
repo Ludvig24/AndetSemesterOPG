@@ -3,6 +3,7 @@ using AndetSemesterOPG.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows;
 
 namespace AndetSemesterOPG.Applications
 {
@@ -43,11 +44,14 @@ namespace AndetSemesterOPG.Applications
         public void SubscribeCampObserver(ICampObserver observer)
         {
             campObservers.Add(observer);
+            
+            
         }
 
         public void UnsubscribeCampObserver(ICampObserver observer)
         {
             campObservers.Remove(observer);
+            
         }
 
         public void NotifyCampObservers(string campName, CampCapacityStatus.CapacityStatus campStatus)

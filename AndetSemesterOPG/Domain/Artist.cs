@@ -8,6 +8,7 @@ namespace AndetSemesterOPG.Domain
     internal class Artist
     {
         //Properties for Artist
+        public int ArtistId { get; set; }
         public string ArtistName { get; set; }
         public string ArtistDate { get; set; }
         public string ArtistTime { get; set; }

@@ -15,5 +15,7 @@ namespace AndetSemesterOPG.Domain
 
         List<Attendee> GetAttendeesByCampName(string campName);
 
+        void ResetAttendeeCount();
+
     }
 }

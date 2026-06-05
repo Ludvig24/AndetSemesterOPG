@@ -50,11 +50,11 @@ namespace AndetSemesterOPG
 
             attendeeService = new AttendeeService(attendeeRepository, new AttendeeTestData(), new TicketClient());
             campService = new CampService(campRepository);
-            artistService = new ArtistService(artistRepository);
             attendeeCreator = new AttendeeCreator(new DispatcherTimer(), attendeeService, campService);
+            artistService = new ArtistService(artistRepository);
             sort = new Sort();
             lineUp = new LineUp(artistService);
-
+            
 
             //Flyt til en CampCreator? - klasse der henter oplysninger om camps fra db og laver x antal camps som svarer til antal i db måske? Så opret CampCreator i CompositionRoot og start den der.
             campA = new Camp();
@@ -78,6 +78,8 @@ namespace AndetSemesterOPG
 
 
             campService.SubscribeCampObserver(campObserver);
+
+            
 
             menuWindow.Show();
 

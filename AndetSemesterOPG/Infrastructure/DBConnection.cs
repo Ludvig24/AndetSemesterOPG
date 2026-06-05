@@ -12,12 +12,12 @@ namespace AndetSemesterOPG.Infrastructure
     {
         //string connectionString = "Server=localhost\\SQLEXPRESS; Database=AndetSemester;Trusted_Connection=True;TrustServerCertificate=True";
         // her oprettes en SqlConnection objekt ved hjælp af connectionString, som vil blive brugt til at åbne en forbindelse til databasen
-          string connectionString = "Server=localhost\\SQLEXPRESS02; Database=AndetSemester;Trusted_Connection=True;TrustServerCertificate=True";
+          string connectionString = "Server=localhost; Database=AndetSemester;Trusted_Connection=True;TrustServerCertificate=True";
         //Vi har ikke alle den sammen connectionstring
         //Ludvig: LOCALHOST
         //Tobias: localhost\\SQLEXPRESS
         //Laura: LAPTOP-KHAURJ1B
-        //Emil: localhost\\SQLEXPRESS02
+        //Emil:
 
         // -------- CREATE ------------
         //Insert metode, der indsætter Attendee i databasen
@@ -68,12 +68,15 @@ namespace AndetSemesterOPG.Infrastructure
             using (SqlConnection dataBase = new SqlConnection(connectionString)) 
             {
                 dataBase.Open();
-                SqlCommand command = new SqlCommand("UPDATE ARTIST SET (ArtistName, ArtistTime, ArtistDate, StageId) VALUES (@ArtistName, @ArtistTime, @ArtistDate, @StageId) WHERE ArtistName = @ArtistName", dataBase);
+                SqlCommand command = new SqlCommand(@"UPDATE ARTIST SET ArtistName = @ArtistName, ArtistTime = @ArtistTime, ArtistDate = @ArtistDate, StageId = @StageId WHERE ArtistId = @ArtistId",
+    dataBase);
+
                 //Tilføjer værdierne gemt i Artist objektet til vores SQLCommand objekt
                 command.Parameters.AddWithValue("@ArtistName", artist.ArtistName);
                 command.Parameters.AddWithValue("ArtistTime", artist.ArtistTime);
                 command.Parameters.AddWithValue("ArtistDate", artist.ArtistDate);
                 command.Parameters.AddWithValue("StageId", artist.StageId);
+                command.Parameters.AddWithValue("ArtistId", artist.ArtistId);
                 //Eksekverer kommandoen
                 command.ExecuteNonQuery();
             }
@@ -91,15 +94,27 @@ namespace AndetSemesterOPG.Infrastructure
                 dataBase.Open();
                 //Opretter et command objekt der indeholder den SQL query vi gerne vil sende til databasen
                 //Querien fjerner en artist i tabellen Artist fra databasen ud fra et ArtistName
-                SqlCommand command = new SqlCommand("DELETE FROM Artist WHERE ArtistName = @ArtistName", dataBase);
+                SqlCommand command = new SqlCommand("DELETE FROM Artist WHERE ArtistId = @ArtistId", dataBase);
                 //Tilføjer værdien ArtistName fra Artist objektet til vores SQLCommand objekt
-                command.Parameters.AddWithValue("@ArtistName", artist.ArtistName);
+                command.Parameters.AddWithValue("@ArtistId", artist.ArtistId);
                 //Kører commanden
                 command.ExecuteNonQuery();
             }
         }
 
-
+        public void ResetAttendeeAmount()
+        {
+            using (SqlConnection dataBase = new SqlConnection(connectionString))
+            {
+                //Åbner forbindelsen til databasen
+                dataBase.Open();
+                //Opretter et command objekt der indeholder den SQL query vi gerne vil sende til databasen
+                //Querien fjerner alle Attendees med id større end 104
+                SqlCommand command = new SqlCommand("DELETE FROM Attendee WHERE AttendeeId > 104", dataBase);
+                //Kører commanden
+                command.ExecuteNonQuery();
+            }
+        }
 
         //READ
         public void FindByID(int id)
@@ -146,15 +161,17 @@ namespace AndetSemesterOPG.Infrastructure
             }
         }
 
-        //FindByCampName metode, som finder Attendees CampName i databasen
+        //FindByCampName metode, som finder alle Attendees med et bestemt CampName i databasen
         public List<Attendee> FindByCampName(string campName)
         {
             List<Attendee> attendeesByCampName = new List<Attendee>();
+            //Opretter forbindelse til databasen
             using (SqlConnection dataBase = new SqlConnection(connectionString))
             {
                 dataBase.Open();
-
+                //SqlCommand objekt med query der henter alle attendees fra ATTENDEE tabellen hvor CampName er lig CampName i metodens parameter
                 SqlCommand command = new SqlCommand("SELECT * FROM Attendee WHERE CampName = @CampName", dataBase);
+                //
                 command.Parameters.AddWithValue("@CampName", campName);
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
@@ -256,12 +273,14 @@ namespace AndetSemesterOPG.Infrastructure
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
+                    int ArtistId = reader.GetInt32(reader.GetOrdinal("ArtistId"));
                     string ArtistName = reader.GetString(reader.GetOrdinal("ArtistName"));
                     string ArtistTime = reader.GetString(reader.GetOrdinal("ArtistTime"));
                     string ArtistDate = reader.GetString(reader.GetOrdinal("ArtistDate"));
                     int StageId = reader.GetInt32(reader.GetOrdinal("StageId"));
 
                     Artist artist = new Artist(ArtistName, ArtistTime, ArtistDate, StageId);
+                    artist.ArtistId = ArtistId;
 
                     allArtistsList.Add(artist);
 

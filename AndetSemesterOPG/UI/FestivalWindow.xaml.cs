@@ -54,10 +54,14 @@ namespace AndetSemesterOPG.UI
 
             CampBCapacity.Content = campService.RetrieveCampCapacity("Camp B");
 
+            SubscribeToCamps.IsEnabled = false;
+
             DispatcherTimer timer = new DispatcherTimer();
             timer.Tick += new EventHandler(AutoRefresh);
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Start();
+
+            
 
         }
 
@@ -74,7 +78,58 @@ namespace AndetSemesterOPG.UI
             campService.CheckCampCapacity(campA, attendeeService.RetriveAttendeesByCampName("Camp A").Count, attendeeService);
             campService.CheckCampCapacity(campB, attendeeService.RetriveAttendeesByCampName("Camp B").Count, attendeeService);
 
+            //Her ændre Cam status labelsnee for at fortælle brugeren om en camp er låst eller ej
+            switch(campA.IsLocked)
+            {
+                case true:
+                    CampA_StatusLabel.Content = "Camp A er låst";
+                    break;
+
+                case false:
+                    CampA_StatusLabel.Content = "Camp A er åben";
+                    break;
+
+            }
+            switch (campB.IsLocked)
+            {
+                case true:
+                    CampB_StatusLabel.Content = "Camp B er låst";
+                    break;
+
+                case false:
+                    CampB_StatusLabel.Content = "Camp B er åben";
+                    break;
+
+            }
+
+
+            //Her er Simulation knappen låst eller åben afhægig af om alle camps er låste eller ej
+            if (campA.IsLocked == true && campB.IsLocked == true)
+            {
+                AttendeeSimulationButton.IsEnabled = false;
+            }
+            if (campA.IsLocked == false || campB.IsLocked == false)
+            {
+                AttendeeSimulationButton.IsEnabled = true;
+            }
+            //Knapper bliver låst elller åbnet afhængig af om pladserne er låste eller åbne
             
+            LockCampAButton.IsEnabled = !campA.IsLocked;
+            OpenCampAButton.IsEnabled = campA.IsLocked;
+
+            LockCampBButton.IsEnabled = !campB.IsLocked;
+            OpenCampBButton.IsEnabled = campB.IsLocked;
+
+            //Her bliver knappen også låst hvis en camps kapasitet er fyldt
+            if (attendeeService.RetriveAttendeesByCampName("Camp A").Count >= campA.CampCapacity)
+            {
+                OpenCampAButton.IsEnabled = false;
+            }
+            if (attendeeService.RetriveAttendeesByCampName("Camp B").Count >= campB.CampCapacity)
+            {
+                OpenCampBButton.IsEnabled = false;
+            }
+
 
             CampACapacity.Content = campService.RetrieveCampCapacity("Camp A");
             CampBCapacity.Content = campService.RetrieveCampCapacity("Camp B");
@@ -113,17 +168,25 @@ namespace AndetSemesterOPG.UI
             LockCampBButton.IsEnabled = true;
             OpenCampBButton.IsEnabled = false;
         }
+        private void SubscribeToCamps_Click(object sender, RoutedEventArgs e)
+        {
+            campService.SubscribeCampObserver(campObserver);
+            SubscribeToCamps.IsEnabled = false;
+            UnsubscribeFromCamps.IsEnabled = true;
+            SubscribtionstatusLabel.Content = "Du er Subscribed";
+            MessageBox.Show("Du er nu subscribed til at få beskeder om de forskellige camps");
+
+        }
 
         private void UnsubscribeFromCamps_Click(object sender, RoutedEventArgs e)
         {
             campService.UnsubscribeCampObserver(campObserver);
+            SubscribeToCamps.IsEnabled = true;
+            UnsubscribeFromCamps.IsEnabled = false;
+            SubscribtionstatusLabel.Content = "Du er Unsubscribed";
+            MessageBox.Show("Du er nu unsubscribed, og vil ikke længere få beskeder om de forskellige camps");
         }
 
-        private void SubscribeToCamps_Click(object sender, RoutedEventArgs e)
-        {
-            campService.SubscribeCampObserver(campObserver);
-
-        }
 
         private void AttendeeSimulationButton_Click(object sender, RoutedEventArgs e)
         {
