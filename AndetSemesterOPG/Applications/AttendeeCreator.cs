@@ -5,8 +5,10 @@ using System.Windows.Threading;
 
 namespace AndetSemesterOPG.Applications
 {
-    internal class AttendeeCreator //Flyt til festival?
+    //Klasse der er ansvarlig for at oprette deltagere til festivalen, både automatisk og manuelt
+    internal class AttendeeCreator
     {
+        //Variabler der giver betydning til klassen, herunder total kapacitet for alle camps, nuværende antal deltagere, og services til at håndtere camp og deltager data
         private int totalCampCapacity;
         private int currentAttendeeCount;
         CampService campService;
@@ -14,6 +16,7 @@ namespace AndetSemesterOPG.Applications
         AttendeeService attendeeService;
         static Semaphore CreateAttendeeSemaphore = new Semaphore(10, 10); // Starter med 10 tilladelser, og maks er også 10
 
+        //Konstruktor der tager en DispatcherTimer, AttendeeService og CampService som parameter, og sætter timeren til at kalde AutoCreateAttendee metoden hvert 5. sekund
         public AttendeeCreator(DispatcherTimer timer, AttendeeService attendeeService, CampService campService)
         {
 
@@ -25,18 +28,12 @@ namespace AndetSemesterOPG.Applications
             
             this.timer.Start();
             
-
-
             this.campService = campService;
             totalCampCapacity = campService.RetriveTotalCampCapacity();
             currentAttendeeCount = attendeeService.RetrieveAllAttendees().Count;
-
-            
-
         }
-       
 
-
+        //Metode der starter processen med at oprette deltagere ved at kalde SemaphoreCreateAttendee metoden 50 gange
         public void SemaphoreStart()
         {
             for (int i = 0; i < 50; i++) 
@@ -46,7 +43,7 @@ namespace AndetSemesterOPG.Applications
             
         }
 
-
+        //Metode der bruger en semaphore til at sikre, at kun et bestemt antal tråde kan oprette deltagere samtidigt, og kalder CreateAttendee metoden i AttendeeService for at oprette en deltager
         public void SemaphoreCreateAttendee()
         {
             CreateAttendeeSemaphore.WaitOne();
@@ -56,9 +53,8 @@ namespace AndetSemesterOPG.Applications
             CreateAttendeeSemaphore.Release();
                 
         }
-
-
         
+        //Metode der automatisk opretter deltagere ved at kalde CreateAttendee metoden
         public void AutoCreateAttendee(object sender, EventArgs e)
         {
             attendeeService.CreateAttendee();

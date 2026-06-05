@@ -5,8 +5,10 @@ using System.Text;
 
 namespace AndetSemesterOPG.Domain
 {
+    //Klasse der repræsentere en deltager på festivalen, og indeholder information om deltageren
     internal class Attendee
     {
+        //get og set metoder for deltagerens variabler
         public int AttendeeID { get; set; }
         public string AttendeeFirstName { get; set; }
         public string AttendeeLastName { get; set; }
@@ -18,6 +20,8 @@ namespace AndetSemesterOPG.Domain
 
 
         //måske ekstra constructor der også tager attendeeID så når vi trækker dataet op bliver Attendee oprettet med deres id fra DB
+
+        //Konstruktor der tager imod deltagerens fornavn, efternavn, campnavn og entranceId som parametre, og initialisere deltageren med disse værdier
         public Attendee(string AttendeeFirstName, string AttendeeLastName, string CampName, int EntranceId)
         {
             this.AttendeeFirstName = AttendeeFirstName;

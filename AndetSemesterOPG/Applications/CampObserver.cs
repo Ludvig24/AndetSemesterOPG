@@ -6,11 +6,13 @@ using System.Windows;
 
 namespace AndetSemesterOPG.Applications
 {
+    //Klasse der implementere ICampObserver, og indeholder en metode der opdatere campens kapacitetstatus, og viser en besked til brugeren når campen når en bestemt kapacitetstatus
     internal class CampObserver : ICampObserver
     {
-
+        //Metode der tager imod en camps navn og dens kapacitet som parametre, og opdaterer observeren med denne information, og viser en besked til brugeren hvis campen når en bestemt kapacitetstatus
         public void Update(string campName, CampCapacityStatus.CapacityStatus campStatus)
         {
+            //Opdater campens kapacitetstatus, og vis en besked til brugeren hvis campen når en bestemt kapacitetstatus
             switch (campStatus)
             {
                 case CampCapacityStatus.CapacityStatus.FiftyPercent:

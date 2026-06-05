@@ -5,28 +5,30 @@ using System.Text;
 
 namespace AndetSemesterOPG.Applications
 {
+    //Klasse der repræsentere en ticket client, og indeholder metoder til at definere billetter til de forskellige camps
     internal class TicketClient
     {
-        //Den her er til for at kunne stoppe produktionen af en bestem type billet senere
+        //Denne variabel er til for at kunne stoppe produktionen af en bestemt type billet senere
         bool makeTicket;
-        //Her er en metode der laver en billet til camp A og en til camp B, den tager en ticketfactory som parameter så den kan lave de forskellige billetter
 
-        //Lav metode der måske tager en int (1,2,3 eller 4) - unlockedTickets erstattes med en liste uden det valgte tal - dermed begrænset ticketproduktion
+        //Denne liste indeholder de billetter der er låst op, og det er det tal der kommer ud af GetRandomNumber der bestemmer hvilken billet der skal producer
         private List<int> unlockedTickets = new List<int>() { 1, 2, 3, 4 };
-        
+
+        //Metode der laver en billet til camp A ved at bruge ticketFactory til at lave en billet til camp A og returnere den
         public ITicket OrderTicketCampA(ITicketFactory ticketFactory)
         {
             ITicket ticketCampA = ticketFactory.CreateCampA();
             return ticketCampA;
         }
 
+        //Metode der laver en billet til camp B ved at bruge ticketFactory til at lave en billet til camp B og returnere den
         public ITicket OrderTicketCampB(ITicketFactory ticketFactory)
         {
             ITicket ticketCampB = ticketFactory.CreateCampB();
             return ticketCampB;
         }
 
-
+        //Metode der laver en random number generator der vælger et tilfældigt tal mellem 1 og 4, og returnere det, det er det tal der bestemmer hvilken billet der skal produceres
         public int GetRandomNumber()
         {
             if(unlockedTickets.Count == 0)
@@ -41,11 +43,13 @@ namespace AndetSemesterOPG.Applications
 
         }
 
+        //Metode der laver en billet ved at bruge GetRandomNumber til at bestemme hvilken type billet der skal produceres, og returnere den
         public ITicket CreateTicket()
         {
             ITicketFactory ticketFactory;
             int randomNumber = GetRandomNumber();
 
+            //switch statement der bestemmer hvilken type billet der skal produceres ud fra det tilfældige tal, og returnere den billet. Hvis det tilfældige tal ikke er mellem 1 og 4 bliver der lavet en anden billet
             switch (randomNumber)
             {
                 case 1:
@@ -61,20 +65,18 @@ namespace AndetSemesterOPG.Applications
                     ticketFactory = new EntranceWestFactory();
                     return OrderTicketCampB(ticketFactory);
                 default:
-                    //throw new Exception("Invalid random number");
-                    //MessageBox - "Der kommer ingen ind i campen" skal nok stå et andet sted.
                     return null;
 
             }
         }
 
 
-
+        //Metode der sætter hvilke billetter der er låst op ved at tage en liste af tal som parameter, og sætte unlockedTickets til den liste
         public void SetUnlockedTickets(List<int> allowedTickets)
         {
             unlockedTickets = allowedTickets;
         }
-
+        //Metode der returnere hvilke billetter der er låst op ved at returnere unlockedTickets
         public List<int> GetUnlockedTickets()
         {
             return unlockedTickets;

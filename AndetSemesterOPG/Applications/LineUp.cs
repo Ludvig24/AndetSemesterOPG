@@ -7,14 +7,20 @@ using System.Windows.Controls;
 
 namespace AndetSemesterOPG.Applications
 {
+    //Klasse der repræsentere festivalens line-up, og indeholder metoder til at tilføje og fjerne artister fra line-uppet
     internal class LineUp
     {
+        //Variabler der skal bruges i klassen
         ArtistService artistService;
         List<Artist> artistList;
+
+        //Konstruktor der tager en ArtistService som parameter og gemmer den i en instansvariabel
         public LineUp(ArtistService artistService)
         {
             this.artistService = artistService;
         }
+
+        //Metode der tager en tid som parameter og returnere den tilsvarende række i line-uppet
         public int GetRowFromTime(string time)
         {
             switch (time)
@@ -33,6 +39,7 @@ namespace AndetSemesterOPG.Applications
             throw new ArgumentException("Invalid tid");
         }
 
+        //Metode der tager en dag som parameter og returnere den tilsvarende kolonne i line-uppet
         public int GetColumnFromDate(string day)
         {
             switch (day)
@@ -55,6 +62,7 @@ namespace AndetSemesterOPG.Applications
             throw new ArgumentException("Invalid dag");
         }
 
+        //Metode der tager en liste af Grid som parameter og tilføjer artisterne i artistList til line-uppet baseret på deres StageId, ArtistTime og ArtistDate
         public void AddArtistToLineUp(List<Grid> stages)
         {
             artistList = artistService.RetrieveAllArtists();
@@ -82,6 +90,7 @@ namespace AndetSemesterOPG.Applications
 
         }
 
+        //Metode der tager en liste af Grid som parameter og fjerner alle artisterne fra line-uppet ved at sætte RowDefinitions og ColumnDefinitions til null
         public void RemoveArtistFromLineUp(List<Grid> stages)
         {
             foreach(Grid grid in stages)

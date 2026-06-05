@@ -4,8 +4,10 @@ using System.Text;
 
 namespace AndetSemesterOPG.Domain
 {
+    //Klasse der repræsentere en camp, og indeholder information om campen
     internal class Camp
     {
+        //get og set metoder for campens id, kapacitet, navn, låst status og kapacitetsstatus
         public int CampId { get; set; }
         public int CampCapacity { get; set; }
         public string CampName {  get; set; }
@@ -14,6 +16,7 @@ namespace AndetSemesterOPG.Domain
 
         CampCapacityStatus.CapacityStatus CampStatus { get; set; }
 
+        //Konstruktor der tager imod campens id, kapacitet, navn og kapacitetsstatus som parametre, og initialisere campen med disse værdier
         public Camp(int campId, int campCapacity, string campName, CampCapacityStatus.CapacityStatus campStatus)
         {
             this.CampId = campId;
@@ -21,6 +24,8 @@ namespace AndetSemesterOPG.Domain
             this.CampName = campName;
             this.CampStatus = campStatus;
         }
+
+
         public Camp() 
         {
         

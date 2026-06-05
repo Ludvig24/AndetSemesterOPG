@@ -17,7 +17,7 @@ namespace AndetSemesterOPG.Infrastructure
         //Ludvig: LOCALHOST
         //Tobias: localhost\\SQLEXPRESS
         //Laura: LAPTOP-KHAURJ1B
-        //Emil:
+        //Emil: localhost\\SQLEXPRESS02
 
         // -------- CREATE ------------
         //Insert metode, der indsætter Attendee i databasen
@@ -42,6 +42,8 @@ namespace AndetSemesterOPG.Infrastructure
             }
         }
 
+        //-------- CREATE ------------
+        //insert metode, der indsætter Artist i databasen
         public void InsertArtist(Artist artist)
         {
             //Opretter forbindelsen til databasen. Vi bruger en using block så forbindelsen automatisk lukkes ved slutningen af using blokken
@@ -62,14 +64,17 @@ namespace AndetSemesterOPG.Infrastructure
             }
         }
 
-        //Update
+        //Update metode, der opdaterer en Artist i databasen
         public void UpdateArtist(Artist artist)
         {
+            //Opretter forbindelsen til databasen
             using (SqlConnection dataBase = new SqlConnection(connectionString)) 
             {
+                //Åbner forbindelsen til databasen
                 dataBase.Open();
-                SqlCommand command = new SqlCommand(@"UPDATE ARTIST SET ArtistName = @ArtistName, ArtistTime = @ArtistTime, ArtistDate = @ArtistDate, StageId = @StageId WHERE ArtistId = @ArtistId",
-    dataBase);
+                //Opretter et command objekt der indeholder den SQL query vi gerne vil sende til databasen
+                //Querien opdaterer en artist i tabellen ARTIST i databasen ud fra et ArtistId
+                SqlCommand command = new SqlCommand(@"UPDATE ARTIST SET ArtistName = @ArtistName, ArtistTime = @ArtistTime, ArtistDate = @ArtistDate, StageId = @StageId WHERE ArtistId = @ArtistId", dataBase);
 
                 //Tilføjer værdierne gemt i Artist objektet til vores SQLCommand objekt
                 command.Parameters.AddWithValue("@ArtistName", artist.ArtistName);
@@ -82,9 +87,7 @@ namespace AndetSemesterOPG.Infrastructure
             }
         }
 
-        //Delete
-       
-
+        //Delete metode, der fjerner en Artist fra databasen
         public void RemoveArtist (Artist artist)
         {
             //Opretter forbindelsen til databasen. Vi bruger en using block så forbindelsen automatisk lukkes ved slutningen af using blokken
@@ -102,6 +105,7 @@ namespace AndetSemesterOPG.Infrastructure
             }
         }
 
+        //ResetAttendeeAmount metode, der fjerner alle Attendees med id større end 104 fra databasen
         public void ResetAttendeeAmount()
         {
             using (SqlConnection dataBase = new SqlConnection(connectionString))
@@ -156,7 +160,7 @@ namespace AndetSemesterOPG.Infrastructure
     
 
                     }
-                    //Listen af Attendees returneres
+                //Listen af Attendees returneres
                 return attendeesByEntranceId;
             }
         }
@@ -171,8 +175,9 @@ namespace AndetSemesterOPG.Infrastructure
                 dataBase.Open();
                 //SqlCommand objekt med query der henter alle attendees fra ATTENDEE tabellen hvor CampName er lig CampName i metodens parameter
                 SqlCommand command = new SqlCommand("SELECT * FROM Attendee WHERE CampName = @CampName", dataBase);
-                //
+                //Tilføjer parameteret
                 command.Parameters.AddWithValue("@CampName", campName);
+                
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
@@ -193,16 +198,22 @@ namespace AndetSemesterOPG.Infrastructure
             }
         }
 
+
+        //ReadAll metode, som henter alle Attendees i databasen
         public List<Attendee> ReadAll()
         {
+            //Opretter en liste af Attendees der skal udfyldes med alle Attendees i databasen
             List<Attendee> allAttendeesList = new List<Attendee>();
 
+            //Opretter forbindelse til databasen
             using (SqlConnection dataBase = new SqlConnection(connectionString))
             {
                 dataBase.Open();
-                
+
+                //SqlCommand objekt med query der henter alle attendees fra ATTENDEE tabellen
                 SqlCommand command = new SqlCommand("SELECT * FROM Attendee", dataBase);
                 SqlDataReader reader = command.ExecuteReader();
+                //Vi læser hver række der bliver returneret med reader objektet og gemmer hver oplysning i variabler der bruges til at oprette en attendee
                 while (reader.Read()) 
                 {
                     int attendeeId = reader.GetInt32(reader.GetOrdinal("AttendeeId"));
@@ -211,9 +222,11 @@ namespace AndetSemesterOPG.Infrastructure
                     string CampName = reader.GetString(reader.GetOrdinal("CampName"));
                     int EntranceId = reader.GetInt32(reader.GetOrdinal("EntranceId"));
 
+                    //Attendee objekt oprettes
                     Attendee attendee = new Attendee(FirstName, LastName, CampName, EntranceId);
                     attendee.AttendeeID = attendeeId; //måske fix ift constructor
 
+                    //Attendee objekt tilføjes til listen
                     allAttendeesList.Add(attendee);
 
                 }
@@ -221,14 +234,17 @@ namespace AndetSemesterOPG.Infrastructure
             }
         }
 
-
+        //FindCampCapacity metode, som finder kapaciteten for en camp
         public int FindCampCapacity(string campName)
         {
+            //Opretter en variabel der skal gemme kapaciteten for campen
             int capacity = 0;
 
+            //Opretter forbindelse til databasen
             using (SqlConnection database = new SqlConnection(connectionString))
             {
                 database.Open();
+                //SqlCommand objekt med query der henter CampCapacity fra Camp tabellen
                 SqlCommand command = new SqlCommand("SELECT CampCapacity FROM Camp WHERE CampName = @CampName", database);
                 command.Parameters.AddWithValue("@CampName", campName);
                 SqlDataReader reader = command.ExecuteReader();
@@ -241,12 +257,18 @@ namespace AndetSemesterOPG.Infrastructure
             }
         }
 
+        //ReadAllCamps metode, som henter alle camps i databasen
         public List<Camp> ReadAllCamps()
         {
+            //Opretter en liste af Camps der skal udfyldes med alle Camps i databasen
             List<Camp> allCampsList = new List<Camp>();
+
+            //Opretter forbindelse til databasen
             using (SqlConnection dataBase = new SqlConnection(connectionString))
             {
                 dataBase.Open();
+
+                //SqlCommand objekt med query der henter alle camps fra Camp tabellen
                 SqlCommand command = new SqlCommand("SELECT * FROM Camp", dataBase);
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
@@ -255,22 +277,30 @@ namespace AndetSemesterOPG.Infrastructure
                     string CampName = reader.GetString(reader.GetOrdinal("CampName"));
                     int CampCapacity = reader.GetInt32(reader.GetOrdinal("CampCapacity"));
                     Camp camp = new Camp(CampId, CampCapacity, CampName);
+
+                    //Camp objekt tilføjes til listen
                     allCampsList.Add(camp);
                 }
                 return allCampsList;
             }
         }
 
+        //ReadAllArtist metode, som henter alle artists i databasen
         public List<Artist> ReadAllArtist() 
         {
+            //Opretter en liste af Artists der skal udfyldes med alle Artists i databasen
             List<Artist> allArtistsList = new List<Artist>();
 
+            //Opretter forbindelse til databasen
             using (SqlConnection dataBase = new SqlConnection(connectionString))
             {
                 dataBase.Open();
 
+                //SqlCommand objekt med query der henter alle artists fra Artist tabellen
                 SqlCommand command = new SqlCommand("SELECT * FROM Artist", dataBase);
                 SqlDataReader reader = command.ExecuteReader();
+
+                //Vi læser hver række der bliver returneret med reader objektet og gemmer hver oplysning i variabler der bruges til at oprette en artist
                 while (reader.Read())
                 {
                     int ArtistId = reader.GetInt32(reader.GetOrdinal("ArtistId"));
@@ -279,9 +309,11 @@ namespace AndetSemesterOPG.Infrastructure
                     string ArtistDate = reader.GetString(reader.GetOrdinal("ArtistDate"));
                     int StageId = reader.GetInt32(reader.GetOrdinal("StageId"));
 
+                    //Artist objekt oprettes
                     Artist artist = new Artist(ArtistName, ArtistTime, ArtistDate, StageId);
                     artist.ArtistId = ArtistId;
 
+                    //Artist objekt tilføjes til listen
                     allArtistsList.Add(artist);
 
                 }

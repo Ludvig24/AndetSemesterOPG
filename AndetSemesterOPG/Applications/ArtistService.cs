@@ -7,6 +7,7 @@ using System.Windows.Documents;
 
 namespace AndetSemesterOPG.Applications
 {
+    //Klasse der implementerer logikken for at håndtere artists
     internal class ArtistService
     {
         //Field for klassen
