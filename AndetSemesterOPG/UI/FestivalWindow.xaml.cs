@@ -21,8 +21,7 @@ namespace AndetSemesterOPG.UI
     /// </summary>
     public partial class FestivalWindow : Window
     {
-
-        
+        //Oprettelse af klasser og services der skal bruges i FestivalWindow
         WindowNavigator windowNavigator;
         AttendeeService attendeeService;
         AttendeeCreator attendeeCreator;
@@ -30,6 +29,8 @@ namespace AndetSemesterOPG.UI
         Camp campA;
         Camp campB;
         CampObserver campObserver;
+
+        //Constructor for FestivalWindow, hvor vi initialisere klasser og services, og sætter labels til at vise det nuværende antal af attendees
         internal FestivalWindow(WindowNavigator windowNavigator, AttendeeService attendeeService, CampService campService, Camp campA, Camp campB, CampObserver campObserver, AttendeeCreator attendeeCreator)
         {
             InitializeComponent();
@@ -41,7 +42,7 @@ namespace AndetSemesterOPG.UI
             this.campObserver = campObserver;
             this.campService = campService;
 
-
+            //Sætter labels til at vise det nuværende antal af attendees ved at hente data fra attendeeService
             TotalAttendeeEast.Content = attendeeService.RetrieveAttendeesByEntranceId(1).Count;
 
             TotalAttendeeWest.Content = attendeeService.RetrieveAttendeesByEntranceId(2).Count;
@@ -56,6 +57,7 @@ namespace AndetSemesterOPG.UI
 
             SubscribeToCamps.IsEnabled = false;
 
+            //Opretter en timer der opdaterer labels hvert sekund
             DispatcherTimer timer = new DispatcherTimer();
             timer.Tick += new EventHandler(AutoRefresh);
             timer.Interval = new TimeSpan(0, 0, 1);
@@ -65,7 +67,7 @@ namespace AndetSemesterOPG.UI
 
         }
 
-
+        //Metode der opdaterer visuelle komponenter i vinduet
         public void AutoRefresh(object sender, EventArgs e)
         {
             TotalAttendeeEast.Content = attendeeService.RetrieveAttendeesByEntranceId(1).Count;
@@ -135,12 +137,14 @@ namespace AndetSemesterOPG.UI
             CampBCapacity.Content = campService.RetrieveCampCapacity("Camp B");
         }
 
+        //Metode der håndterer klik på "Back" knappen, hvor vi åbner MenuWindow og skjuler FestivalWindow
         private void backButtonFestivalWindow_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
             windowNavigator.OpenMenuWindow();
         }
 
+        //Metode der håndterer klik på "Lock Camp A" knappen, hvor vi låser Camp A ved at kalde LockCamp metoden i campService, og opdatere knappernes enabled status
         private void LockCampAButton_Click(object sender, RoutedEventArgs e)
         {
             campService.LockCamp(campA, attendeeService);
@@ -148,6 +152,7 @@ namespace AndetSemesterOPG.UI
             OpenCampAButton.IsEnabled = true;
         }
 
+        //Metode der håndterer klik på "Open Camp A" knappen, hvor vi åbner Camp A ved at kalde UnlockCamp metoden i campService, og opdatere knappernes enabled status
         private void OpenCampAButton_Click(object sender, RoutedEventArgs e)
         {
             campService.UnlockCamp(campA, attendeeService);
@@ -155,6 +160,7 @@ namespace AndetSemesterOPG.UI
             OpenCampAButton.IsEnabled = false;
         }
 
+        //Metode der håndterer klik på "Lock Camp B" knappen, hvor vi låser Camp B ved at kalde LockCamp metoden i campService, og opdatere knappernes enabled status
         private void LockCampBButton_Click(object sender, RoutedEventArgs e)
         {
             campService.LockCamp(campB, attendeeService);
@@ -162,12 +168,15 @@ namespace AndetSemesterOPG.UI
             OpenCampBButton.IsEnabled = true;
         }
 
+        //Metode der håndterer klik på "Open Camp B" knappen, hvor vi åbner Camp B ved at kalde UnlockCamp metoden i campService, og opdatere knappernes enabled status
         private void OpenCampBButton_Click(object sender, RoutedEventArgs e)
         {
             campService.UnlockCamp(campB, attendeeService);
             LockCampBButton.IsEnabled = true;
             OpenCampBButton.IsEnabled = false;
         }
+
+        //Metode der håndterer klik på "Subscribe to Camps" knappen, hvor vi subscribere til campObserver ved at kalde SubscribeCampObserver metoden i campService, og opdatere knappernes enabled status
         private void SubscribeToCamps_Click(object sender, RoutedEventArgs e)
         {
             campService.SubscribeCampObserver(campObserver);
@@ -178,6 +187,7 @@ namespace AndetSemesterOPG.UI
 
         }
 
+        //Metode der håndterer klik på "Unsubscribe from Camps" knappen, hvor vi unsubscribere fra campObserver ved at kalde UnsubscribeCampObserver metoden i campService, og opdatere knappernes enabled status
         private void UnsubscribeFromCamps_Click(object sender, RoutedEventArgs e)
         {
             campService.UnsubscribeCampObserver(campObserver);
@@ -187,7 +197,7 @@ namespace AndetSemesterOPG.UI
             MessageBox.Show("Du er nu unsubscribed, og vil ikke længere få beskeder om de forskellige camps");
         }
 
-
+        //Metode der håndterer klik på "Attendee Simulation" knappen, hvor vi starter simuleringen af attendees ved at kalde SemaphoreStart metoden i attendeeCreator
         private void AttendeeSimulationButton_Click(object sender, RoutedEventArgs e)
         {
             attendeeCreator.SemaphoreStart();

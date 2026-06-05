@@ -19,25 +19,31 @@ namespace AndetSemesterOPG.UI
     /// </summary>
     public partial class MenuWindow : Window
     {
+        //Oprettelse af WindowNavigator, som bruges til at navigere mellem vinduerne i applikationen
         WindowNavigator windowNavigator;
+
+        //Constructor for MenuWindow, hvor vi initialisere WindowNavigator
         internal MenuWindow(WindowNavigator windowNavigator)
         {
             InitializeComponent();
             this.windowNavigator = windowNavigator;
         }
 
+        //Metode der åbner AttendeeWindow og skjuler MenuWindow, når brugeren klikker på "Attendees" knappen
         private void AttendeeWindowButton_Click(object sender, RoutedEventArgs e)
         {
             windowNavigator.OpenAttendeeWindow();
             this.Hide();
         }
 
+        //Metode der åbner FestivalWindow og skjuler MenuWindow, når brugeren klikker på "Festival" knappen
         private void FestivalWindowButton_Click(object sender, RoutedEventArgs e)
         {
             windowNavigator.OpenFestivalWindow();
             this.Hide();
         }
 
+        //Metode der åbner StageArtistWindow og skjuler MenuWindow, når brugeren klikker på "Stage Artists" knappen
         private void StageArtistWindowButton_Click(object sender, RoutedEventArgs e)
         {
             windowNavigator.OpenStageArtistWindow();
