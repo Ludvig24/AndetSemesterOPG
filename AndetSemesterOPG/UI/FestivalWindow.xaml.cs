@@ -22,7 +22,7 @@ namespace AndetSemesterOPG.UI
     public partial class FestivalWindow : Window
     {
         //Oprettelse af klasser og services der skal bruges i FestivalWindow
-        WindowNavigator windowNavigator;
+        IWindowNavigator windowNavigator;
         IAttendeeService attendeeService;
         IAttendeeCreator attendeeCreator;
         ICampService campService;
@@ -31,7 +31,7 @@ namespace AndetSemesterOPG.UI
         ICampObserver campObserver;
 
         //Constructor for FestivalWindow, hvor vi initialisere klasser og services, og sætter labels til at vise det nuværende antal af attendees
-        internal FestivalWindow(WindowNavigator windowNavigator, IAttendeeService attendeeService, ICampService campService, Camp campA, Camp campB, ICampObserver campObserver, IAttendeeCreator attendeeCreator)
+        internal FestivalWindow(IWindowNavigator windowNavigator, IAttendeeService attendeeService, ICampService campService, Camp campA, Camp campB, ICampObserver campObserver, IAttendeeCreator attendeeCreator)
         {
             InitializeComponent();
             this.windowNavigator = windowNavigator;

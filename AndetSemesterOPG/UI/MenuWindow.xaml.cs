@@ -20,10 +20,10 @@ namespace AndetSemesterOPG.UI
     public partial class MenuWindow : Window
     {
         //Oprettelse af WindowNavigator, som bruges til at navigere mellem vinduerne i applikationen
-        WindowNavigator windowNavigator;
+        IWindowNavigator windowNavigator;
 
         //Constructor for MenuWindow, hvor vi initialisere WindowNavigator
-        internal MenuWindow(WindowNavigator windowNavigator)
+        internal MenuWindow(IWindowNavigator windowNavigator)
         {
             InitializeComponent();
             this.windowNavigator = windowNavigator;

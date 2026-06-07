@@ -1,4 +1,5 @@
-﻿using AndetSemesterOPG.UI;
+﻿using AndetSemesterOPG.Domain;
+using AndetSemesterOPG.UI;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Text;
 namespace AndetSemesterOPG.Applications
 {
     //Klasse der håndtere navigationen mellem de forskellige vinduer i wpf applikationen
-    internal class WindowNavigator
+    internal class WindowNavigator : IWindowNavigator
     {
         //Variabler der repræsentere de forskellige vinduer i applikationen
         AttendeeWindow attendeeWindow;

@@ -33,12 +33,12 @@ namespace AndetSemesterOPG
         StageArtistWindow stageArtistWindow;
         MenuWindow menuWindow;
         ICampObserver campObserver;
-        WindowNavigator windowNavigator;
+        IWindowNavigator windowNavigator;
         IDBConnection connection;
         IAttendeeRepository attendeeRepository;
         IArtistRepository artistRepository;
         ICampRepository campRepository;
-        ILineUp lineUp;
+        LineUp lineUp;
         Camp campA;
         Camp campB;
         ISort sort;
@@ -65,7 +65,7 @@ namespace AndetSemesterOPG
             ticketClient = new TicketClient();
             timer = new DispatcherTimer();
 
-            attendeeService = new AttendeeService(attendeeRepository, new AttendeeTestData(), new TicketClient());
+            attendeeService = new AttendeeService(attendeeRepository, attendeeTestData, ticketClient);
             campService = new CampService(campRepository);
             attendeeCreator = new AttendeeCreator(timer, attendeeService, campService);
             artistService = new ArtistService(artistRepository);
