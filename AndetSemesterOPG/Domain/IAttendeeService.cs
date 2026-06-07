@@ -6,7 +6,7 @@ namespace AndetSemesterOPG.Domain
 {
     internal interface IAttendeeService
     {
-        ITicketClient ticketClient;
+        ITicketClient ticketClient { get; }
         public Attendee CreateAttendee();
 
         public List<Attendee> RetrieveAllAttendees();
