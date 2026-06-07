@@ -6,7 +6,7 @@ using System.Text;
 namespace AndetSemesterOPG.Applications
 {
     //Klasse der indeholder forskellige sorteringsalgoritmer til at sortere festivalens deltagere efter forskellige kriterier
-    internal class Sort
+    internal class Sort : ISort
     {
 
 

@@ -29,11 +29,11 @@ namespace AndetSemesterOPG.UI
         WindowNavigator windowNavigator;
         IArtistService artistService;
         List<Artist> artists;
-        LineUp lineUp;
+        ILineUp lineUp;
         List<Grid> stages;
 
         //Constructor for StageArtistWindow, hvor vi initialisere klasser og services, og sætter ItemSource for ArtistListBox til listen af artists
-        internal StageArtistWindow(WindowNavigator windowNavigator, IArtistService artistService, LineUp lineUp)
+        internal StageArtistWindow(WindowNavigator windowNavigator, IArtistService artistService, ILineUp lineUp)
         {
             InitializeComponent();
 

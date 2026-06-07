@@ -23,10 +23,10 @@ namespace AndetSemesterOPG.UI
         IAttendeeService attendeeService;
         List<Attendee> attendees = new List<Attendee>();
         WindowNavigator windowNavigator;
-        Sort sort;
+        ISort sort;
         
         //Constructor for AttendeeWindow, hvor vi initialisere klasser og services, og sætter ItemSource for datagrid til listen af attendees. Vi har også en timer der opdaterer listen af attendees hvert sekund, så vi altid har den nyeste liste
-        internal AttendeeWindow(WindowNavigator windowNavigator, IAttendeeService attendeeService, Sort sort)
+        internal AttendeeWindow(WindowNavigator windowNavigator, IAttendeeService attendeeService, ISort sort)
         {
             //Initialisering af komponenter og services
             InitializeComponent();

@@ -8,7 +8,7 @@ using System.Windows.Controls;
 namespace AndetSemesterOPG.Applications
 {
     //Klasse der repræsentere festivalens line-up, og indeholder metoder til at tilføje og fjerne artister fra line-uppet
-    internal class LineUp
+    internal class LineUp : ILineUp
     {
         //Variabler der skal bruges i klassen
         IArtistService artistService;

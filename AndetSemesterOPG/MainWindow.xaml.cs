@@ -38,10 +38,10 @@ namespace AndetSemesterOPG
         IAttendeeRepository attendeeRepository;
         IArtistRepository artistRepository;
         ICampRepository campRepository;
-        LineUp lineUp;
+        ILineUp lineUp;
         Camp campA;
         Camp campB;
-        Sort sort;
+        ISort sort;
         DispatcherTimer timer;
 
         //Vi har valgt MainWindow som composition root da det er vinduet der starter som det første i programmet
