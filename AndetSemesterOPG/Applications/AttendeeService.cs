@@ -7,15 +7,15 @@ using System.Text;
 namespace AndetSemesterOPG.Applications
 {
     //Klasse som indeholder metoder der håndtere deltagere
-    internal class AttendeeService
+    internal class AttendeeService : IAttendeeService
     {
         //Variabler som skal bruges i klassen
         AttendeeTestData attendeeTestData; 
-        public TicketClient ticketClient { get; set; }
+        public ITicketClient ticketClient { get; set; }
         IAttendeeRepository attendeeRepository;
 
         //Konstruktor der tager en IAttendeeRepository, AttendeeTestData og TicketClient som parametre og gemmer dem i instansvariabler
-        public AttendeeService(IAttendeeRepository attendeeRepository, AttendeeTestData attendeeTestData, TicketClient ticketClient)
+        public AttendeeService(IAttendeeRepository attendeeRepository, AttendeeTestData attendeeTestData, ITicketClient ticketClient)
         {
             this.attendeeRepository = attendeeRepository;
             this.attendeeTestData = attendeeTestData;

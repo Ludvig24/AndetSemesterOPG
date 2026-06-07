@@ -8,7 +8,7 @@ using System.Windows;
 namespace AndetSemesterOPG.Applications
 {
     //Klasse der repræsenterer service laget for camps, og indeholder metoder til at hente data om camps fra databasen, samt metoder til at håndtere observer patternet for camp kapacitet
-    internal class CampService
+    internal class CampService : ICampService
     {
         //Variabler til klassen
         List<ICampObserver> campObservers;
@@ -69,7 +69,7 @@ namespace AndetSemesterOPG.Applications
         }
 
         //Metode til at tjekke kapaciteten for en given camp ved at hente antallet af attendees for campen og sammenligne det med campens kapacitet
-        public void CheckCampCapacity(Camp camp, int attendeeAmount, AttendeeService attendeeService)
+        public void CheckCampCapacity(Camp camp, int attendeeAmount, IAttendeeService attendeeService)
         {
             //Hvis campen allerede er låst, skal der ikke gøres noget, da det ikke er nødvendigt at tjekke kapaciteten igen
             if (camp.IsLocked == true)
@@ -118,7 +118,7 @@ namespace AndetSemesterOPG.Applications
         }
 
         //Metode til at låse en camp ved at fjerne de relevante billetter fra ticket clienten og sætte campens IsLocked property til true
-        public void LockCamp(Camp camp, AttendeeService attendeeService)
+        public void LockCamp(Camp camp, IAttendeeService attendeeService)
         {
             //Hvis campen er Camp A, skal billetterne med id 1 og 3 fjernes fra ticket clienten, og campens IsLocked property skal sættes til true
             if (camp.CampName == "Camp A")
@@ -142,7 +142,7 @@ namespace AndetSemesterOPG.Applications
         }
 
         //Metode til at låse en camp ved at tilføje de relevante billetter til ticket clienten og sætte campens IsLocked property til false
-        public void UnlockCamp(Camp camp, AttendeeService attendeeService)
+        public void UnlockCamp(Camp camp, IAttendeeService attendeeService)
         {
             //Hvis campen er Camp A, skal billetterne med id 1 og 3 tilføjes til ticket clienten, og campens IsLocked property skal sættes til false
             if (camp.CampName == "Camp A")

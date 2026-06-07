@@ -11,11 +11,11 @@ namespace AndetSemesterOPG.Applications
     internal class LineUp
     {
         //Variabler der skal bruges i klassen
-        ArtistService artistService;
+        IArtistService artistService;
         List<Artist> artistList;
 
         //Konstruktor der tager en ArtistService som parameter og gemmer den i en instansvariabel
-        public LineUp(ArtistService artistService)
+        public LineUp(IArtistService artistService)
         {
             this.artistService = artistService;
         }

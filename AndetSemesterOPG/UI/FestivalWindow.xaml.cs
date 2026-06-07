@@ -23,15 +23,15 @@ namespace AndetSemesterOPG.UI
     {
         //Oprettelse af klasser og services der skal bruges i FestivalWindow
         WindowNavigator windowNavigator;
-        AttendeeService attendeeService;
+        IAttendeeService attendeeService;
         AttendeeCreator attendeeCreator;
-        CampService campService;
+        ICampService campService;
         Camp campA;
         Camp campB;
-        CampObserver campObserver;
+        ICampObserver campObserver;
 
         //Constructor for FestivalWindow, hvor vi initialisere klasser og services, og sætter labels til at vise det nuværende antal af attendees
-        internal FestivalWindow(WindowNavigator windowNavigator, AttendeeService attendeeService, CampService campService, Camp campA, Camp campB, CampObserver campObserver, AttendeeCreator attendeeCreator)
+        internal FestivalWindow(WindowNavigator windowNavigator, IAttendeeService attendeeService, ICampService campService, Camp campA, Camp campB, ICampObserver campObserver, AttendeeCreator attendeeCreator)
         {
             InitializeComponent();
             this.windowNavigator = windowNavigator;

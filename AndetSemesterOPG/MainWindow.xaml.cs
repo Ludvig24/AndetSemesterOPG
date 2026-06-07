@@ -22,23 +22,30 @@ namespace AndetSemesterOPG
     //Vi har valgt at skjule MainWindow og starte med at vise MenuWindow, da det er det første vindue brugeren skal interagere med.
     public partial class MainWindow : Window
     {
-        AttendeeService attendeeService;
-        CampService campService;
-        ArtistService artistService;
+        IAttendeeService attendeeService;
+        ICampService campService;
+        IArtistService artistService;
         AttendeeCreator attendeeCreator;
+        AttendeeTestData attendeeTestData;
+        ITicketClient ticketClient;
         FestivalWindow festivalWindow;
         AttendeeWindow attendeeWindow;
         StageArtistWindow stageArtistWindow;
         MenuWindow menuWindow;
-        CampObserver campObserver;
+        ICampObserver campObserver;
         WindowNavigator windowNavigator;
+        IDBConnection connection;
+        IAttendeeRepository attendeeRepository;
+        IArtistRepository artistRepository;
+        ICampRepository campRepository;
         LineUp lineUp;
         Camp campA;
         Camp campB;
         Sort sort;
+        DispatcherTimer timer;
 
-        //Vi har valgt MainWindow som composition root da det er vinduet der starter som det første i programmet. <-- smid det et smart sted i rapport
-        public MainWindow() //MainWindow fungerer nu som Composition Root - vi bør lave et separat menu vindue så MainWindow fra nu KUN er Composition Root - intet UI
+        //Vi har valgt MainWindow som composition root da det er vinduet der starter som det første i programmet
+        public MainWindow() //MainWindow fungerer nu som Composition Root 
         {
             InitializeComponent();
 
@@ -46,17 +53,21 @@ namespace AndetSemesterOPG
             this.Hide();
 
             //Opret forbindelse til database og repositories
-            IDBConnection connection = new DBConnection();
-            IAttendeeRepository attendeeRepository = new AttendeeRepository(connection);
-            IArtistRepository artistRepository = new ArtistRepository(connection);
-            ICampRepository campRepository = new CampRepository(connection);
+            
+             connection = new DBConnection();
+             attendeeRepository = new AttendeeRepository(connection);
+             artistRepository = new ArtistRepository(connection);
+             campRepository = new CampRepository(connection);
 
             //Opret services, windows og andre klasser der skal bruges i applikationen
             campObserver = new CampObserver();
+            attendeeTestData = new AttendeeTestData();
+            ticketClient = new TicketClient();
+            timer = new DispatcherTimer();
 
             attendeeService = new AttendeeService(attendeeRepository, new AttendeeTestData(), new TicketClient());
             campService = new CampService(campRepository);
-            attendeeCreator = new AttendeeCreator(new DispatcherTimer(), attendeeService, campService);
+            attendeeCreator = new AttendeeCreator(timer, attendeeService, campService);
             artistService = new ArtistService(artistRepository);
             sort = new Sort();
             lineUp = new LineUp(artistService);

@@ -6,7 +6,7 @@ using System.Text;
 namespace AndetSemesterOPG.Applications
 {
     //Klasse der repræsentere en ticket client, og indeholder metoder til at definere billetter til de forskellige camps
-    internal class TicketClient
+    internal class TicketClient : ITicketClient
     {
         //Denne variabel er til for at kunne stoppe produktionen af en bestemt type billet senere
         bool makeTicket;

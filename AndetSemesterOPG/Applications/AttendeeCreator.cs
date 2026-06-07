@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AndetSemesterOPG.Domain;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Threading;
@@ -11,13 +12,13 @@ namespace AndetSemesterOPG.Applications
         //Variabler der giver betydning til klassen, herunder total kapacitet for alle camps, nuværende antal deltagere, og services til at håndtere camp og deltager data
         private int totalCampCapacity;
         private int currentAttendeeCount;
-        CampService campService;
+        ICampService campService;
         DispatcherTimer timer;
-        AttendeeService attendeeService;
+        IAttendeeService attendeeService;
         static Semaphore CreateAttendeeSemaphore = new Semaphore(10, 10); // Starter med 10 tilladelser, og maks er også 10
 
         //Konstruktor der tager en DispatcherTimer, AttendeeService og CampService som parameter, og sætter timeren til at kalde AutoCreateAttendee metoden hvert 5. sekund
-        public AttendeeCreator(DispatcherTimer timer, AttendeeService attendeeService, CampService campService)
+        public AttendeeCreator(DispatcherTimer timer, IAttendeeService attendeeService, ICampService campService)
         {
 
             this.timer = timer;
