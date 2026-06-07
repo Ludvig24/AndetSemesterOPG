@@ -25,7 +25,7 @@ namespace AndetSemesterOPG
         IAttendeeService attendeeService;
         ICampService campService;
         IArtistService artistService;
-        AttendeeCreator attendeeCreator;
+        IAttendeeCreator attendeeCreator;
         AttendeeTestData attendeeTestData;
         ITicketClient ticketClient;
         FestivalWindow festivalWindow;
