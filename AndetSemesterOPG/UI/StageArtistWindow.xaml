@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AndetSemesterOPG.UI"
         mc:Ignorable="d"
-        Title="StageArtistWindow" Height="500" Width="1000">
+        Title="StageArtistWindow" Height="550" Width="1000">
 
     <Grid>
 
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="240" Margin="544,230,0,0" VerticalAlignment="Top" Width="440">
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="240" Margin="556,258,0,0" VerticalAlignment="Top" Width="440">
             <Grid x:Name="Schedule_Arena"  HorizontalAlignment="Left" Height="240"  VerticalAlignment="Top" Width="440" ShowGridLines="True">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -26,7 +26,7 @@
                 </Grid.RowDefinitions>
             </Grid>
         </Border>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="240" Margin="50,230,0,0" VerticalAlignment="Top" Width="440">
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="240" Margin="62,258,0,0" VerticalAlignment="Top" Width="440">
             <Grid x:Name="Schedule_Orange" HorizontalAlignment="Left" Height="240" VerticalAlignment="Top" Width="440" ShowGridLines="True">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -44,51 +44,53 @@
             </Grid>
         </Border>
         <Button x:Name="BackButtoninStage" Content="Tilbage" HorizontalAlignment="Left" Height="36" Width="63" VerticalAlignment="Top" Click="BackButtoninStage_Click"/>
-        <Button x:Name="AddArtistButton" Content="Tilføj Kunstner" HorizontalAlignment="Left" Margin="576,22,0,0" VerticalAlignment="Top" Width="108" Height="20" Click="AddArtistButton_Click"/>
-        <ComboBox x:Name="ArtistTimeCombobox" HorizontalAlignment="Left" Margin="456,22,0,0" VerticalAlignment="Top" Width="108" Height="20" >
+        <Button x:Name="AddArtistButton" Content="Tilføj Kunstner" HorizontalAlignment="Left" Margin="576,22,0,0" VerticalAlignment="Top" Width="108" Height="25" Click="AddArtistButton_Click"/>
+        <ComboBox x:Name="ArtistTimeCombobox" HorizontalAlignment="Left" Margin="456,22,0,0" VerticalAlignment="Top" Width="108" Height="25" >
             <ComboBoxItem Content="16:00"></ComboBoxItem>
             <ComboBoxItem Content="18:00"></ComboBoxItem>
             <ComboBoxItem Content="20:00"></ComboBoxItem>
             <ComboBoxItem Content="22:00"></ComboBoxItem>
         </ComboBox>
-        <ComboBox x:Name="ArtistDateCombobox" HorizontalAlignment="Left" Margin="337,22,0,0" VerticalAlignment="Top" Width="108" Height="20" >
+        <ComboBox x:Name="ArtistDateCombobox" HorizontalAlignment="Left" Margin="337,22,0,0" VerticalAlignment="Top" Width="108" Height="25" >
             <ComboBoxItem Content="Onsdag"></ComboBoxItem>
             <ComboBoxItem Content="Torsdag"></ComboBoxItem>
             <ComboBoxItem Content="Fredag"></ComboBoxItem>
             <ComboBoxItem Content="Lørdag"></ComboBoxItem>
             <ComboBoxItem Content="Søndag"></ComboBoxItem>
         </ComboBox>
-        <TextBox x:Name="ArtistNameTextBox" HorizontalAlignment="Left" Margin="89,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="StageNameComboBox" HorizontalAlignment="Left" Margin="219,22,0,0" VerticalAlignment="Top" Width="108" Height="20" RenderTransformOrigin="0.833,0.539">
+        <TextBox x:Name="ArtistNameTextBox" HorizontalAlignment="Left" Margin="89,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="25"/>
+        <ComboBox x:Name="StageNameComboBox" HorizontalAlignment="Left" Margin="219,22,0,0" VerticalAlignment="Top" Width="108" Height="25" RenderTransformOrigin="0.833,0.539">
             <ComboBoxItem Content="Orange Scene" ></ComboBoxItem>
             <ComboBoxItem Content="Arena Scene" ></ComboBoxItem>
         </ComboBox>
-        <ListBox x:Name="ArtistListBox" DisplayMemberPath="ArtistName"  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,77,807,280" SelectionChanged="ArtistListBox_SelectionChanged"/>
-        <Button  x:Name="RemoveArtistButton" Content="Fjern Kunstner" HorizontalAlignment="Left" Margin="213,179,0,0" VerticalAlignment="Top" Width="108" Height="20" Click="RemoveArtistButton_Click"/>
-        <Button x:Name="UpdateArtistButton" Content="Opdater Kunstner" HorizontalAlignment="Left" Margin="696,22,0,0" VerticalAlignment="Top" Click="UpdateArtistButton_Click" Width="108" Height="20"/>
-        <Label x:Name="WednesDayLabel_OrangeScene" Content="Onsdag"  HorizontalAlignment="Left" Margin="71,204,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="WednesDayLabel_Arena" Content="Onsdag"  HorizontalAlignment="Left" Margin="564,204,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="ThursdayLabel_OrangeScene" Content="Torsdag"  HorizontalAlignment="Left" Margin="157,204,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="FridayLabel_OrangeScene" Content="Fredag"  HorizontalAlignment="Left" Margin="244,204,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="SaturdayLabel_OrangeScene" Content="Lørdag"  HorizontalAlignment="Left" Margin="330,204,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="SundayLabel_OrangeScene" Content="Søndag"  HorizontalAlignment="Left" Margin="423,204,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="ThursdayLabel_Arena" Content="Torsdag"  HorizontalAlignment="Left" Margin="651,204,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="FridayLabel_Arena" Content="Fredag"  HorizontalAlignment="Left" Margin="738,204,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="SaturdayLabel_Arena" Content="Lørdag"  HorizontalAlignment="Left" Margin="826,204,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="SundayLabel_Arena" Content="Søndag"  HorizontalAlignment="Left" Margin="916,204,0,0" VerticalAlignment="Top"/>
-        <Label Content="kl 16:00" HorizontalAlignment="Left" Margin="0,252,0,0" VerticalAlignment="Top"/>
-        <Label Content="kl 18:00" HorizontalAlignment="Left" Margin="-1,309,0,0" VerticalAlignment="Top"/>
-        <Label Content="kl 20:00" HorizontalAlignment="Left" Margin="-1,369,0,0" VerticalAlignment="Top"/>
-        <Label Content="kl 22:00" HorizontalAlignment="Left" Margin="0,430,0,0" VerticalAlignment="Top"/>
-        <Label Content="kl 16:00" HorizontalAlignment="Left" Margin="490,252,0,0" VerticalAlignment="Top"/>
-        <Label Content="kl 18:00" HorizontalAlignment="Left" Margin="490,309,0,0" VerticalAlignment="Top"/>
-        <Label Content="kl 20:00" HorizontalAlignment="Left" Margin="490,369,0,0" VerticalAlignment="Top"/>
-        <Label Content="kl 22:00" HorizontalAlignment="Left" Margin="488,430,0,0" VerticalAlignment="Top"/>
+        <ListBox x:Name="ArtistListBox" DisplayMemberPath="ArtistName"  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,77,807,344" SelectionChanged="ArtistListBox_SelectionChanged"/>
+        <Button  x:Name="RemoveArtistButton" Content="Fjern Kunstner" HorizontalAlignment="Left" Margin="219,158,0,0" VerticalAlignment="Top" Width="108" Height="25" Click="RemoveArtistButton_Click"/>
+        <Button x:Name="UpdateArtistButton" Content="Opdater Kunstner" HorizontalAlignment="Left" Margin="696,22,0,0" VerticalAlignment="Top" Click="UpdateArtistButton_Click" Width="108" Height="25"/>
+        <Label x:Name="WednesDayLabel_OrangeScene" Content="Onsdag"  HorizontalAlignment="Left" Margin="83,232,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="WednesDayLabel_Arena" Content="Onsdag"  HorizontalAlignment="Left" Margin="576,232,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="ThursdayLabel_OrangeScene" Content="Torsdag"  HorizontalAlignment="Left" Margin="169,232,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="FridayLabel_OrangeScene" Content="Fredag"  HorizontalAlignment="Left" Margin="256,232,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="SaturdayLabel_OrangeScene" Content="Lørdag"  HorizontalAlignment="Left" Margin="342,232,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="SundayLabel_OrangeScene" Content="Søndag"  HorizontalAlignment="Left" Margin="435,232,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="ThursdayLabel_Arena" Content="Torsdag"  HorizontalAlignment="Left" Margin="663,232,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="FridayLabel_Arena" Content="Fredag"  HorizontalAlignment="Left" Margin="750,232,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="SaturdayLabel_Arena" Content="Lørdag"  HorizontalAlignment="Left" Margin="838,232,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="SundayLabel_Arena" Content="Søndag"  HorizontalAlignment="Left" Margin="928,232,0,0" VerticalAlignment="Top"/>
+        <Label Content="kl 16:00" HorizontalAlignment="Left" Margin="12,280,0,0" VerticalAlignment="Top"/>
+        <Label Content="kl 18:00" HorizontalAlignment="Left" Margin="11,337,0,0" VerticalAlignment="Top"/>
+        <Label Content="kl 20:00" HorizontalAlignment="Left" Margin="11,397,0,0" VerticalAlignment="Top"/>
+        <Label Content="kl 22:00" HorizontalAlignment="Left" Margin="12,458,0,0" VerticalAlignment="Top"/>
+        <Label Content="kl 16:00" HorizontalAlignment="Left" Margin="502,280,0,0" VerticalAlignment="Top"/>
+        <Label Content="kl 18:00" HorizontalAlignment="Left" Margin="502,337,0,0" VerticalAlignment="Top"/>
+        <Label Content="kl 20:00" HorizontalAlignment="Left" Margin="502,397,0,0" VerticalAlignment="Top"/>
+        <Label Content="kl 22:00" HorizontalAlignment="Left" Margin="500,458,0,0" VerticalAlignment="Top"/>
         <Label Content="Kunstners Navn" HorizontalAlignment="Left" Margin="89,1,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.485,-1.327"/>
         <Label Content="Scene" HorizontalAlignment="Left" Margin="219,-1,0,0" VerticalAlignment="Top"/>
         <Label Content="Dag" HorizontalAlignment="Left" Margin="338,-1,0,0" VerticalAlignment="Top"/>
         <Label Content="Tidspunkt" HorizontalAlignment="Left" Margin="456,1,0,0" VerticalAlignment="Top"/>
         <Label Content="Liste af kunstnere" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top"/>
+        <Label Content="Skema for Orange Scene" HorizontalAlignment="Left" Margin="208,201,0,0" VerticalAlignment="Top" Height="31" Width="148"/>
+        <Label Content="Skema for scenen Arena" HorizontalAlignment="Left" Margin="704,201,0,0" VerticalAlignment="Top" Width="144"/>
 
 
 
