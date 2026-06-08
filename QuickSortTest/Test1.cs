@@ -16,13 +16,29 @@ namespace QuickSortTest
             Attendee a1 = new Attendee("Adam", "Oehlenschläger", "Camp A", 1);
             Attendee a2 = new Attendee("Birthe", "Kjær", "Camp B", 2);
             Attendee a3 = new Attendee("Cecil", "Bødker", "Camp A", 2);
-            Attendee a4 = new Attendee("Egon", "Olsen", "Camp A", 1);
-            Attendee a5 = new Attendee("Holger", "Danske", "Camp B", 1);
+            Attendee a4 = new Attendee("Dennis", "Nielsen", "Camp B", 1);
+            Attendee a5 = new Attendee("Egon", "Olsen", "Camp A", 1);
+            Attendee a6 = new Attendee("Freja", "Jensen", "Camp B", 2);
+            Attendee a7 = new Attendee("Gustav", "Andersen", "Camp A", 1);
+            Attendee a8 = new Attendee("Helene", "Madsen", "Camp B", 2);
+            Attendee a9 = new Attendee("Ida", "Pedersen", "Camp A", 1);
+            Attendee a10 = new Attendee("Jonas", "Larsen", "Camp B", 2);
+
+            Attendee a11 = new Attendee("Karen", "Christensen", "Camp A", 1);
+            Attendee a12 = new Attendee("Lars", "Hansen", "Camp B", 2);
+            Attendee a13 = new Attendee("Mette", "Rasmussen", "Camp A", 1);
+            Attendee a14 = new Attendee("Niels", "Sørensen", "Camp B", 2);
+            Attendee a15 = new Attendee("Oliver", "Thomsen", "Camp A", 1);
+            Attendee a16 = new Attendee("Pernille", "Winther", "Camp B", 2);
+            Attendee a17 = new Attendee("Rasmus", "Berg", "Camp A", 1);
+            Attendee a18 = new Attendee("Signe", "Dahl", "Camp B", 2);
+            Attendee a19 = new Attendee("Thomas", "Frandsen", "Camp A", 1);
+            Attendee a20 = new Attendee("Ulrik", "Vestergaard", "Camp B", 2);
 
 
-            List<Attendee> expected = new List<Attendee> { a1, a2, a3, a4, a5 };
+            List<Attendee> expected = new List<Attendee> { a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20 };
 
-            List<Attendee> random = new List<Attendee> { a3, a5, a1, a2, a4 };
+            List<Attendee> random = new List<Attendee> { a18, a4, a13, a11, a1, a6, a10, a2, a20, a3, a12, a17, a8, a5, a15, a7, a19, a14, a9, a16 };
 
             List<Attendee> actual = new List<Attendee>();
 
@@ -46,13 +62,29 @@ namespace QuickSortTest
             Attendee a1 = new Attendee("Adam", "Oehlenschläger", "Camp A", 1);
             Attendee a2 = new Attendee("Birthe", "Kjær", "Camp B", 2);
             Attendee a3 = new Attendee("Cecil", "Bødker", "Camp A", 2);
-            Attendee a4 = new Attendee("Egon", "Olsen", "Camp A", 1);
-            Attendee a5 = new Attendee("Holger", "Danske", "Camp B", 1);
+            Attendee a4 = new Attendee("Dennis", "Nielsen", "Camp B", 1);
+            Attendee a5 = new Attendee("Egon", "Olsen", "Camp A", 1);
+            Attendee a6 = new Attendee("Freja", "Jensen", "Camp B", 2);
+            Attendee a7 = new Attendee("Gustav", "Andersen", "Camp A", 1);
+            Attendee a8 = new Attendee("Helene", "Madsen", "Camp B", 2);
+            Attendee a9 = new Attendee("Ida", "Pedersen", "Camp A", 1);
+            Attendee a10 = new Attendee("Jonas", "Larsen", "Camp B", 2);
+
+            Attendee a11 = new Attendee("Karen", "Christensen", "Camp A", 1);
+            Attendee a12 = new Attendee("Lars", "Hansen", "Camp B", 2);
+            Attendee a13 = new Attendee("Mette", "Rasmussen", "Camp A", 1);
+            Attendee a14 = new Attendee("Niels", "Sørensen", "Camp B", 2);
+            Attendee a15 = new Attendee("Oliver", "Thomsen", "Camp A", 1);
+            Attendee a16 = new Attendee("Pernille", "Winther", "Camp B", 2);
+            Attendee a17 = new Attendee("Rasmus", "Berg", "Camp A", 1);
+            Attendee a18 = new Attendee("Signe", "Dahl", "Camp B", 2);
+            Attendee a19 = new Attendee("Thomas", "Frandsen", "Camp A", 1);
+            Attendee a20 = new Attendee("Ulrik", "Vestergaard", "Camp B", 2);
 
 
-            List<Attendee> expected = new List<Attendee> { a1, a2, a3, a4, a5 };
+            List<Attendee> expected = new List<Attendee> { a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20 };
 
-            List<Attendee> sorted = new List<Attendee> { a1, a2, a3, a4, a5 };
+            List<Attendee> sorted = new List<Attendee> { a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20 };
 
             List<Attendee> actual = new List<Attendee>();
 
