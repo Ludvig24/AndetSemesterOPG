@@ -182,7 +182,7 @@ namespace AndetSemesterOPG.UI
             campService.SubscribeCampObserver(campObserver);
             SubscribeToCamps.IsEnabled = false;
             UnsubscribeFromCamps.IsEnabled = true;
-            SubscribtionstatusLabel.Content = "Du er Subscribed";
+            SubscribtionstatusLabel.Content = "Du er nu tilmeldt notifikationer om camp status";
             MessageBox.Show("Du er nu subscribed til at få beskeder om de forskellige camps");
 
         }
@@ -193,7 +193,7 @@ namespace AndetSemesterOPG.UI
             campService.UnsubscribeCampObserver(campObserver);
             SubscribeToCamps.IsEnabled = true;
             UnsubscribeFromCamps.IsEnabled = false;
-            SubscribtionstatusLabel.Content = "Du er Unsubscribed";
+            SubscribtionstatusLabel.Content = "Du er nu afmeldt notifikationer om camp status";
             MessageBox.Show("Du er nu unsubscribed, og vil ikke længere få beskeder om de forskellige camps");
         }
 

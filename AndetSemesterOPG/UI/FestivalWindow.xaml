@@ -7,32 +7,36 @@
         mc:Ignorable="d"
         Title="FestivalWindow" Height="450" Width="800">
     <Grid>
-        <Label x:Name="IndgangØstLabel"  Content="Indgang Øst" HorizontalAlignment="Left" Margin="631,308,0,0" VerticalAlignment="Top" Height="26" Width="91"/>
-        <Label x:Name="IndgangVestLabel" Content="Indgang Vest" HorizontalAlignment="Left" Margin="162,303,0,0" VerticalAlignment="Top" Width="94" RenderTransformOrigin="0.495,0.56"/>
-        <Label x:Name="TotalAttendeeWest" Content="Her skal der stå antal Attendees" HorizontalAlignment="Left" Margin="193,325,0,0" VerticalAlignment="Top" Height="27" Width="81"/>
-        <Label x:Name="TotalAttendeeEast" Content="Her skal der stå antal Attendee" HorizontalAlignment="Left" Margin="662,326,0,0" VerticalAlignment="Top" Height="41" Width="194"/>
-        <Label Content="Antal festivaldeltagere" HorizontalAlignment="Left" Margin="10,326,0,0" VerticalAlignment="Top"/>
-        <Label Content="Antal festivaldeltagere" HorizontalAlignment="Left" Margin="494,326,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="IndgangØstLabel"  Content="Indgang Øst" HorizontalAlignment="Left" Margin="620,326,0,0" VerticalAlignment="Top" Height="26" Width="91"/>
+        <Label x:Name="IndgangVestLabel" Content="Indgang Vest" HorizontalAlignment="Left" Margin="620,220,0,0" VerticalAlignment="Top" Width="91" RenderTransformOrigin="0.495,0.56"/>
+        <Label x:Name="TotalAttendeeWest" Content="Her skal der stå antal Attendees" HorizontalAlignment="Left" Margin="692,242,0,0" VerticalAlignment="Top" Height="27" Width="79"/>
+        <Label x:Name="TotalAttendeeEast" Content="Her skal der stå antal Attendee" HorizontalAlignment="Left" Margin="692,344,0,0" VerticalAlignment="Top" Height="41" Width="128"/>
+        <Label Content="Antal festivaldeltagere" HorizontalAlignment="Left" Margin="494,243,0,0" VerticalAlignment="Top"/>
+        <Label Content="Antal festivaldeltagere" HorizontalAlignment="Left" Margin="494,348,0,0" VerticalAlignment="Top"/>
         <Button Content="Tilbage" HorizontalAlignment="Left" VerticalAlignment="Top" Height="36" Width="63" x:Name="backButtonFestivalWindow" Click="backButtonFestivalWindow_Click"/>
-        <Label Content="Camp A" HorizontalAlignment="Left" Margin="145,65,0,0" VerticalAlignment="Top"/>
-        <Label Content="Camp B" HorizontalAlignment="Left" Margin="625,65,0,0" VerticalAlignment="Top"/>
-        <Label Content="Antal festivaldeltagere" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top"/>
-        <Label Content="Antal festivaldeltagere" HorizontalAlignment="Left" Margin="494,93,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="TotalAttendeeCampA" Content="Antal" HorizontalAlignment="Left" Margin="152,93,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="TotalAttendeeCampB" Content="Antal" HorizontalAlignment="Left" Margin="632,93,0,0" VerticalAlignment="Top"/>
-        <Label Content="/" HorizontalAlignment="Left" Margin="196,93,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="CampACapacity" Content="Capacity" HorizontalAlignment="Left" Margin="221,93,0,0" VerticalAlignment="Top"/>
-        <Label Content="/" HorizontalAlignment="Left" Margin="670,93,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="CampBCapacity" Content="Capacity" HorizontalAlignment="Left" Margin="685,93,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="LockCampAButton" Content="Lås Camp A" HorizontalAlignment="Left" Height="35" Margin="10,134,0,0" VerticalAlignment="Top" Width="125" Click="LockCampAButton_Click"/>
-        <Button x:Name="OpenCampAButton" Content="Åben Camp A" HorizontalAlignment="Left" Margin="145,134,0,0" VerticalAlignment="Top" Height="35" Width="125" Click="OpenCampAButton_Click"/>
-        <Button x:Name="LockCampBButton" Content="Lås Camp B" HorizontalAlignment="Left" Height="35" Margin="526,129,0,0" VerticalAlignment="Top" Width="125" Click="LockCampBButton_Click"/>
-        <Button x:Name="OpenCampBButton" Content="Åben Camp B" HorizontalAlignment="Left" Margin="662,129,0,0" VerticalAlignment="Top" Height="35" Width="125" Click="OpenCampBButton_Click"/>
-        <Button x:Name="SubscribeToCamps" Content="Tilmeld notifikation" HorizontalAlignment="Center" VerticalAlignment="Center" Height="37" Width="106" Click="SubscribeToCamps_Click"/>
-        <Button x:Name="UnsubscribeFromCamps" Content="Afmeld notifikation" HorizontalAlignment="Center" VerticalAlignment="Top" Height="37" Width="106" Margin="0,241,0,0" Click="UnsubscribeFromCamps_Click"/>
+        <Label Content="Camp A" HorizontalAlignment="Left" Margin="150,88,0,0" VerticalAlignment="Top"/>
+        <Label Content="Camp B" HorizontalAlignment="Left" Margin="150,248,0,0" VerticalAlignment="Top"/>
+        <Label Content="Antal festivaldeltagere" HorizontalAlignment="Left" Margin="25,116,0,0" VerticalAlignment="Top"/>
+        <Label Content="Antal festivaldeltagere" HorizontalAlignment="Left" Margin="25,276,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="TotalAttendeeCampA" Content="Antal" HorizontalAlignment="Left" Margin="170,116,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="TotalAttendeeCampB" Content="Antal" HorizontalAlignment="Left" Margin="160,276,0,0" VerticalAlignment="Top"/>
+        <Label Content="/" HorizontalAlignment="Left" Margin="210,116,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="CampACapacity" Content="Capacity" HorizontalAlignment="Left" Margin="240,116,0,0" VerticalAlignment="Top"/>
+        <Label Content="/" HorizontalAlignment="Left" Margin="210,276,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="CampBCapacity" Content="Capacity" HorizontalAlignment="Left" Margin="240,276,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="LockCampAButton" Content="Lås Camp A" HorizontalAlignment="Left" Height="35" Margin="45,158,0,0" VerticalAlignment="Top" Width="125" Click="LockCampAButton_Click"/>
+        <Button x:Name="OpenCampAButton" Content="Åben Camp A" HorizontalAlignment="Left" Margin="193,158,0,0" VerticalAlignment="Top" Height="35" Width="125" Click="OpenCampAButton_Click"/>
+        <Button x:Name="LockCampBButton" Content="Lås Camp B" HorizontalAlignment="Left" Height="35" Margin="45,312,0,0" VerticalAlignment="Top" Width="125" Click="LockCampBButton_Click"/>
+        <Button x:Name="OpenCampBButton" Content="Åben Camp B" HorizontalAlignment="Left" Margin="193,312,0,0" VerticalAlignment="Top" Height="35" Width="125" Click="OpenCampBButton_Click"/>
+        <Button x:Name="SubscribeToCamps" Content="Tilmeld notifikation" HorizontalAlignment="Left" VerticalAlignment="Top" Height="37" Width="106" Click="SubscribeToCamps_Click" Margin="400,8,0,0"/>
+        <Button x:Name="UnsubscribeFromCamps" Content="Afmeld notifikation" HorizontalAlignment="Left" VerticalAlignment="Top" Height="37" Width="106" Margin="289,8,0,0" Click="UnsubscribeFromCamps_Click"/>
         <Button x:Name="AttendeeSimulationButton" Content="Attendee Simulation" HorizontalAlignment="Left" Margin="685,-2,0,0" VerticalAlignment="Top" Height="43" Width="114" Click="AttendeeSimulationButton_Click"/>
-        <Label x:Name="SubscribtionstatusLabel" Content="Du er Subscribed" HorizontalAlignment="Center" Margin="0,158,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="CampA_StatusLabel" Content="Camp A er åben" HorizontalAlignment="Left" Margin="94,181,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="CampB_StatusLabel" Content="Camp B er åben" HorizontalAlignment="Left" Margin="611,181,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="SubscribtionstatusLabel" Content="Du er nu tilmeldt notifikationer om camp status" HorizontalAlignment="Center" Margin="0,55,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="CampA_StatusLabel" Content="Camp A er åben" HorizontalAlignment="Left" Margin="120,0,0,0" VerticalAlignment="Center"/>
+        <Label x:Name="CampB_StatusLabel" Content="Camp B er åben" HorizontalAlignment="Left" Margin="120,364,0,0" VerticalAlignment="Top"/>
+        <Rectangle HorizontalAlignment="Left" Height="150" Margin="25,88,0,0" Stroke="Black" VerticalAlignment="Top" Width="317"/>
+        <Rectangle HorizontalAlignment="Left" Height="150" Margin="25,253,0,0" Stroke="Black" VerticalAlignment="Top" Width="317"/>
+        <Rectangle HorizontalAlignment="Left" Height="75" Margin="494,218,0,0" Stroke="Black" VerticalAlignment="Top" Width="284"/>
+        <Rectangle HorizontalAlignment="Left" Height="75" Margin="494,327,0,0" Stroke="Black" VerticalAlignment="Top" Width="284"/>
     </Grid>
 </Window>
