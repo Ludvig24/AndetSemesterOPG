@@ -52,13 +52,7 @@ namespace AndetSemesterOPG.UI
             lineUp.AddArtistToLineUp(stages);
             ArtistListBox.ItemsSource = artists;
 
-            /*
-            artistService.RetrieveAllArtists().ForEach(artist =>
-            {
-                LineUp lineUp = new LineUp();
-                lineUp.AddArtistToLineUp(artist, Schedule_Orange);
-            });
-            */
+           
         }
 
         //Vi kan nu med en knap også tilføje artists til schedule, men måske er det lidt for møj for en ui klasse. Vi kan heller ikke endnu styre hvilken scene de ender på.
@@ -94,11 +88,9 @@ namespace AndetSemesterOPG.UI
                 MessageBox.Show("Angiv et tidspunkt kunstneren skal spille");
                 return;
             }
-            //Bør nok være en metode et eller andet sted (ArtistService?) der kaldes i stedet for at det bliver lavet herinde
-
+            
             artistService.CreateArtist(artist);
-            
-            
+       
             Refresh();
             
         }
@@ -186,7 +178,6 @@ namespace AndetSemesterOPG.UI
         {
             
             Artist artist = ArtistListBox.SelectedItem as Artist;
-            //måske dårligt solid
             if(artist == null) 
             {
                 return;

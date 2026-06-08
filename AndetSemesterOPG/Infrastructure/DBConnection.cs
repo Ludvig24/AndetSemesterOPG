@@ -114,6 +114,7 @@ namespace AndetSemesterOPG.Infrastructure
                 dataBase.Open();
                 //Opretter et command objekt der indeholder den SQL query vi gerne vil sende til databasen
                 //Querien fjerner alle Attendees med id større end 104
+                //Vi fjerner fra id 105 og opefter, da de den første attendee starter med id 4 og så tæller den op ad. Det gør at når vi kalder metoden så har vi 100 attendees
                 SqlCommand command = new SqlCommand("DELETE FROM Attendee WHERE AttendeeId > 104", dataBase);
                 //Kører commanden
                 command.ExecuteNonQuery();
@@ -121,10 +122,6 @@ namespace AndetSemesterOPG.Infrastructure
         }
 
         //READ
-        public void FindByID(int id)
-        {
-
-        }
 
         //FindByEntranceId metode, som finder alle Attendees med et bestemt EntranceId i databbasen
         public List<Attendee> FindByEntranceId(int id)
@@ -153,7 +150,7 @@ namespace AndetSemesterOPG.Infrastructure
                         
                         //Attendee objekt oprettes
                         Attendee attendee = new Attendee(FirstName, LastName, CampName, EntranceId);
-                        attendee.AttendeeID = attendeeId; //måske fix ift constructor
+                        attendee.AttendeeID = attendeeId;
     
                         //Attendee objekt tilføjes til listen
                         attendeesByEntranceId.Add(attendee);
@@ -224,7 +221,7 @@ namespace AndetSemesterOPG.Infrastructure
 
                     //Attendee objekt oprettes
                     Attendee attendee = new Attendee(FirstName, LastName, CampName, EntranceId);
-                    attendee.AttendeeID = attendeeId; //måske fix ift constructor
+                    attendee.AttendeeID = attendeeId;
 
                     //Attendee objekt tilføjes til listen
                     allAttendeesList.Add(attendee);

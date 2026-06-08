@@ -20,8 +20,6 @@ namespace AndetSemesterOPG.Domain
         //Metode der nulstiller antallet af attendees i databasen til 104 for overskuelighed og lettere testning
         void ResetAttendeeAmount();
 
-        void FindByID(int id);//tom metode
-
         //Metode der henter alle camps fra databasen og returnerer dem som en liste
         List<Camp> ReadAllCamps();
 

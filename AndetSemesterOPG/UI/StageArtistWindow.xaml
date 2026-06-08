@@ -63,8 +63,8 @@
             <ComboBoxItem Content="Orange Scene" ></ComboBoxItem>
             <ComboBoxItem Content="Arena Scene" ></ComboBoxItem>
         </ComboBox>
-        <ListBox x:Name="ArtistListBox" DisplayMemberPath="ArtistName"  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,46,807,280" SelectionChanged="ArtistListBox_SelectionChanged"/>
-        <Button  x:Name="RemoveArtistButton" Content="Fjern Kunstner" HorizontalAlignment="Left" Margin="819,22,0,0" VerticalAlignment="Top" Width="108" Height="20" Click="RemoveArtistButton_Click"/>
+        <ListBox x:Name="ArtistListBox" DisplayMemberPath="ArtistName"  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,77,807,280" SelectionChanged="ArtistListBox_SelectionChanged"/>
+        <Button  x:Name="RemoveArtistButton" Content="Fjern Kunstner" HorizontalAlignment="Left" Margin="213,179,0,0" VerticalAlignment="Top" Width="108" Height="20" Click="RemoveArtistButton_Click"/>
         <Button x:Name="UpdateArtistButton" Content="Opdater Kunstner" HorizontalAlignment="Left" Margin="696,22,0,0" VerticalAlignment="Top" Click="UpdateArtistButton_Click" Width="108" Height="20"/>
         <Label x:Name="WednesDayLabel_OrangeScene" Content="Onsdag"  HorizontalAlignment="Left" Margin="71,204,0,0" VerticalAlignment="Top"/>
         <Label x:Name="WednesDayLabel_Arena" Content="Onsdag"  HorizontalAlignment="Left" Margin="564,204,0,0" VerticalAlignment="Top"/>
@@ -88,6 +88,7 @@
         <Label Content="Scene" HorizontalAlignment="Left" Margin="219,-1,0,0" VerticalAlignment="Top"/>
         <Label Content="Dag" HorizontalAlignment="Left" Margin="338,-1,0,0" VerticalAlignment="Top"/>
         <Label Content="Tidspunkt" HorizontalAlignment="Left" Margin="456,1,0,0" VerticalAlignment="Top"/>
+        <Label Content="Liste af kunstnere" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top"/>
 
 
 

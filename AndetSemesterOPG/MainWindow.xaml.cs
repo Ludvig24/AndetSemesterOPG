@@ -74,15 +74,10 @@ namespace AndetSemesterOPG
             
 
             //Flyt til en CampCreator? - klasse der henter oplysninger om camps fra db og laver x antal camps som svarer til antal i db måske? Så opret CampCreator i CompositionRoot og start den der.
-            campA = new Camp();
-            campA.CampId = 1;
-            campA.CampName = "Camp A";
-            campA.CampCapacity = campService.RetrieveCampCapacity(campA.CampName);
-
-            campB = new Camp();
-            campB.CampId = 2;
-            campB.CampName = "Camp B";
-            campB.CampCapacity = campService.RetrieveCampCapacity(campB.CampName);
+            campA = new Camp(1, campService.RetrieveCampCapacity("Camp A"), "Camp A" );
+     
+            campB = new Camp(2, campService.RetrieveCampCapacity("Camp B"), "Camp B" );
+            
 
             //Opret WindowNavigator og windows, og sæt dem op i WindowNavigator
             windowNavigator = new WindowNavigator();

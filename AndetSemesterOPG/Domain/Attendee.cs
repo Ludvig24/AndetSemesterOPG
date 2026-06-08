@@ -13,14 +13,11 @@ namespace AndetSemesterOPG.Domain
         public string AttendeeFirstName { get; set; }
         public string AttendeeLastName { get; set; }
 
-        //public ITicket TicketType { get; set; }
-
         public string CampName { get; set; }
         public int EntranceId { get; set; }
 
 
-        //måske ekstra constructor der også tager attendeeID så når vi trækker dataet op bliver Attendee oprettet med deres id fra DB
-
+       
         //Konstruktor der tager imod deltagerens fornavn, efternavn, campnavn og entranceId som parametre, og initialisere deltageren med disse værdier
         public Attendee(string AttendeeFirstName, string AttendeeLastName, string CampName, int EntranceId)
         {

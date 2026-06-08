@@ -23,11 +23,9 @@ namespace AndetSemesterOPG.Applications
                     break;
                 case CampCapacityStatus.CapacityStatus.NinetyPercent:
                     MessageBox.Show($"{campName} er nu over 90% fyldt. Campen er låst og kan blive åbnet på festival vinduet");
-                    //lås camp
                     break;
                 case CampCapacityStatus.CapacityStatus.OneHundredPercent:
                     MessageBox.Show($"{campName} er nu 100% fyldt. Campen er nu nået maks kapacitet.");
-                    //lås camp
                     break;
             }
         }
