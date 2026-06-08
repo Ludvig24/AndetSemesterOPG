@@ -1,7 +1,10 @@
 ﻿using AndetSemesterOPG.Domain;
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
+using System.Windows;
+
 
 namespace AndetSemesterOPG.Applications
 {
@@ -55,6 +58,13 @@ namespace AndetSemesterOPG.Applications
         //Quick sort
         public List<Attendee> SortByFirstName(List<Attendee> attendees, int left, int right)
         {
+
+            if (attendees.Count <= 1 || attendees == null)
+            {
+                MessageBox.Show("Der er ikke noget at sortere");
+                return null;
+            }
+
             int i = left;
             int j = right;
 
