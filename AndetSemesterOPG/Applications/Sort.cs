@@ -12,15 +12,23 @@ namespace AndetSemesterOPG.Applications
     internal class Sort : ISort
     {
 
+
+        public int bubbleComparisons { get; set; }
+        public int insertComparisons { get; set; }
+        public int quickComparisons { get; set; }        
         
-        public int quickComparisons { get; set; }
-       
         //Bubblesort
 
         //lav counter der tæller antal sammenligninger - kan bruges som en form for test af hvilken sorting algoritme der er bedst i vores tilfælde - dette kan vi skrive om i rapport
         public List<Attendee> SortByEntranceId(List<Attendee> attendees)
         {
-            int comparisons = 0;
+            bubbleComparisons++;
+            if (attendees.Count <= 1 || attendees == null)
+            {
+                MessageBox.Show("Der er ikke noget at sortere");
+                return null;
+            }
+
 
             bool swapped = true;
             while (swapped == true)
@@ -28,7 +36,7 @@ namespace AndetSemesterOPG.Applications
                 swapped = false;
                 for (int i = 1; i < attendees.Count; i++)
                 {
-                    comparisons++;
+                    bubbleComparisons++;
                     if (attendees[i - 1].EntranceId > attendees[i].EntranceId)
                     {
                         Attendee attendee = attendees[i - 1];
@@ -38,7 +46,7 @@ namespace AndetSemesterOPG.Applications
                     }
                 }
             }
-            MessageBox.Show(comparisons.ToString());
+            
             return attendees; 
         }
 
@@ -47,7 +55,7 @@ namespace AndetSemesterOPG.Applications
         //Insertion sort
         public List<Attendee> SortByCampName(List<Attendee> attendees)
         {
-            int comparisons = 0;
+            
 
             for(int i = 1; i < attendees.Count; i++)
             {
@@ -60,7 +68,7 @@ namespace AndetSemesterOPG.Applications
                 }
                 attendees[pointer] = attendee;
             }
-            MessageBox.Show(comparisons.ToString());
+           
             return attendees;
         }
 

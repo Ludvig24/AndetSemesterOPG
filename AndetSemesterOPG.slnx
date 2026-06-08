@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="AndetSemesterOPG/AndetSemesterOPG.csproj" />
+  <Project Path="BubbleSortTest/BubbleSortTest.csproj" Id="9712d31c-436d-4445-bab1-63a6dcfb0bae" />
   <Project Path="QuickSortTest/QuickSortTest.csproj" Id="5ca87f39-a685-48a5-8032-47188a2e7fb3" />
 </Solution>
