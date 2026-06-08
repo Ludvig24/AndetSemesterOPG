@@ -26,11 +26,6 @@ namespace AndetSemesterOPG.Domain
         }
 
 
-        public Camp() 
-        {
-        
-        }
-
         public Camp(int campId, int campCapacity, string campName)
         {
             this.CampId = campId;

@@ -42,15 +42,7 @@ namespace AndetSemesterOPG.UI
             timer.Interval = new TimeSpan(0,0,1);
             timer.Start();
             
-            /*Vi kan måske disable det der datagrid
-              og implementere vores egne sorteringsmetoder
-              der sorterer fx navne i alfabetisk rækkefølge,
-              id fra mindst til størst, camp navn alfabetisk osv.
-              så kan vi bare kalde sorterings metoderne på attendees
-              altså selve listen der bruges som ItemSource.
-              Så kan hver type sortering måske bruge hver deres 
-              sorteringsalgoritme.
-            */
+           
         }
 
         //Metode der håndterer klik på "Back" knappen, hvor vi åbner MenuWindow og skjuler AttendeeWindow
