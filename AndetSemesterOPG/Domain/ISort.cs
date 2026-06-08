@@ -8,7 +8,7 @@ namespace AndetSemesterOPG.Domain
 {
     internal interface ISort
     {
-
+        int quickComparisons { get; set; }
         List<Attendee> SortByEntranceId(List<Attendee> attendees);
 
         List<Attendee> SortByCampName(List<Attendee> attendees);

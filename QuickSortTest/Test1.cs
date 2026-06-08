@@ -1,6 +1,7 @@
 ﻿using AndetSemesterOPG;
 using AndetSemesterOPG.Applications;
 using AndetSemesterOPG.Domain;
+using System.Windows;
 namespace QuickSortTest
 {
     [TestClass]
@@ -30,6 +31,8 @@ namespace QuickSortTest
             actual = random;
 
             CollectionAssert.AreEqual(expected, actual);
+            MessageBox.Show(sort.quickComparisons.ToString(), "RandomQuickSortTest");
+            sort.quickComparisons = 0;
 
 
         }
@@ -58,6 +61,8 @@ namespace QuickSortTest
             actual = sorted;
 
             CollectionAssert.AreEqual(expected, actual);
+            MessageBox.Show(sort.quickComparisons.ToString(), "SortedQuickSortTest");
+            sort.quickComparisons = 0;
         }
 
         [TestMethod]
@@ -71,6 +76,8 @@ namespace QuickSortTest
 
 
             Assert.IsNull(sort.SortByFirstName(empty, 0, empty.Count));
+            MessageBox.Show(sort.quickComparisons.ToString(), "QuickSort0Test");
+            sort.quickComparisons = 0;
         }
 
         [TestMethod]
@@ -84,6 +91,8 @@ namespace QuickSortTest
             List<Attendee> oneItemList = new List<Attendee> { a1 };
 
             Assert.IsNull(sort.SortByFirstName(oneItemList,0,oneItemList.Count));
+            MessageBox.Show(sort.quickComparisons.ToString(), "QuickSort1Test");
+            sort.quickComparisons = 0;
             
 
         }
