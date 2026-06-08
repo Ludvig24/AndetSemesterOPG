@@ -63,8 +63,6 @@ namespace AndetSemesterOPG.UI
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Start();
 
-            
-
         }
 
         //Metode der opdaterer visuelle komponenter i vinduet
@@ -183,7 +181,7 @@ namespace AndetSemesterOPG.UI
             SubscribeToCamps.IsEnabled = false;
             UnsubscribeFromCamps.IsEnabled = true;
             SubscribtionstatusLabel.Content = "Du er nu tilmeldt notifikationer om camp status";
-            MessageBox.Show("Du er nu subscribed til at få beskeder om de forskellige camps");
+            MessageBox.Show("Du er nu tilmeldt notifikationer til at få beskeder om de forskellige camps");
 
         }
 
@@ -194,7 +192,7 @@ namespace AndetSemesterOPG.UI
             SubscribeToCamps.IsEnabled = true;
             UnsubscribeFromCamps.IsEnabled = false;
             SubscribtionstatusLabel.Content = "Du er nu afmeldt notifikationer om camp status";
-            MessageBox.Show("Du er nu unsubscribed, og vil ikke længere få beskeder om de forskellige camps");
+            MessageBox.Show("Du er nu afmeldt notifikationer, og vil ikke længere få beskeder om de forskellige camps");
         }
 
         //Metode der håndterer klik på "Attendee Simulation" knappen, hvor vi starter simuleringen af attendees ved at kalde SemaphoreStart metoden i attendeeCreator

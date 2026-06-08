@@ -23,8 +23,8 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        <Label Content="Attendees i alt:"  HorizontalAlignment="Left" Height="29" Margin="-393,154,0,0" VerticalAlignment="Top" Width="90"/>
-        <Label x:Name="totalAttendees" Content="Total label" HorizontalAlignment="Left" Margin="-303,154,0,0" VerticalAlignment="Top" Width="68"/>
+        <Label Content="Antal festivaldeltager:"  HorizontalAlignment="Left" Height="29" Margin="-382,154,0,0" VerticalAlignment="Top" Width="125"/>
+        <Label x:Name="totalAttendees" Content="Total label" HorizontalAlignment="Left" Margin="-356,181,0,0" VerticalAlignment="Top" Width="68"/>
         <Button x:Name="refreshButton"  Content="Opdater" HorizontalAlignment="Left" Margin="-345,-68,0,0" VerticalAlignment="Top" Height="26" Width="110" Click="refreshButton_Click"/>
         <Button x:Name="sortNamesButton" Content="Sorter: Fornavn" HorizontalAlignment="Left" Margin="-345,-28,0,0" VerticalAlignment="Top" Height="26" Width="110" Click="sortNamesButton_Click"/>
         <Button x:Name="sortByEntranceIdButton" Content="Sorter: Indgang" HorizontalAlignment="Left" Margin="-345,15,0,0" VerticalAlignment="Top" Height="26" Width="110" Click="sortByEntranceIdButton_Click"/>

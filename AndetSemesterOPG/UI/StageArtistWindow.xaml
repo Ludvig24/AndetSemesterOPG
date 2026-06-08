@@ -90,7 +90,7 @@
         <Label Content="Tidspunkt" HorizontalAlignment="Left" Margin="456,1,0,0" VerticalAlignment="Top"/>
         <Label Content="Liste af kunstnere" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top"/>
         <Label Content="Skema for Orange Scene" HorizontalAlignment="Left" Margin="208,201,0,0" VerticalAlignment="Top" Height="31" Width="148"/>
-        <Label Content="Skema for scenen Arena" HorizontalAlignment="Left" Margin="704,201,0,0" VerticalAlignment="Top" Width="144"/>
+        <Label Content="Skema for Arena" HorizontalAlignment="Left" Margin="704,201,0,0" VerticalAlignment="Top" Width="144"/>
 
 
 
