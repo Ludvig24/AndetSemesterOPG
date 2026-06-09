@@ -13,6 +13,7 @@ namespace QuickSortTest
 
             ISort sort = new Sort();
 
+            //Opretter 20 vilkårlige Attendee objekter
             Attendee a1 = new Attendee("Adam", "Oehlenschläger", "Camp A", 1);
             Attendee a2 = new Attendee("Birthe", "Kjær", "Camp B", 2);
             Attendee a3 = new Attendee("Cecil", "Bødker", "Camp A", 2);
@@ -23,7 +24,6 @@ namespace QuickSortTest
             Attendee a8 = new Attendee("Helene", "Madsen", "Camp B", 2);
             Attendee a9 = new Attendee("Ida", "Pedersen", "Camp A", 1);
             Attendee a10 = new Attendee("Jonas", "Larsen", "Camp B", 2);
-
             Attendee a11 = new Attendee("Karen", "Christensen", "Camp A", 1);
             Attendee a12 = new Attendee("Lars", "Hansen", "Camp B", 2);
             Attendee a13 = new Attendee("Mette", "Rasmussen", "Camp A", 1);
@@ -35,19 +35,24 @@ namespace QuickSortTest
             Attendee a19 = new Attendee("Thomas", "Frandsen", "Camp A", 1);
             Attendee a20 = new Attendee("Ulrik", "Vestergaard", "Camp B", 2);
 
-
+            //Opretter listen expected og tilføjer Attendee objekter til listen som er sorteret på forhånd. Dette er hvad vi forventer sorteringen resulterer i
             List<Attendee> expected = new List<Attendee> { a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20 };
 
+            //Opretter listen random og tilføjer Attendee objekter til listen i en tilfældig rækkefølge.
             List<Attendee> random = new List<Attendee> { a18, a4, a13, a11, a1, a6, a10, a2, a20, a3, a12, a17, a8, a5, a15, a7, a19, a14, a9, a16 };
 
+            //Opretter listen actual der skal indholde det sorterede resultat
             List<Attendee> actual = new List<Attendee>();
 
+            //Kalder SortByFirstName (quick sort) på listen random og gemmer resultatet i actual
             sort.SortByFirstName(random, 0, random.Count - 1);
-
             actual = random;
 
+            //Bruger Collection.Assert.AreEqual() for at tjekke om listen expected er den samme som actual.
             CollectionAssert.AreEqual(expected, actual);
+            //Viser en besked der udskriver antal sammenligninger for quick sort algoritmen
             MessageBox.Show(sort.quickComparisons.ToString(), "RandomQuickSortTest");
+            //Resetter quickComparisons
             sort.quickComparisons = 0;
 
 
