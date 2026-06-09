@@ -23,7 +23,7 @@ namespace AndetSemesterOPG.Applications
         public List<Attendee> SortByEntranceId(List<Attendee> attendees)
         {
             bubbleComparisons++;
-            if (attendees.Count <= 1 || attendees == null)
+            if (attendees == null || attendees.Count <= 1)
             {
                 MessageBox.Show("Der er ikke noget at sortere");
                 return null;
@@ -55,9 +55,13 @@ namespace AndetSemesterOPG.Applications
         //Insertion sort
         public List<Attendee> SortByCampName(List<Attendee> attendees)
         {
-            
+            if (attendees == null || attendees.Count <= 1)
+            {
+                MessageBox.Show("Der er ikke noget at sortere");
+                return null;
+            }
 
-            for(int i = 1; i < attendees.Count; i++)
+            for (int i = 1; i < attendees.Count; i++)
             {
                 Attendee attendee = attendees[i];
                 int pointer = i;
@@ -75,10 +79,9 @@ namespace AndetSemesterOPG.Applications
         //Quick sort
         public List<Attendee> SortByFirstName(List<Attendee> attendees, int left, int right)
         {
-            
 
             quickComparisons++;
-            if (attendees.Count <= 1 || attendees == null)
+            if (attendees == null || attendees.Count <= 1)
             {
                 MessageBox.Show("Der er ikke noget at sortere");
                 return null;
