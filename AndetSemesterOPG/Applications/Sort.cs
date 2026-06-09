@@ -112,7 +112,6 @@ namespace AndetSemesterOPG.Applications
                         break;
                 }
 
-                quickComparisons++;
                 if (i <= j)
                 {
                     Attendee attendee = attendees[i];
@@ -123,13 +122,11 @@ namespace AndetSemesterOPG.Applications
                 }
             }
 
-            quickComparisons++;
             if (left < j)
             {
                 SortByFirstName(attendees,left,j);
             }
 
-            quickComparisons++;
             if (i < right)
             {
                 SortByFirstName(attendees, i, right);
@@ -139,6 +136,8 @@ namespace AndetSemesterOPG.Applications
             return attendees;
             
         }
+
+
 
     }
 }
