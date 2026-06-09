@@ -8,8 +8,6 @@ namespace AndetSemesterOPG.Applications
     //Klasse der repræsentere en ticket client, og indeholder metoder til at definere billetter til de forskellige camps
     internal class TicketClient : ITicketClient
     {
-        //Denne variabel er til for at kunne stoppe produktionen af en bestemt type billet senere
-        bool makeTicket;
 
         //Denne liste indeholder de billetter der er låst op, og det er det tal der kommer ud af GetRandomNumber der bestemmer hvilken billet der skal producer
         private List<int> unlockedTickets = new List<int>() { 1, 2, 3, 4 };
