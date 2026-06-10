@@ -5,7 +5,7 @@ using System.Windows;
 namespace BubbleSortTest
 {
     [TestClass]
-    public sealed class Test1
+    public sealed class Test1 // Tobias & Laura
     {
         [TestMethod]
         public void RandomBubbleSortTest()

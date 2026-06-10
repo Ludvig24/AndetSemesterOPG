@@ -19,7 +19,7 @@ namespace AndetSemesterOPG.UI
     /// <summary>
     /// Interaction logic for FestivalWindow.xaml
     /// </summary>
-    public partial class FestivalWindow : Window
+    public partial class FestivalWindow : Window // Ludvig
     {
         //Oprettelse af klasser og services der skal bruges i FestivalWindow
         IWindowNavigator windowNavigator;

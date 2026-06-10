@@ -7,7 +7,7 @@ using System.Text;
 
 namespace AndetSemesterOPG.Domain
 {
-    internal interface ISort
+    internal interface ISort // Tobias
     {
         int bubbleComparisons { get; set; }
         int insertComparisons { get; set; }

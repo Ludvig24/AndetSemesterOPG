@@ -8,6 +8,7 @@ using System.Threading;
 
 namespace AndetSemesterOPG.Infrastructure
 {
+    //Alle har været med over denne klasse
     internal class DBConnection : IDBConnection //implementerer IDBConnection interface - medfører vi nemt kan skifte til en anden type database
     {
         // her oprettes en SqlConnection objekt ved hjælp af connectionString, som vil blive brugt til at åbne en forbindelse til databasen

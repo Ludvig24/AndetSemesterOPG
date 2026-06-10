@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AndetSemesterOPG.Domain
 {
-    internal interface IWindowNavigator
+    internal interface IWindowNavigator // Tobias
 
     {
         ////Konstruktor der tager imod de forskellige vinduer som parametre og gemmer dem i instansvariabler

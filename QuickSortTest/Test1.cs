@@ -5,7 +5,7 @@ using System.Windows;
 namespace QuickSortTest
 {
     [TestClass]
-    public sealed class Test1
+    public sealed class Test1 // Ludvig & Emil
     {
         [TestMethod]
         public void RandomQuickSortTest()

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AndetSemesterOPG.Domain
 {
-    internal interface IAttendeeService
+    internal interface IAttendeeService // Tobias
     {
         ITicketClient ticketClient { get; }
         // Metode der opretter en attendee, og returnerer den oprettede attendee

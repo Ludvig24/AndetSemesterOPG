@@ -17,7 +17,7 @@ using System.Windows.Threading;
 
 namespace AndetSemesterOPG.UI
 {
-    public partial class AttendeeWindow : Window
+    public partial class AttendeeWindow : Window //Tobias
     {
         //oprettelse af klasser og services der skal bruges i AttendeeWindow
         IAttendeeService attendeeService;

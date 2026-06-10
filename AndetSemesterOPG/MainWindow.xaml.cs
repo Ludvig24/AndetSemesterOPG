@@ -20,7 +20,7 @@ namespace AndetSemesterOPG
 {
     //Hovedvinduet for applikationen, hvor vi opretter alle services, repositories, windows og andre klasser der skal bruges i applikationen. MainWindow fungerer som Composition Root, hvor vi samler alle afhængigheder og konfigurerer dem.
     //Vi har valgt at skjule MainWindow og starte med at vise MenuWindow, da det er det første vindue brugeren skal interagere med.
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window // Tobias
     {
         IAttendeeService attendeeService;
         ICampService campService;

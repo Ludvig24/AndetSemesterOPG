@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AndetSemesterOPG.Domain
 {
-    internal interface ITicketClient
+    internal interface ITicketClient // Ludvig
     {
         //Metode der laver en billet til camp A ved at bruge ticketFactory til at lave en billet til camp A og returnere den
         ITicket OrderTicketCampA(ITicketFactory ticketFactory);

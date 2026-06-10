@@ -5,7 +5,7 @@ using System.Text;
 namespace AndetSemesterOPG.Domain
 {
     //Interface der definerer en billet, og indeholder metoder til at bestemme hvilken type billet det er, og hvilken camp den tilhører
-    internal interface ITicket
+    internal interface ITicket //Emil
     {
         //Metode der bestemmer hvilken type billet det er, og returnerer den som en int
         int DetermineEntranceType();

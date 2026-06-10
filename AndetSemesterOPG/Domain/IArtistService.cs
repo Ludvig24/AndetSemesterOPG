@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AndetSemesterOPG.Domain
 {
-    internal interface IArtistService
+    internal interface IArtistService // Laura
     {
         // metode der opretter en artist, og tager en artist som parameter
         void CreateArtist(Artist artist);

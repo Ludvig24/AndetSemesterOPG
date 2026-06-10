@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AndetSemesterOPG.Domain
 {
-    internal interface IAttendeeCreator
+    internal interface IAttendeeCreator //Emil
     {
         // Metode der starter processen for at oprette en attendee
         void SemaphoreStart();

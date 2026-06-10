@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AndetSemesterOPG.Domain
 {
-    internal interface ICampService
+    internal interface ICampService // Alle
     {
         // Metode der henter kapaciteten for en given camp ved at kalde repository'et, og returnerer den som en int
         int RetrieveCampCapacity(string campName);
