@@ -57,6 +57,7 @@ namespace QuickSortTest
 
         }
 
+        // kig på notterne for den overstående quicksortTest for at forstå hvad der sker i denne test. Det er det samme som ovenfor bare med en list som allerede er sorteret
         [TestMethod]
         public void SortedQuickSortTest()
         {
@@ -100,7 +101,7 @@ namespace QuickSortTest
             MessageBox.Show(sort.quickComparisons.ToString(), "SortedQuickSortTest");
             sort.quickComparisons = 0;
         }
-
+        //Laver en quicksort test med en tom liste, hvor vi forventer at få null tilbage. Vi viser antal sammenligninger og resetter quickComparisons
         [TestMethod]
         public void QuickSort0Test()
         {
@@ -116,6 +117,7 @@ namespace QuickSortTest
             sort.quickComparisons = 0;
         }
 
+        //Kig på notterne for den overstående quicksortTest for at forstå hvad der sker i denne test. Denne gang er det med en liste hvor der kun er et elemt i.
         [TestMethod]
         public void QuickSort1Test()
         {
