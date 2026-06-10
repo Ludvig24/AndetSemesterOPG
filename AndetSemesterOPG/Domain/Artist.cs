@@ -6,7 +6,7 @@ using System.Web;
 namespace AndetSemesterOPG.Domain
 {
     //Klasse der repræsentere en artist, og indeholder information om artisten
-    internal class Artist
+    internal class Artist // Emil
     {
         //Properties for Artist
         public int ArtistId { get; set; }

@@ -20,7 +20,7 @@ namespace AndetSemesterOPG.Applications
         //Bubblesort
 
         //lav counter der tæller antal sammenligninger - kan bruges som en form for test af hvilken sorting algoritme der er bedst i vores tilfælde - dette kan vi skrive om i rapport
-        public List<Attendee> SortByEntranceId(List<Attendee> attendees)
+        public List<Attendee> SortByEntranceId(List<Attendee> attendees) //Emil & Ludvig
         {
             bubbleComparisons++;
             if (attendees == null || attendees.Count <= 1)
@@ -53,7 +53,7 @@ namespace AndetSemesterOPG.Applications
      
 
         //Insertion sort
-        public List<Attendee> SortByCampName(List<Attendee> attendees)
+        public List<Attendee> SortByCampName(List<Attendee> attendees) //Laura
         {
             if (attendees == null || attendees.Count <= 1)
             {
@@ -77,7 +77,7 @@ namespace AndetSemesterOPG.Applications
         }
 
         //Quick sort
-        public List<Attendee> SortByFirstName(List<Attendee> attendees, int left, int right)
+        public List<Attendee> SortByFirstName(List<Attendee> attendees, int left, int right) //Tobias
         {
 
             quickComparisons++;

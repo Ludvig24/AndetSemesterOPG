@@ -6,7 +6,7 @@ using AndetSemesterOPG.Domain;
 namespace AndetSemesterOPG.Applications
 {
     //Klasse der implementere ITicketFactory interfacet, og indeholder metoder der opretter billetter til camp A og camp B for indgang øst
-    internal class EntranceEastFactory : ITicketFactory
+    internal class EntranceEastFactory : ITicketFactory //Tobias
     {
         
         //Metode der opretter en billet til Camp A ved indgang øst

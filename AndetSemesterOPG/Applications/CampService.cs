@@ -8,7 +8,7 @@ using System.Windows;
 namespace AndetSemesterOPG.Applications
 {
     //Klasse der repræsenterer service laget for camps, og indeholder metoder til at hente data om camps fra databasen, samt metoder til at håndtere observer patternet for camp kapacitet
-    internal class CampService : ICampService
+    internal class CampService : ICampService // Ludvig & Emil
     {
         //Variabler til klassen
         List<ICampObserver> campObservers;

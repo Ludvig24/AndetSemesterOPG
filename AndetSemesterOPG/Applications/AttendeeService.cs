@@ -7,7 +7,7 @@ using System.Text;
 namespace AndetSemesterOPG.Applications
 {
     //Klasse som indeholder metoder der håndtere deltagere
-    internal class AttendeeService : IAttendeeService
+    internal class AttendeeService : IAttendeeService // Tobias
     {
         //Variabler som skal bruges i klassen
         AttendeeTestData attendeeTestData; 

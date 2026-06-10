@@ -8,7 +8,7 @@ using System.Text;
 namespace AndetSemesterOPG.Applications
 {
     //Klasse der håndtere navigationen mellem de forskellige vinduer i wpf applikationen
-    internal class WindowNavigator : IWindowNavigator
+    internal class WindowNavigator : IWindowNavigator // Tobias
     {
         //Variabler der repræsentere de forskellige vinduer i applikationen
         AttendeeWindow attendeeWindow;

@@ -7,7 +7,7 @@ using System.Windows.Threading;
 namespace AndetSemesterOPG.Applications
 {
     //Klasse der er ansvarlig for at oprette deltagere til festivalen, både automatisk og manuelt
-    internal class AttendeeCreator : IAttendeeCreator
+    internal class AttendeeCreator : IAttendeeCreator //Emil
     {
         //Variabler der giver betydning til klassen, herunder total kapacitet for alle camps, nuværende antal deltagere, og services til at håndtere camp og deltager data
         private int totalCampCapacity;
