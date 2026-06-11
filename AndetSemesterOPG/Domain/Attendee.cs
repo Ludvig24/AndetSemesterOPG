@@ -6,7 +6,7 @@ using System.Text;
 namespace AndetSemesterOPG.Domain
 {
     //Klasse der repræsentere en deltager på festivalen, og indeholder information om deltageren
-    internal class Attendee
+    internal class Attendee // Laura
     {
         //get og set metoder for deltagerens variabler
         public int AttendeeID { get; set; }

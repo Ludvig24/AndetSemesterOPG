@@ -5,7 +5,7 @@ using System.Text;
 namespace AndetSemesterOPG.Domain
 {
     //Interface der definerer en repository til at hente information om artists fra databasen, og indeholder metoderne dertil
-    internal interface IArtistRepository
+    internal interface IArtistRepository //Ludvig
     {
         //Metode der tilføjer en artist til databasen
         void AddArtist(Artist artist);

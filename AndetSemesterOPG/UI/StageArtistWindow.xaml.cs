@@ -22,7 +22,7 @@ namespace AndetSemesterOPG.UI
     /// <summary>
     /// Interaction logic for StageArtistWindow.xaml
     /// </summary>
-    public partial class StageArtistWindow : Window
+    public partial class StageArtistWindow : Window // Emil
     {
 
         //Oprettelse af klasser og services der skal bruges i StageArtistWindow

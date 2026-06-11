@@ -19,7 +19,7 @@ namespace AndetSemesterOPG.UI
     /// <summary>
     /// Interaction logic for FestivalWindow.xaml
     /// </summary>
-    public partial class FestivalWindow : Window
+    public partial class FestivalWindow : Window // Ludvig
     {
         //Oprettelse af klasser og services der skal bruges i FestivalWindow
         IWindowNavigator windowNavigator;
@@ -29,6 +29,7 @@ namespace AndetSemesterOPG.UI
         Camp campA;
         Camp campB;
         ICampObserver campObserver;
+        
 
         //Constructor for FestivalWindow, hvor vi initialisere klasser og services, og sætter labels til at vise det nuværende antal af attendees
         internal FestivalWindow(IWindowNavigator windowNavigator, IAttendeeService attendeeService, ICampService campService, Camp campA, Camp campB, ICampObserver campObserver, IAttendeeCreator attendeeCreator)
@@ -42,6 +43,9 @@ namespace AndetSemesterOPG.UI
             this.campObserver = campObserver;
             this.campService = campService;
 
+            
+            
+            
             //Sætter labels til at vise det nuværende antal af attendees ved at hente data fra attendeeService
             TotalAttendeeEast.Content = attendeeService.RetrieveAttendeesByEntranceId(1).Count;
 
@@ -195,10 +199,11 @@ namespace AndetSemesterOPG.UI
             MessageBox.Show("Du er nu afmeldt notifikationer, og vil ikke længere få beskeder om de forskellige camps");
         }
 
-        //Metode der håndterer klik på "Attendee Simulation" knappen, hvor vi starter simuleringen af attendees ved at kalde SemaphoreStart metoden i attendeeCreator
+        //Metode der håndterer klik på "Attendee Simulation" knappen, hvor vi starter simuleringen af attendees ved at kalde StartAttendeeCreation metoden i attendeeCreator
         private void AttendeeSimulationButton_Click(object sender, RoutedEventArgs e)
         {
-            attendeeCreator.SemaphoreStart();
+            //attendeeCreator.SemaphoreStart();
+            attendeeCreator.StartAttendeeCreation();
         }
     }
     

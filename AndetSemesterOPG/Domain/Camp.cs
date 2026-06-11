@@ -5,7 +5,7 @@ using System.Text;
 namespace AndetSemesterOPG.Domain
 {
     //Klasse der repræsentere en camp, og indeholder information om campen
-    internal class Camp
+    internal class Camp //Ludvig
     {
         //get og set metoder for campens id, kapacitet, navn, låst status og kapacitetsstatus
         public int CampId { get; set; }

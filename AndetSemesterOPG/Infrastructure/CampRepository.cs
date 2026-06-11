@@ -6,7 +6,7 @@ using AndetSemesterOPG.Domain;
 namespace AndetSemesterOPG.Infrastructure
 {
     //Klasse der implementerer ICampRepository og bruger IDBConnection til at hente data om camps fra databasen
-    internal class CampRepository : ICampRepository
+    internal class CampRepository : ICampRepository // Laura
     {
         //IDBConnection bruges til at hente data om camps fra databasen
         IDBConnection connection;

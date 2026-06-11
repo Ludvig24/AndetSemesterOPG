@@ -6,7 +6,7 @@ using System.Text;
 namespace AndetSemesterOPG.Infrastructure
 {
     //Klasse der implementerer IArtistRepository og bruger IDBConnection til at hente data om artists fra databasen
-    internal class ArtistRepository : IArtistRepository
+    internal class ArtistRepository : IArtistRepository //Tobias
     {
         //IDBConnection bruges til at hente data om artists fra databasen
         IDBConnection connection;

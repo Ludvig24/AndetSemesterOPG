@@ -5,7 +5,7 @@ using System.Text;
 namespace AndetSemesterOPG.Domain
 {
     //Klasse der indeholder data der skal tilføjes til festivalens deltagere
-    internal class AttendeeTestData
+    internal class AttendeeTestData // Tobias
     {
         //Lister der indeholder 100 fornavne og 100 efternavne
         List<string> firstNames = ["Anna", "Peter", "Maria", "Jens", "Sofie", "Lars", "Emma", "Mikkel", "Julie", "Thomas", "Freja", "Henrik", "Clara", "Kasper", "Ida", "Anders", "Laura", "Martin", "Alberte", "Rasmus", "Camilla", "Nicolai", "Katrine", "Christian", "Mathilde", "Frederik", "Josefine", "Søren", "Amalie", "Emil", "Cecilie", "Jacob", "Line", "Oliver", "Sarah", "Gustav", "Louise", "Magnus", "Nanna", "Victor", "Mia", "Simon", "Astrid", "Anton", "Helene", "Noah", "Liv", "Sebastian", "Ellen", "Tobias", "Eva", "Alexander", "Alma", "William", "Johanne", "Philip", "Agnes", "Felix", "Karoline", "Benjamin", "Elina", "Oscar", "Emilie", "Lucas", "Frida", "Jonathan", "Vera", "Elias", "Aya", "Daniel", "Selma", "Malte", "Signe", "Johan", "Esther", "August", "Lærke", "Valdemar", "Isabella", "Pelle", "Ronja", "Villads", "Andrea", "Rune", "Maja", "Troels", "Gry", "Aksel", "Olivia", "Bjørn", "Rosa", "Erik", "Monika", "Leif", "Tilde", "Allan", "Rebekka", "Kim", "Ditte", "Bo", "Yasmine"];

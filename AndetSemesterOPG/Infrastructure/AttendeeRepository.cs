@@ -7,7 +7,7 @@ using System.Text;
 namespace AndetSemesterOPG.Infrastructure
 {
     //Klasse der implementerer IAttendeeRepository og bruger IDBConnection til at hente data om attendees fra databasen
-    internal class AttendeeRepository : IAttendeeRepository
+    internal class AttendeeRepository : IAttendeeRepository // Ludvig
     {
         //IDBConnection bruges til at hente data om attendees fra databasen
         IDBConnection connection;
@@ -21,20 +21,15 @@ namespace AndetSemesterOPG.Infrastructure
         //Metode der bruger IDBConnection til at tilføje en attendee til databasen
         public void AddAttendee(Attendee attendee)
         {
-            //Thread t = new Thread(() => connection.Insert(attendee));
-            //t.Start();
-
+            
             connection.Insert(attendee);
-            //save to database på en eller anden måde
+            
         }
 
         //Metode der bruger IDBConnection til at hente alle attendees fra databasen og returnere dem som en liste
         public List<Attendee> GetAllAttendees() 
         {
-            //List<Attendee> attendees = new List<Attendee>();
-            //Thread t = new Thread(() => attendees = connection.ReadAll());
-
-            //t.Start();
+            
 
             List<Attendee> attendees = connection.ReadAll();
             return attendees;

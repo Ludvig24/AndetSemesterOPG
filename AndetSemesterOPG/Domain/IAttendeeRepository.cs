@@ -5,7 +5,7 @@ using System.Text;
 namespace AndetSemesterOPG.Domain
 {
     //Interface der definerer et repository som skal håndtere alle interaktioner med databasen vedrørende attendees, og indeholder metoderne dertil
-    internal interface IAttendeeRepository
+    internal interface IAttendeeRepository //Tobias
     {
         //Metode der tilføjer en attendee til databasen
         void AddAttendee(Attendee attendee);

@@ -17,7 +17,7 @@ namespace AndetSemesterOPG.UI
     /// <summary>
     /// Interaction logic for MenuWindow.xaml
     /// </summary>
-    public partial class MenuWindow : Window
+    public partial class MenuWindow : Window // Laura
     {
         //Oprettelse af WindowNavigator, som bruges til at navigere mellem vinduerne i applikationen
         IWindowNavigator windowNavigator;

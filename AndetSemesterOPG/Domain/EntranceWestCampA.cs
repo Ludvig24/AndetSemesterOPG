@@ -5,7 +5,7 @@ using System.Text;
 namespace AndetSemesterOPG.Domain
 {
     //Klasse der implementerer ITicket interfacet og repræsentere en indgang til Camp A
-    internal class EntranceWestCampA : ITicket
+    internal class EntranceWestCampA : ITicket //Tobias
     {
         //Metode der bestemmer hvilken type billet det er, og returnerer den som en int
         public int DetermineEntranceType()

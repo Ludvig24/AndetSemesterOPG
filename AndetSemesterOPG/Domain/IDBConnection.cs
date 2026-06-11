@@ -5,7 +5,7 @@ using System.Text;
 namespace AndetSemesterOPG.Domain
 {
     //Interface der definerer en databaseforbindelse, og indeholder metoderne dertil
-    internal interface IDBConnection
+    internal interface IDBConnection // Alle
     {
         //Metoder der tilføjer til databasen
         void Insert(Attendee attendee);

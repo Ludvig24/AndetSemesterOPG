@@ -8,7 +8,7 @@ using System.Windows.Documents;
 namespace AndetSemesterOPG.Applications
 {
     //Klasse der implementerer logikken for at håndtere artists
-    internal class ArtistService : IArtistService
+    internal class ArtistService : IArtistService  //Ludvig
     {
         //Field for klassen
         IArtistRepository artistRepository;
