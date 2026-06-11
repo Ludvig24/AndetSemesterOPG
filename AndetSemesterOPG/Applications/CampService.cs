@@ -59,7 +59,8 @@ namespace AndetSemesterOPG.Applications
             campObservers.Remove(observer);
         }
 
-        //Metode til at notificere alle observers i listen over camp observers om en ændring i camp kapacitet ved at kalde Update metoden på hver observer og sende camp navnet og den nye kapacitet status som parametre
+        //Metode til at notificere alle observers i listen over camp observers om en ændring i camp kapacitet ved at kalde Update metoden på hver observer
+        //og sende camp navnet og den nye kapacitet status som parametre
         public void NotifyCampObservers(string campName, CampCapacityStatus.CapacityStatus campStatus)
         {
             foreach (var observer in campObservers)

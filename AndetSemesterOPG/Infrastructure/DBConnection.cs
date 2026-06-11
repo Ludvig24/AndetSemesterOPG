@@ -12,7 +12,7 @@ namespace AndetSemesterOPG.Infrastructure
     internal class DBConnection : IDBConnection //Implementerer IDBConnection interface - medfører vi nemt kan skifte til en anden type database
     {
         //Her oprettes en SqlConnection objekt ved hjælp af connectionString, som vil blive brugt til at åbne en forbindelse til databasen
-          string connectionString = "Server=localhost; Database=AndetSemester;Trusted_Connection=True;TrustServerCertificate=True";
+          string connectionString = "Server=localhost\\SQLEXPRESS; Database=AndetSemester;Trusted_Connection=True;TrustServerCertificate=True";
         //Ludvig: LOCALHOST
         //Tobias: localhost\\SQLEXPRESS
         //Laura: LAPTOP-KHAURJ1B

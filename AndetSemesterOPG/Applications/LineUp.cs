@@ -67,21 +67,30 @@ namespace AndetSemesterOPG.Applications
         {
             artistList = artistService.RetrieveAllArtists();
 
+            //itererer gennem stages
             for(int i = 1; i < stages.Count+1; i++)
             {
-                
+                //itererer gennem listen af artists
                 for(int j = 0; j < artistList.Count; j++)
                 {
+                    //tjekker om artist på index j's StageId er lig i
                     if (artistList[j].StageId == i)
                     {
+                        //gemmer række og kolonne hentet med GetRowFromTime() og GetColumnFromDate() metoderne
                         int row = GetRowFromTime(artistList[j].ArtistTime);
                         int column = GetColumnFromDate(artistList[j].ArtistDate);
+
+                        //Opretter TextBlock der skal holde en artists navn
                         TextBlock text = new TextBlock();
                         text.Text = artistList[j].ArtistName;
 
+                        //Tildeler textblocken som child-element til Grid'et på indeks i-1
                         stages[i-1].Children.Add(text);
+
+                        //setter textblocken i grid'et
                         Grid.SetColumn(text, column);
                         Grid.SetRow(text, row);
+                       
                     }
                 }
 

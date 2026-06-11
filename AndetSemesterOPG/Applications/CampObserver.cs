@@ -12,7 +12,7 @@ namespace AndetSemesterOPG.Applications
         //Metode der tager imod en camps navn og dens kapacitet som parametre, og opdaterer observeren med denne information, og viser en besked til brugeren hvis campen når en bestemt kapacitetstatus
         public void Update(string campName, CampCapacityStatus.CapacityStatus campStatus)
         {
-            //Opdater campens kapacitetstatus, og vis en besked til brugeren hvis campen når en bestemt kapacitetstatus
+            //Opdater campens kapacitetstatus, og viser en besked til brugeren hvis campen når en bestemt kapacitetstatus
             switch (campStatus)
             {
                 case CampCapacityStatus.CapacityStatus.FiftyPercent:

@@ -13,20 +13,20 @@ namespace AndetSemesterOPG.Applications
         //Field for klassen
         IArtistRepository artistRepository;
 
-        //Constructor for ArtistService, som tager understående parameter med
+        //Constructor for ArtistService, som tager en IArtistService som parameter
         public ArtistService (IArtistRepository artistRepository)
         {
             this.artistRepository = artistRepository;
         }
 
-        //CreateArtist metode, som kalder AddArtist metoden fra Interfacet IArtist Repository
+        //CreateArtist metode, som kalder AddArtist metoden fra Interfacet IArtistRepository
         public void CreateArtist(Artist artist)
         {
 
             artistRepository.AddArtist(artist);
         }
 
-        //RemoveArtist metode, som kalder DeleteArtist metoden fra Interfacet IArtist Repository
+        //RemoveArtist metode, som kalder DeleteArtist metoden fra Interfacet IArtistRepository
         public void RemoveArtist(Artist artist)
         {
             if (artist == null)
@@ -37,13 +37,13 @@ namespace AndetSemesterOPG.Applications
             artistRepository.DeleteArtist(artist);
         }
 
-        //RetrieveAllArtists metode, som kalder GetAllArtist metoden fra Interfacet IArtist Repository
+        //RetrieveAllArtists metode, som kalder GetAllArtist metoden fra Interfacet IArtistRepository
         public List<Artist> RetrieveAllArtists()
         {
             return artistRepository.GetAllArtists();
         }
 
-        //ModifyArtists metode, som kalder EditArtist metoden fra Interfacet IArtist Repository
+        //ModifyArtists metode, som kalder EditArtist metoden fra Interfacet IArtistRepository
         public void ModifyArtist (Artist artist) 
         {
             if (artist.ArtistName == null)
@@ -69,7 +69,7 @@ namespace AndetSemesterOPG.Applications
         public bool IsSlotTaken(Artist newArtist)
         {
             List<Artist> artistsListe = RetrieveAllArtists();
-            //Any ser igennem listen og retunere en bool afhægig af om den indeholder det krav der kommer. Og lamda udtrykket => betyder "for hver Artist i listen, kør disse krav
+            //Any ser igennem listen og retunere en bool afhængig af om den indeholder det krav der kommer. Og lamda udtrykket => betyder "for hver Artist i listen, kør disse krav
             return artistsListe.Any(artist =>
             //Den første er til for at hvis vi kalder update, og ikke ændre tid,dato og scene, så kan den stadig opdatere den kunstner på samme plads i skemaet
                 artist.ArtistId != newArtist.ArtistId &&

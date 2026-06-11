@@ -10,10 +10,7 @@ namespace AndetSemesterOPG.Applications
     //Klasse der er ansvarlig for at oprette deltagere til festivalen, både automatisk og manuelt
     internal class AttendeeCreator : IAttendeeCreator //Emil
     {
-        //Variabler der giver betydning til klassen, herunder total kapacitet for alle camps, nuværende antal deltagere, og services til at håndtere camp og deltager data
-        private int totalCampCapacity;
-        private int currentAttendeeCount;
-        ICampService campService;
+        //Properties for klassen - DispatcherTimer og attendeeService instans
         DispatcherTimer timer;
         IAttendeeService attendeeService;
         
@@ -22,21 +19,20 @@ namespace AndetSemesterOPG.Applications
         
         private readonly object lockObject = new object();
 
-        //Konstruktor der tager en DispatcherTimer, AttendeeService og CampService som parameter, og sætter timeren til at kalde AutoCreateAttendee metoden hvert 5. sekund
-        public AttendeeCreator(DispatcherTimer timer, IAttendeeService attendeeService, ICampService campService)
+        //Konstruktor der tager en DispatcherTimer og AttendeeService som parameter, og sætter timeren til at kalde AutoCreateAttendee metoden hvert sekund
+        public AttendeeCreator(DispatcherTimer timer, IAttendeeService attendeeService)
         {
-
+            //Tildeler variabler fra constructor til properties
             this.timer = timer;
             this.attendeeService = attendeeService;
-            
+
+            //Hver gang tick eventen sker kaldes AutoCreateAttendee metoden
             this.timer.Tick += new EventHandler(AutoCreateAttendee);
-            this.timer.Interval = new TimeSpan(0, 0, 1); // Her sættes intervallet for timeren til 5 sekunder
+            this.timer.Interval = new TimeSpan(0, 0, 1); // Her sættes intervallet for timeren - hvert sekund starter tick eventet
             
+            //starter timeren
             this.timer.Start();
             
-            this.campService = campService;
-            totalCampCapacity = campService.RetriveTotalCampCapacity();
-            currentAttendeeCount = attendeeService.RetrieveAllAttendees().Count;
 
             
         }
@@ -44,9 +40,11 @@ namespace AndetSemesterOPG.Applications
         //Metode som starter Attendee oprettelsen via Threads
         public void StartAttendeeCreation()
         {
+            //opretter 2 threads og giver dem metoden CreateBulkAttendee
             Thread thread1 = new Thread(CreateBulkAttendee);
             Thread thread2 = new Thread(CreateBulkAttendee);
 
+            
             thread1.IsBackground = true;
             thread2.IsBackground = true;
 
@@ -58,6 +56,7 @@ namespace AndetSemesterOPG.Applications
         public void CreateBulkAttendee()
         {
             
+            //loop kører 25 gange - hver iteration tager en tråd locken, kalder CreateAttendee og slipper den igen
                 for (int i = 0; i < 25; i++)
                 {
                     lock (lockObject)

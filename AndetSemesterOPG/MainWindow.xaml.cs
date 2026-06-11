@@ -67,7 +67,7 @@ namespace AndetSemesterOPG
 
             attendeeService = new AttendeeService(attendeeRepository, attendeeTestData, ticketClient);
             campService = new CampService(campRepository);
-            attendeeCreator = new AttendeeCreator(timer, attendeeService, campService);
+            attendeeCreator = new AttendeeCreator(timer, attendeeService);
             artistService = new ArtistService(artistRepository);
             sort = new Sort();
             lineUp = new LineUp(artistService);

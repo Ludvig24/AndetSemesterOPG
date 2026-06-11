@@ -9,7 +9,7 @@ namespace AndetSemesterOPG.Applications
     //Klasse som indeholder metoder der håndtere deltagere
     internal class AttendeeService : IAttendeeService // Tobias
     {
-        //Variabler som skal bruges i klassen
+        //Properties som skal bruges i klassen
         AttendeeTestData attendeeTestData; 
         public ITicketClient ticketClient { get; set; }
         IAttendeeRepository attendeeRepository;
@@ -22,7 +22,8 @@ namespace AndetSemesterOPG.Applications
             this.ticketClient = ticketClient;
         }
 
-        //Metode der opretter en ny deltager ved at kombinere et fornavn og efternavn fra AttendeeTestData, og derefter oprette en billet ved hjælp af TicketClient. Hvis billetten er gyldig, oprettes en ny Attendee med de relevante oplysninger og gemmes i databasen
+        //Metode der opretter en ny deltager ved at kombinere et fornavn og efternavn fra AttendeeTestData, og derefter oprette en billet ved hjælp af TicketClient.
+        //Hvis billetten er gyldig, oprettes en ny Attendee med de relevante oplysninger og gemmes i databasen
         public Attendee CreateAttendee()
         {
             //Definere den nye deltagers variabler
@@ -33,6 +34,7 @@ namespace AndetSemesterOPG.Applications
             //Opret billet til deltageren
             ITicket ticket = ticketClient.CreateTicket();
 
+            //Hvis ticket der returnes er null returneres null
             if(ticket == null)
             {
                 return null;
