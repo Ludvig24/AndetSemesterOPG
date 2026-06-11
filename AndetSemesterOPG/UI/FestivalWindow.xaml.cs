@@ -46,7 +46,7 @@ namespace AndetSemesterOPG.UI
             
             
             
-            //Sætter labels til at vise det nuværende antal af attendees ved at hente data fra attendeeService
+            //Sætter labels for entrances og camps til at vise det nuværende antal af attendees ved at hente data fra attendeeService
             TotalAttendeeEast.Content = attendeeService.RetrieveAttendeesByEntranceId(1).Count;
 
             TotalAttendeeWest.Content = attendeeService.RetrieveAttendeesByEntranceId(2).Count;
@@ -59,6 +59,7 @@ namespace AndetSemesterOPG.UI
 
             CampBCapacity.Content = campService.RetrieveCampCapacity("Camp B");
 
+            //Sætter knappen SubscribeToCamps som disabled
             SubscribeToCamps.IsEnabled = false;
 
             //Opretter en timer der opdaterer labels hvert sekund
@@ -72,13 +73,14 @@ namespace AndetSemesterOPG.UI
         //Metode der opdaterer visuelle komponenter i vinduet
         public void AutoRefresh(object sender, EventArgs e)
         {
+            //Sætter labels for entrances og camps til at vise det nuværende antal af attendees ved at hente data fra attendeeService
             TotalAttendeeEast.Content = attendeeService.RetrieveAttendeesByEntranceId(1).Count;
             TotalAttendeeWest.Content = attendeeService.RetrieveAttendeesByEntranceId(2).Count;
 
             TotalAttendeeCampA.Content = attendeeService.RetriveAttendeesByCampName("Camp A").Count;
             TotalAttendeeCampB.Content = attendeeService.RetriveAttendeesByCampName("Camp B").Count;
             
-            //Dette bør være et andet sted - det andet med timeren er fint nok da det bare er UI gøgl
+            //Kalder CheckCampCapacity på de 2 camps
             campService.CheckCampCapacity(campA, attendeeService.RetriveAttendeesByCampName("Camp A").Count, attendeeService);
             campService.CheckCampCapacity(campB, attendeeService.RetriveAttendeesByCampName("Camp B").Count, attendeeService);
 
@@ -116,7 +118,7 @@ namespace AndetSemesterOPG.UI
             {
                 AttendeeSimulationButton.IsEnabled = true;
             }
-            //Knapper bliver låst elller åbnet afhængig af om pladserne er låste eller åbne
+            //Knapper bliver låst eller åbnet afhængig af om pladserne er låste eller åbne
             
             LockCampAButton.IsEnabled = !campA.IsLocked;
             OpenCampAButton.IsEnabled = campA.IsLocked;
@@ -124,7 +126,7 @@ namespace AndetSemesterOPG.UI
             LockCampBButton.IsEnabled = !campB.IsLocked;
             OpenCampBButton.IsEnabled = campB.IsLocked;
 
-            //Her bliver knappen også låst hvis en camps kapasitet er fyldt
+            //Her bliver knapperne OpenCampAButton og OpenCampBButton også låst hvis en camps kapacitet er fyldt
             if (attendeeService.RetriveAttendeesByCampName("Camp A").Count >= campA.CampCapacity)
             {
                 OpenCampAButton.IsEnabled = false;
@@ -134,7 +136,7 @@ namespace AndetSemesterOPG.UI
                 OpenCampBButton.IsEnabled = false;
             }
 
-
+            //Sætter capacity labels ved at hente camp capacities gennem campService klassen
             CampACapacity.Content = campService.RetrieveCampCapacity("Camp A");
             CampBCapacity.Content = campService.RetrieveCampCapacity("Camp B");
         }

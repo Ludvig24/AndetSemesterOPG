@@ -19,7 +19,7 @@ namespace AndetSemesterOPG.UI
 {
     public partial class AttendeeWindow : Window //Tobias
     {
-        //oprettelse af klasser og services der skal bruges i AttendeeWindow
+        //oprettelse af en liste af Attendees samt klasser og services der skal bruges i AttendeeWindow
         IAttendeeService attendeeService;
         List<Attendee> attendees = new List<Attendee>();
         IWindowNavigator windowNavigator;
@@ -28,12 +28,14 @@ namespace AndetSemesterOPG.UI
         //Constructor for AttendeeWindow, hvor vi initialisere klasser og services, og sætter ItemSource for datagrid til listen af attendees. Vi har også en timer der opdaterer listen af attendees hvert sekund, så vi altid har den nyeste liste
         internal AttendeeWindow(IWindowNavigator windowNavigator, IAttendeeService attendeeService, ISort sort)
         {
-            //Initialisering af komponenter og services
             InitializeComponent();
+            //Tildeler parametre fra constructor til klassens fields
             this.windowNavigator = windowNavigator;
             this.sort = sort;
             this.attendeeService = attendeeService;
             this.attendees = attendeeService.RetrieveAllAttendees();
+
+            //Sætter DataGrid't AttendeesList ItemSource til listen attendees.
             AttendeesList.ItemsSource = attendees;
 
             //Opretter en timer der opdaterer listen af attendees hvert sekund

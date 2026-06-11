@@ -160,15 +160,14 @@ namespace AndetSemesterOPG.UI
                 MessageBox.Show("Der er allerede en kunstner på denne scene, dato og tidspunkt.");
                 return;
             }
+
+            //Hvis ingen konflikter er opstået og alt er som det skal være tildeles artist objektet værdierne i text felterne
             artist.ArtistName = ArtistNameTextBox.Text;
             artist.ArtistTime = ArtistTimeCombobox.Text;
             artist.ArtistDate = ArtistDateCombobox.Text;
             artist.StageId = StageNameComboBox.SelectedIndex+1;
-            if (artist.ArtistName == null)
-            {
-                MessageBox.Show("Angiv kunstnerens navn");
-                return;
-            }
+            //Tjekker om brugeren har udfyldt med 
+          
 
             //artistService opdaterer artist i databasen
             artistService.ModifyArtist(artist);
