@@ -48,34 +48,43 @@ namespace AndetSemesterOPG.Applications
             thread1.Start();
             thread2.Start();
         }
+
         public void CreateBulkAttendee()
         {
             
-                for (int i = 0; i < 25; i++)
+                for (int i = 0; i < 50; i++)
                 {
                     lock (lockObject)
                     {
+                        //MessageBox.Show(Thread.CurrentThread.ManagedThreadId.ToString());
                         attendeeService.CreateAttendee();
                     }
                 }
         }
 
+        
+        
+        //Anden ide til asynkron attende oprettelse
         //Metode der starter processen med at oprette deltagere ved at kalde SemaphoreCreateAttendee metoden 50 gange
-       /* public void SemaphoreStart()
+        /*
+        public void SemaphoreStart()
         {
             for (int i = 0; i < 50; i++) 
             {
+                Thread t = new Thread(SemaphoreCreateAttendee);
+                t.Start();
                 
-                SemaphoreCreateAttendee();
             }
             
-        }*/
+        } */
 
+        //Anden ide til asynkron attendee oprettelse
         //Metode der bruger en semaphore til at sikre, at kun et bestemt antal tråde kan oprette deltagere samtidigt, og kalder CreateAttendee metoden i AttendeeService for at oprette en deltager
-      /*  public void SemaphoreCreateAttendee()
+        /*
+        public void SemaphoreCreateAttendee()
         {
             CreateAttendeeSemaphore.WaitOne();
-            //MessageBox.Show(Thread.CurrentThread.ManagedThreadId.ToString());
+            
             attendeeService.CreateAttendee();
 
             CreateAttendeeSemaphore.Release();

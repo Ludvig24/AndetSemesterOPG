@@ -199,7 +199,7 @@ namespace AndetSemesterOPG.UI
             MessageBox.Show("Du er nu afmeldt notifikationer, og vil ikke længere få beskeder om de forskellige camps");
         }
 
-        //Metode der håndterer klik på "Attendee Simulation" knappen, hvor vi starter simuleringen af attendees ved at kalde SemaphoreStart metoden i attendeeCreator
+        //Metode der håndterer klik på "Attendee Simulation" knappen, hvor vi starter simuleringen af attendees ved at kalde StartAttendeeCreation metoden i attendeeCreator
         private void AttendeeSimulationButton_Click(object sender, RoutedEventArgs e)
         {
             //attendeeCreator.SemaphoreStart();
