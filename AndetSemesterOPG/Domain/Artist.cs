@@ -18,6 +18,7 @@ namespace AndetSemesterOPG.Domain
         //Contructor Artist, som tager understående argumenter med.
         public Artist (string ArtistName, string ArtistTime, string ArtistDate, int StageId)
         {
+            //setter parametre fra constructor til fields
             this.ArtistName = ArtistName;
             this.ArtistDate = ArtistDate;
             this.ArtistTime = ArtistTime;

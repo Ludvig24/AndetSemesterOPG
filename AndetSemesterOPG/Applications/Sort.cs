@@ -12,7 +12,7 @@ namespace AndetSemesterOPG.Applications
     internal class Sort : ISort
     {
 
-
+        //Variabler til at holde styr på antal sammenligninger
         public int bubbleComparisons { get; set; }
         public int insertComparisons { get; set; }
         public int quickComparisons { get; set; }        
@@ -37,7 +37,7 @@ namespace AndetSemesterOPG.Applications
             while (swapped == true)
             {
                 swapped = false;
-                // forloop der sammenligner hvert element i listen med det næste element
+                // for loop der sammenligner hvert element i listen med det næste element
                 for (int i = 1; i < attendees.Count; i++)
                 {
                     bubbleComparisons++;
@@ -70,7 +70,8 @@ namespace AndetSemesterOPG.Applications
                 MessageBox.Show("Der er ikke noget at sortere");
                 return null;
             }
-            // Forloop der starter ved det andet element i listen, og sammenligner det med de forrige elementer i den sorterede del af listen
+            
+            // For loop der starter ved det andet element i listen og kører listen af attendees i gennem
             for (int i = 1; i < attendees.Count; i++)
             {
                 // Gemmer det aktuelle element i en midlertidig variabel, og bruger en pointer til at holde styr på positionen i den sorterede del af listen
@@ -95,7 +96,7 @@ namespace AndetSemesterOPG.Applications
         // og derefter sorterer hver del rekursivt ved at vælge nye pivot elementer, indtil hele listen er sorteret
         public List<Attendee> SortByFirstName(List<Attendee> attendees, int left, int right) //Tobias
         {
-
+            //tæller sammenligningscounteren op
             quickComparisons++;
             // Tjekker om listen er null eller indeholder 1 eller færre elementer, og viser en besked hvis det er tilfældet
             if (attendees == null || attendees.Count <= 1)
@@ -104,6 +105,7 @@ namespace AndetSemesterOPG.Applications
                 return null;
             }
 
+            //Gemmer left og right som vores 2 pointers
             int i = left;
             int j = right;
 
@@ -114,6 +116,7 @@ namespace AndetSemesterOPG.Applications
             {
                 //String.Compare returnerer 1, 0 eller -1 -> 0 svarer til ens strings, -1 svarer til at første string skal placeres før den næste string.
                 //1 svarer til at første string skal placeres efter den næste. og bruges til at sammenligne to strings i alfabetisk rækkefølge
+                //While loop der kører indtil betingelsen i if sætningen bliver false
                 while (true)
                 {
                     quickComparisons++;
@@ -123,6 +126,7 @@ namespace AndetSemesterOPG.Applications
                     else
                         break;
                 }
+                //While loop der kører indtil betingelsen i if sætningen bliver false
                 while (true)
                 {
                     quickComparisons++;
@@ -133,6 +137,7 @@ namespace AndetSemesterOPG.Applications
                         break;
                 }
 
+                //hvis pointerne i og j ikke har krydset hinanden
                 if (i <= j)
                 {
                     // Bytter elementerne ved at gemme dem
@@ -149,7 +154,7 @@ namespace AndetSemesterOPG.Applications
                 SortByFirstName(attendees,left,j);
             }
             // Hvis der er elementer i den højre del af listen, sorteres den højre del rekursivt
-            if (i < right)
+            if (right > i)
             {
                 SortByFirstName(attendees, i, right);
             }

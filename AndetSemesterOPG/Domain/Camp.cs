@@ -17,15 +17,15 @@ namespace AndetSemesterOPG.Domain
         CampCapacityStatus.CapacityStatus CampStatus { get; set; }
 
         //Konstruktor der tager imod campens id, kapacitet, navn og kapacitetsstatus som parametre, og initialisere campen med disse værdier
-        public Camp(int campId, int campCapacity, string campName, CampCapacityStatus.CapacityStatus campStatus)
+        /*public Camp(int campId, int campCapacity, string campName, CampCapacityStatus.CapacityStatus campStatus)
         {
             this.CampId = campId;
             this.CampCapacity = campCapacity;
             this.CampName = campName;
             this.CampStatus = campStatus;
-        }
+        }*/
 
-        //Overloadet konstruktor der tager imod campens id, kapacitet og navn som parametre, og initialisere campen med disse værdier
+        // konstruktor der tager imod campens id, kapacitet og navn som parametre, og initialisere campen med disse værdier
         public Camp(int campId, int campCapacity, string campName)
         {
             this.CampId = campId;

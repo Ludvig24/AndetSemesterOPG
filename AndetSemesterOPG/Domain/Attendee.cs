@@ -21,6 +21,8 @@ namespace AndetSemesterOPG.Domain
         //Konstruktor der tager imod deltagerens fornavn, efternavn, campnavn og entranceId som parametre, og initialisere deltageren med disse værdier
         public Attendee(string AttendeeFirstName, string AttendeeLastName, string CampName, int EntranceId)
         {
+            //setter parametre fra constructor til fields
+
             this.AttendeeFirstName = AttendeeFirstName;
             this.AttendeeLastName = AttendeeLastName;
             this.CampName = CampName;

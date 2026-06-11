@@ -15,9 +15,12 @@ namespace AndetSemesterOPG.Domain
         public List<string> NameCombiner()
         {
             Random r = new Random();
+
+            //bruger random instansen til at vælge et tilfældigt index i listen firstNames og lastNames og gemmer dem i 2 strings
             string randomFirstName = firstNames[r.Next(0, firstNames.Count)];
             string randomLastName = lastNames[r.Next(0, lastNames.Count)];
-
+            
+            //Gemmer de 2 strings i listen name og returnerer den
             List<string> name = [randomFirstName, randomLastName];
             return name;
 

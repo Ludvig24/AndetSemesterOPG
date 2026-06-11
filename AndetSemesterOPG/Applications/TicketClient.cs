@@ -9,7 +9,7 @@ namespace AndetSemesterOPG.Applications
     internal class TicketClient : ITicketClient // Laura
     {
 
-        //Denne liste indeholder de billetter der er låst op, og det er det tal der kommer ud af GetRandomNumber der bestemmer hvilken billet der skal producer
+        //Denne liste indeholder de billetter der er låst op, og det er det tal der kommer ud af GetRandomNumber der bestemmer hvilken billet der skal produceres
         private List<int> unlockedTickets = new List<int>() { 1, 2, 3, 4 };
 
         //Metode der laver en billet til camp A ved at bruge ticketFactory til at lave en billet til camp A og returnere den
@@ -36,7 +36,7 @@ namespace AndetSemesterOPG.Applications
 
             Random randomiser = new Random();
             
-
+            //returnerer et tal mellem 0 og længden på unlockedTickets listen
             return unlockedTickets[randomiser.Next(0, unlockedTickets.Count)];
 
         }
@@ -47,7 +47,7 @@ namespace AndetSemesterOPG.Applications
             ITicketFactory ticketFactory;
             int randomNumber = GetRandomNumber();
 
-            //switch statement der bestemmer hvilken type billet der skal produceres ud fra det tilfældige tal, og returnere den billet. Hvis det tilfældige tal ikke er mellem 1 og 4 bliver der lavet en anden billet
+            //switch statement der bestemmer hvilken type billet der skal produceres ud fra det tilfældige tal, og returnere den billet. Hvis det tilfældige tal ikke er mellem 1 og 4 bliver der ikke lavet en billet
             switch (randomNumber)
             {
                 case 1:
