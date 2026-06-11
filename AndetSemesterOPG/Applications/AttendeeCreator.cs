@@ -52,7 +52,7 @@ namespace AndetSemesterOPG.Applications
         public void CreateBulkAttendee()
         {
             
-                for (int i = 0; i < 50; i++)
+                for (int i = 0; i < 25; i++)
                 {
                     lock (lockObject)
                     {
