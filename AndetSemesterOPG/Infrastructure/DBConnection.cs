@@ -170,7 +170,9 @@ namespace AndetSemesterOPG.Infrastructure
                 //Tilføjer parameteret
                 command.Parameters.AddWithValue("@CampName", campName);
                 
+
                 SqlDataReader reader = command.ExecuteReader();
+                //Vi læser hver række der bliver returneret med reader objektet og gemmer hver oplysning i variabler der bruges til at oprette en attendee
                 while (reader.Read())
                 {
                     int attendeeId = reader.GetInt32(reader.GetOrdinal("AttendeeId"));
@@ -179,13 +181,16 @@ namespace AndetSemesterOPG.Infrastructure
                     string CampName = reader.GetString(reader.GetOrdinal("CampName"));
                     int EntranceId = reader.GetInt32(reader.GetOrdinal("EntranceId"));
 
+                    //Attendee objekt oprettes
                     Attendee attendee = new Attendee(FirstName, LastName, CampName, EntranceId);
                     attendee.AttendeeID = attendeeId;
 
+                    //Attendee objekt tilføjes til listen
                     attendeesByCampName.Add(attendee);
 
 
                 }
+                //Listen af Attendees returneres
                 return attendeesByCampName;
             }
         }
@@ -222,6 +227,7 @@ namespace AndetSemesterOPG.Infrastructure
                     allAttendeesList.Add(attendee);
 
                 }
+                //Listen af Attendees returneres
                 return allAttendeesList;
             }
         }
@@ -240,11 +246,13 @@ namespace AndetSemesterOPG.Infrastructure
                 SqlCommand command = new SqlCommand("SELECT CampCapacity FROM Camp WHERE CampName = @CampName", database);
                 command.Parameters.AddWithValue("@CampName", campName);
                 SqlDataReader reader = command.ExecuteReader();
+                //Vi læser hver række der bliver returneret med reader objektet og gemmer oplysningen i CampCapacity i variablen capacity
                 while (reader.Read())
                 {
                     capacity = reader.GetInt32(reader.GetOrdinal("CampCapacity"));
                 }
 
+                //Returnerer capacity
                 return capacity;
             }
         }
@@ -263,6 +271,7 @@ namespace AndetSemesterOPG.Infrastructure
                 //SqlCommand objekt med query der henter alle camps fra Camp tabellen
                 SqlCommand command = new SqlCommand("SELECT * FROM Camp", dataBase);
                 SqlDataReader reader = command.ExecuteReader();
+                //Vi læser hver række der bliver returneret med reader objektet og gemmer hver oplysning i variabler der bruges til at oprette en Camp
                 while (reader.Read())
                 {
                     int CampId = reader.GetInt32(reader.GetOrdinal("CampId"));
@@ -273,6 +282,7 @@ namespace AndetSemesterOPG.Infrastructure
                     //Camp objekt tilføjes til listen
                     allCampsList.Add(camp);
                 }
+                //Returnerer allCampsList
                 return allCampsList;
             }
         }
