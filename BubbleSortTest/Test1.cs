@@ -10,6 +10,7 @@ namespace BubbleSortTest
         [TestMethod]
         public void RandomBubbleSortTest()
         {
+            //Arrange
             //Opretter sort instans
             ISort sort = new Sort();
             //Opretter 20 vilkårlige Attendee objekter
@@ -42,11 +43,13 @@ namespace BubbleSortTest
             //Opretter listen actual der skal indholde det sorterede resultat
             List<Attendee> actual = new List<Attendee>();
 
+            //Act
             //Kalder SortByEntranceId (bubble sort) på listen random og gemmer resultatet i actual
             sort.SortByEntranceId(random);
            
             actual = random;
 
+            //Assert
             // Bruger Collection.Assert.AreEqual() for at tjekke om listen expected er den samme som actual.
             CollectionAssert.AreEqual(expected, actual);
             //Viser en besked der udskriver antal sammenligninger for bubble sort algoritmen
@@ -61,7 +64,7 @@ namespace BubbleSortTest
         [TestMethod]
         public void SortedBubbleSortTest()
         {
-
+            //Assert
             ISort sort = new Sort();
 
             Attendee a1 = new Attendee("Adam", "Oehlenschläger", "Camp A", 1);
@@ -93,10 +96,12 @@ namespace BubbleSortTest
 
             List<Attendee> actual = new List<Attendee>();
 
+            //Act
             sort.SortByEntranceId(sorted);
 
             actual = sorted;
 
+            //Assert
             CollectionAssert.AreEqual(expected, actual);
             MessageBox.Show(sort.bubbleComparisons.ToString(), "SortedBubbleSortTest");
             sort.bubbleComparisons = 0;
@@ -106,12 +111,14 @@ namespace BubbleSortTest
         [TestMethod]
         public void BubbleSort0Test()
         {
+            //Arrange
             //opretter Sort instans
             ISort sort = new Sort();
 
             //opretter tom liste
             List<Attendee> empty = new List<Attendee>();
 
+            //Act + Assert
             //Bruger Assert.IsNull til at teste om resultatet der returneres er null
             Assert.IsNull(sort.SortByEntranceId(empty));
             //Viser en besked der udskriver antal sammenligninger for bubble sort algoritmen
@@ -123,13 +130,14 @@ namespace BubbleSortTest
         [TestMethod]
         public void BubbleSort1Test()
         {
-
+            //Arrange
             ISort sort = new Sort();
 
             Attendee a1 = new Attendee("Adam", "Oehlenschläger", "Camp A", 1);
 
             List<Attendee> oneItemList = new List<Attendee> { a1 };
 
+            //Act + Assert
             Assert.IsNull(sort.SortByEntranceId(oneItemList));
             MessageBox.Show(sort.bubbleComparisons.ToString(), "BubbleSort1Test");
             sort.bubbleComparisons = 0;

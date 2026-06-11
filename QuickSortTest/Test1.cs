@@ -11,6 +11,7 @@ namespace QuickSortTest
         public void RandomQuickSortTest()
         {
 
+            //Arrange
             ISort sort = new Sort();
 
             //Opretter 20 vilkårlige Attendee objekter
@@ -44,9 +45,13 @@ namespace QuickSortTest
             //Opretter listen actual der skal indholde det sorterede resultat
             List<Attendee> actual = new List<Attendee>();
 
+
+            //Act
             //Kalder SortByFirstName (quick sort) på listen random og gemmer resultatet i actual
             sort.SortByFirstName(random, 0, random.Count - 1);
             actual = random;
+
+            //Assert
             //Bruger Collection.Assert.AreEqual() for at tjekke om listen expected er den samme som actual.
             CollectionAssert.AreEqual(expected, actual);
             //Viser en besked der udskriver antal sammenligninger for quick sort algoritmen
@@ -61,7 +66,7 @@ namespace QuickSortTest
         [TestMethod]
         public void SortedQuickSortTest()
         {
-
+            //Arrange
             ISort sort = new Sort();
 
             Attendee a1 = new Attendee("Adam", "Oehlenschläger", "Camp A", 1);
@@ -93,10 +98,12 @@ namespace QuickSortTest
 
             List<Attendee> actual = new List<Attendee>();
 
+            //Act
             sort.SortByFirstName(sorted, 0, sorted.Count - 1);
 
             actual = sorted;
 
+            //Assert
             CollectionAssert.AreEqual(expected, actual);
             MessageBox.Show(sort.quickComparisons.ToString(), "SortedQuickSortTest");
             sort.quickComparisons = 0;
@@ -105,10 +112,13 @@ namespace QuickSortTest
         [TestMethod]
         public void QuickSort0Test()
         {
+            //Arrange
             //opretter Sort instans
             ISort sort = new Sort();
             //opretter tom liste
             List<Attendee> empty = new List<Attendee>();
+
+            //Act + Assert
             //Bruger Assert.IsNull til at teste om resultatet der returneres er null
             Assert.IsNull(sort.SortByFirstName(empty, 0, empty.Count));
             //Viser en besked der udskriver antal sammenligninger for quick sort algoritmen
@@ -121,13 +131,14 @@ namespace QuickSortTest
         [TestMethod]
         public void QuickSort1Test()
         {
-
+            //Arrange
             ISort sort = new Sort();
 
             Attendee a1 = new Attendee("Adam", "Oehlenschläger", "Camp A", 1);
 
             List<Attendee> oneItemList = new List<Attendee> { a1 };
 
+            //Act + Assert
             Assert.IsNull(sort.SortByFirstName(oneItemList,0,oneItemList.Count));
             MessageBox.Show(sort.quickComparisons.ToString(), "QuickSort1Test");
             sort.quickComparisons = 0;
