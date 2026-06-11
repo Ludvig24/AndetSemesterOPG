@@ -8,7 +8,11 @@ namespace AndetSemesterOPG.Domain
     internal interface ICampObserver //Ludvig
     {
         //Metode der der tager imod en camps navn og dens kapacitet som parametre, og opdaterer observeren med denne information
-        void Update(string campName, CampCapacityStatus.CapacityStatus campStatus);
+
+        void Update(Camp camp);
+
+       
+
 
     }
 }

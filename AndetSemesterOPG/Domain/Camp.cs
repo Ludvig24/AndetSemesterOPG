@@ -14,7 +14,7 @@ namespace AndetSemesterOPG.Domain
 
         public bool IsLocked { get; set; }
 
-        CampCapacityStatus.CapacityStatus CampStatus { get; set; }
+        public CampCapacityStatus.CapacityStatus CampStatus { get; set; }
 
         //Konstruktor der tager imod campens id, kapacitet, navn og kapacitetsstatus som parametre, og initialisere campen med disse værdier
         /*public Camp(int campId, int campCapacity, string campName, CampCapacityStatus.CapacityStatus campStatus)

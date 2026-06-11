@@ -61,11 +61,11 @@ namespace AndetSemesterOPG.Applications
 
         //Metode til at notificere alle observers i listen over camp observers om en ændring i camp kapacitet ved at kalde Update metoden på hver observer
         //og sende camp navnet og den nye kapacitet status som parametre
-        public void NotifyCampObservers(string campName, CampCapacityStatus.CapacityStatus campStatus)
+        public void NotifyCampObservers(Camp camp)
         {
             foreach (var observer in campObservers)
             {
-                observer.Update(campName, campStatus);
+                observer.Update(camp);
             }
         }
 
@@ -97,23 +97,27 @@ namespace AndetSemesterOPG.Applications
             switch (percentageFilled)
             {
                 case double n when (n >= 50 && n < 75 && state < 1):
-                    NotifyCampObservers(camp.CampName, CampCapacityStatus.CapacityStatus.FiftyPercent);
+                    camp.CampStatus = CampCapacityStatus.CapacityStatus.FiftyPercent;
+                    NotifyCampObservers(camp);
                     campCapacityStatuses[camp.CampName] = 1;
                     break;
                 case double n when (n > 75 && n < 90 && state < 2):
-                    NotifyCampObservers(camp.CampName, CampCapacityStatus.CapacityStatus.SeventyFivePercent); 
+                    camp.CampStatus = CampCapacityStatus.CapacityStatus.SeventyFivePercent;
+                    NotifyCampObservers(camp); 
                     campCapacityStatuses[camp.CampName] = 2;
                     break;
                 case double n when (n >= 90 && n < 100 && state <3):
+                    camp.CampStatus = CampCapacityStatus.CapacityStatus.NinetyPercent;
                     LockCamp(camp, attendeeService);
                     campCapacityStatuses[camp.CampName] = 3;
-                    NotifyCampObservers(camp.CampName, CampCapacityStatus.CapacityStatus.NinetyPercent);
+                    NotifyCampObservers(camp);
 
                     break;
                 case double n when (n >= 100 && state <4):
+                    camp.CampStatus = CampCapacityStatus.CapacityStatus.OneHundredPercent;
                     LockCamp(camp, attendeeService);
                     campCapacityStatuses[camp.CampName] = 4;
-                    NotifyCampObservers(camp.CampName, CampCapacityStatus.CapacityStatus.OneHundredPercent);
+                    NotifyCampObservers(camp);
                     break;
             }
         }

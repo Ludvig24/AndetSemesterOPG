@@ -10,22 +10,22 @@ namespace AndetSemesterOPG.Applications
     internal class CampObserver : ICampObserver // Laura
     {
         //Metode der tager imod en camps navn og dens kapacitet som parametre, og opdaterer observeren med denne information, og viser en besked til brugeren hvis campen når en bestemt kapacitetstatus
-        public void Update(string campName, CampCapacityStatus.CapacityStatus campStatus)
+        public void Update(Camp camp)
         {
             //Opdater campens kapacitetstatus, og viser en besked til brugeren hvis campen når en bestemt kapacitetstatus
-            switch (campStatus)
+            switch (camp.CampStatus)
             {
                 case CampCapacityStatus.CapacityStatus.FiftyPercent:
-                    MessageBox.Show($"{campName} er nu over 50% fyldt.");
+                    MessageBox.Show($"{camp.CampName} er nu over 50% fyldt.");
                     break;
                 case CampCapacityStatus.CapacityStatus.SeventyFivePercent:
-                    MessageBox.Show($"{campName} er nu over 75% fyldt.");
+                    MessageBox.Show($"{camp.CampName} er nu over 75% fyldt.");
                     break;
                 case CampCapacityStatus.CapacityStatus.NinetyPercent:
-                    MessageBox.Show($"{campName} er nu over 90% fyldt. Campen er låst og kan blive åbnet på festival vinduet");
+                    MessageBox.Show($"{camp.CampName} er nu over 90% fyldt. Campen er låst og kan blive åbnet på festival vinduet");
                     break;
                 case CampCapacityStatus.CapacityStatus.OneHundredPercent:
-                    MessageBox.Show($"{campName} er nu 100% fyldt. Campen er nu nået maks kapacitet.");
+                    MessageBox.Show($"{camp.CampName} er nu 100% fyldt. Campen er nu nået maks kapacitet.");
                     break;
             }
         }
