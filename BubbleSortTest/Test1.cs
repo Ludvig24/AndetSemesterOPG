@@ -10,7 +10,7 @@ namespace BubbleSortTest
         [TestMethod]
         public void RandomBubbleSortTest()
         {
-
+            //Opretter sort instans
             ISort sort = new Sort();
             //Opretter 20 vilkårlige Attendee objekter
             Attendee a1 = new Attendee("Adam", "Oehlenschläger", "Camp A", 1);
@@ -119,7 +119,7 @@ namespace BubbleSortTest
             //Resetter bubbleComparisons
             sort.bubbleComparisons = 0;
         }
-        // kig på noterne på overstående test, det er det samme bare hvor at det er en liste med et elemt i.
+        // kig på noterne på overstående test, det er det samme bare hvor at det er en liste med et element i.
         [TestMethod]
         public void BubbleSort1Test()
         {

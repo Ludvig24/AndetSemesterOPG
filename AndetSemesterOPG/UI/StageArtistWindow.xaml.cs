@@ -165,9 +165,7 @@ namespace AndetSemesterOPG.UI
             artist.ArtistName = ArtistNameTextBox.Text;
             artist.ArtistTime = ArtistTimeCombobox.Text;
             artist.ArtistDate = ArtistDateCombobox.Text;
-            artist.StageId = StageNameComboBox.SelectedIndex+1;
-            //Tjekker om brugeren har udfyldt med 
-          
+            artist.StageId = StageNameComboBox.SelectedIndex+1;          
 
             //artistService opdaterer artist i databasen
             artistService.ModifyArtist(artist);
@@ -177,7 +175,7 @@ namespace AndetSemesterOPG.UI
             Refresh();
         }
 
-        //Metode der håndterer ændring af selection i ArtistListBox, hvor vi opdaterer tekstbokse og comboboxes med oplysningerne for den valgte artist
+        //Metode der håndterer ændring af selection i ArtistListBox, hvor vi opdaterer tekstbokse og comboboxes med oplysningerne for den valgte artist når der trykkes på en artist
         private void ArtistListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             

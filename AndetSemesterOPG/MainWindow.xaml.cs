@@ -18,7 +18,7 @@ using System.Windows.Threading;
 
 namespace AndetSemesterOPG
 {
-    //Hovedvinduet for applikationen, hvor vi opretter alle services, repositories, windows og andre klasser der skal bruges i applikationen. MainWindow fungerer som Composition Root, hvor vi samler alle afhængigheder og konfigurerer dem.
+    //Composition root for applikationen, hvor vi opretter alle services, repositories, windows og andre klasser der skal bruges i applikationen. MainWindow fungerer som Composition Root, hvor vi samler alle afhængigheder og konfigurerer dem.
     //Vi har valgt at skjule MainWindow og starte med at vise MenuWindow, da det er det første vindue brugeren skal interagere med.
     public partial class MainWindow : Window // Tobias
     {
@@ -45,7 +45,7 @@ namespace AndetSemesterOPG
         DispatcherTimer timer;
 
         //Vi har valgt MainWindow som composition root da det er vinduet der starter som det første i programmet
-        public MainWindow() //MainWindow fungerer nu som Composition Root 
+        public MainWindow() 
         {
             InitializeComponent();
 
@@ -59,7 +59,7 @@ namespace AndetSemesterOPG
              artistRepository = new ArtistRepository(connection);
              campRepository = new CampRepository(connection);
 
-            //Opret services, windows og andre klasser der skal bruges i applikationen
+            //Opret services, windows og andre klasser der skal bruges i applikationen samt håndterer deres dependencies
             campObserver = new CampObserver();
             attendeeTestData = new AttendeeTestData();
             ticketClient = new TicketClient();
@@ -72,20 +72,20 @@ namespace AndetSemesterOPG
             sort = new Sort();
             lineUp = new LineUp(artistService);
             
-
-            //Flyt til en CampCreator? - klasse der henter oplysninger om camps fra db og laver x antal camps som svarer til antal i db måske? Så opret CampCreator i CompositionRoot og start den der.
             campA = new Camp(1, campService.RetrieveCampCapacity("Camp A"), "Camp A" );
      
             campB = new Camp(2, campService.RetrieveCampCapacity("Camp B"), "Camp B" );
             
 
-            //Opret WindowNavigator og windows, og sæt dem op i WindowNavigator
+            //Opret WindowNavigator og windows, og sætter dem op i WindowNavigator
             windowNavigator = new WindowNavigator();
 
             attendeeWindow = new AttendeeWindow(windowNavigator, attendeeService, sort);
             festivalWindow = new FestivalWindow(windowNavigator, attendeeService, campService, campA, campB, campObserver, attendeeCreator);
             stageArtistWindow = new StageArtistWindow(windowNavigator, artistService, lineUp);
             menuWindow = new MenuWindow(windowNavigator);
+
+            //Sætter vinduer i WindowNavigator objekt så vi kan navigere mellem dem
             windowNavigator.SetWindows(attendeeWindow, festivalWindow, menuWindow, stageArtistWindow);
 
 
