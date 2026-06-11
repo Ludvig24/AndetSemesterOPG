@@ -26,9 +26,9 @@
         <Label Content="Antal festivaldeltager:"  HorizontalAlignment="Left" Height="29" Margin="-382,154,0,0" VerticalAlignment="Top" Width="125"/>
         <Label x:Name="totalAttendees" Content="Total label" HorizontalAlignment="Left" Margin="-356,181,0,0" VerticalAlignment="Top" Width="68"/>
         <Button x:Name="refreshButton"  Content="Opdater" HorizontalAlignment="Left" Margin="-345,-68,0,0" VerticalAlignment="Top" Height="26" Width="110" Click="refreshButton_Click"/>
-        <Button x:Name="sortNamesButton" Content="Sorter: Fornavn" HorizontalAlignment="Left" Margin="-345,-28,0,0" VerticalAlignment="Top" Height="26" Width="110" Click="sortNamesButton_Click"/>
-        <Button x:Name="sortByEntranceIdButton" Content="Sorter: Indgang" HorizontalAlignment="Left" Margin="-345,15,0,0" VerticalAlignment="Top" Height="26" Width="110" Click="sortByEntranceIdButton_Click"/>
-        <Button x:Name="sortByCampNameButton" Content="Sorter: Camp Navn" HorizontalAlignment="Left" Margin="-345,62,0,0" VerticalAlignment="Top" Height="26" Width="110" Click="sortByCampNameButton_Click"/>
+        <Button x:Name="sortNamesButton" Content="Sorter: Fornavn" HorizontalAlignment="Left" Margin="-345,-27,0,0" VerticalAlignment="Top" Height="26" Width="110" Click="sortNamesButton_Click"/>
+        <Button x:Name="sortByEntranceIdButton" Content="Sorter: Indgang" HorizontalAlignment="Left" Margin="-345,62,0,0" VerticalAlignment="Top" Height="26" Width="110" Click="sortByEntranceIdButton_Click"/>
+        <Button x:Name="sortByCampNameButton" Content="Sorter: Camp Navn" HorizontalAlignment="Left" Margin="-345,15,0,0" VerticalAlignment="Top" Height="26" Width="110" Click="sortByCampNameButton_Click"/>
         <Button x:Name="AdminResetButton" Content="Admin Reset" HorizontalAlignment="Left" Margin="281,-68,0,0" VerticalAlignment="Top" Height="26" Width="93" Click="AdminResetButton_Click"/>
 
     </Grid>
