@@ -16,7 +16,10 @@ namespace AndetSemesterOPG.Applications
         ICampService campService;
         DispatcherTimer timer;
         IAttendeeService attendeeService;
-        static Semaphore CreateAttendeeSemaphore = new Semaphore(10, 10); // Starter med 10 tilladelser, og maks er også 10
+        
+        //Semaphore der blev brugt til en tidligere løsning på et synkroniseringsproblem
+        //static Semaphore CreateAttendeeSemaphore = new Semaphore(10, 10); // Starter med 10 tilladelser, og maks er også 10
+        
         private readonly object lockObject = new object();
         //Konstruktor der tager en DispatcherTimer, AttendeeService og CampService som parameter, og sætter timeren til at kalde AutoCreateAttendee metoden hvert 5. sekund
         public AttendeeCreator(DispatcherTimer timer, IAttendeeService attendeeService, ICampService campService)
