@@ -29,8 +29,6 @@ namespace AndetSemesterOPG.Infrastructure
         //Metode der bruger IDBConnection til at hente alle attendees fra databasen og returnere dem som en liste
         public List<Attendee> GetAllAttendees() 
         {
-            
-
             List<Attendee> attendees = connection.ReadAll();
             return attendees;
         }

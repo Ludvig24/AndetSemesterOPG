@@ -13,6 +13,7 @@ namespace AndetSemesterOPG.Domain
         //anden ide til asynkron attende oprettelse
         // Metode der opretter en attendee med en semaphore
         //void SemaphoreCreateAttendee();
+
         // Metode der automatisk opretter en attendee
         void AutoCreateAttendee(object sender, EventArgs e);
 

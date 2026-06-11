@@ -25,7 +25,7 @@ namespace AndetSemesterOPG.Domain
             this.CampStatus = campStatus;
         }
 
-
+        //Overloadet konstruktor der tager imod campens id, kapacitet og navn som parametre, og initialisere campen med disse værdier
         public Camp(int campId, int campCapacity, string campName)
         {
             this.CampId = campId;

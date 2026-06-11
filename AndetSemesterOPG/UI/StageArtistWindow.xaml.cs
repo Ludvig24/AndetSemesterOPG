@@ -55,11 +55,13 @@ namespace AndetSemesterOPG.UI
            
         }
 
-        //Vi kan nu med en knap også tilføje artists til schedule, men måske er det lidt for møj for en ui klasse. Vi kan heller ikke endnu styre hvilken scene de ender på.
+        //Metode til AddArtistButton, hvor vi opretter en ny artist som tilføjes til databasen
         private void AddArtistButton_Click(object sender, RoutedEventArgs e)
         {
+            //Opretter en ny artist baseret på input fra tekstbokse og comboboxes
             Artist artist = new Artist(ArtistNameTextBox.Text, ArtistTimeCombobox.Text, ArtistDateCombobox.Text, StageNameComboBox.SelectedIndex+1);
 
+            //if sætninger der tjekker om de nødvendige oplysninger er angivet, og om der allerede er en artist på den valgte scene, dato og tidspunkt
             if (artistService.IsSlotTaken(artist))
             {
                 MessageBox.Show("Der er allerede en kunstner på denne scene, dato og tidspunkt.");
@@ -89,6 +91,7 @@ namespace AndetSemesterOPG.UI
                 return;
             }
             
+            //Hvis alle oplysninger er angivet og der ikke er en konflikt, tilføjes den nye artist til databasen
             artistService.CreateArtist(artist);
        
             Refresh();
@@ -98,13 +101,15 @@ namespace AndetSemesterOPG.UI
         //Metode der opdaterer visuelle komponenter i vinduet, ved at rydde alle scener og derefter tilføje artists til de forskellige scener
         public void Refresh()
         {
-            
+            //Rydder alle scener ved at iterere gennem listen af Grid og kalde Children.Clear()
             foreach (Grid grid in stages)
             {
 
                 grid.Children.Clear();
 
             }
+
+            //Kalder LineUp's metode til at tilføje artists til de forskellige scener
             lineUp.AddArtistToLineUp(stages);
             artists = artistService.RetrieveAllArtists();
             ArtistNameTextBox.Clear();

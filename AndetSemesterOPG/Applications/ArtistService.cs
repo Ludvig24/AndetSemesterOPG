@@ -65,7 +65,7 @@ namespace AndetSemesterOPG.Applications
             artistRepository.EditArtist(artist);
         }
 
-        //Er lavet for at der ikke kan laves flere kunstnere på samme dag,tid og scene
+        //Metode for at der ikke kan laves flere kunstnere på samme dag,tid og scene
         public bool IsSlotTaken(Artist newArtist)
         {
             List<Artist> artistsListe = RetrieveAllArtists();

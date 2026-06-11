@@ -9,17 +9,15 @@ using System.Threading;
 namespace AndetSemesterOPG.Infrastructure
 {
     //Alle har været med over denne klasse
-    internal class DBConnection : IDBConnection //implementerer IDBConnection interface - medfører vi nemt kan skifte til en anden type database
+    internal class DBConnection : IDBConnection //Implementerer IDBConnection interface - medfører vi nemt kan skifte til en anden type database
     {
-        // her oprettes en SqlConnection objekt ved hjælp af connectionString, som vil blive brugt til at åbne en forbindelse til databasen
+        //Her oprettes en SqlConnection objekt ved hjælp af connectionString, som vil blive brugt til at åbne en forbindelse til databasen
           string connectionString = "Server=localhost; Database=AndetSemester;Trusted_Connection=True;TrustServerCertificate=True";
-        //Vi har ikke alle den sammen connectionstring
         //Ludvig: LOCALHOST
         //Tobias: localhost\\SQLEXPRESS
         //Laura: LAPTOP-KHAURJ1B
         //Emil: localhost\\SQLEXPRESS02
 
-        // -------- CREATE ------------
         //Insert metode, der indsætter Attendee i databasen
         public void Insert(Attendee attendee)
         {
@@ -42,8 +40,7 @@ namespace AndetSemesterOPG.Infrastructure
             }
         }
 
-        //-------- CREATE ------------
-        //insert metode, der indsætter Artist i databasen
+        //Insert metode, der indsætter Artist i databasen
         public void InsertArtist(Artist artist)
         {
             //Opretter forbindelsen til databasen. Vi bruger en using block så forbindelsen automatisk lukkes ved slutningen af using blokken
@@ -121,8 +118,6 @@ namespace AndetSemesterOPG.Infrastructure
             }
         }
 
-        //READ
-
         //FindByEntranceId metode, som finder alle Attendees med et bestemt EntranceId i databbasen
         public List<Attendee> FindByEntranceId(int id)
         {
@@ -185,7 +180,7 @@ namespace AndetSemesterOPG.Infrastructure
                     int EntranceId = reader.GetInt32(reader.GetOrdinal("EntranceId"));
 
                     Attendee attendee = new Attendee(FirstName, LastName, CampName, EntranceId);
-                    attendee.AttendeeID = attendeeId; //måske fix ift constructor
+                    attendee.AttendeeID = attendeeId;
 
                     attendeesByCampName.Add(attendee);
 

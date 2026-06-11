@@ -7,6 +7,7 @@ namespace AndetSemesterOPG.Domain
     internal interface IAttendeeService // Tobias
     {
         ITicketClient ticketClient { get; }
+
         // Metode der opretter en attendee, og returnerer den oprettede attendee
         public Attendee CreateAttendee();
         // moetode der henter alle attendees og returnerer dem i en liste

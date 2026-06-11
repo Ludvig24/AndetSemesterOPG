@@ -82,7 +82,7 @@ namespace AndetSemesterOPG.UI
             campService.CheckCampCapacity(campA, attendeeService.RetriveAttendeesByCampName("Camp A").Count, attendeeService);
             campService.CheckCampCapacity(campB, attendeeService.RetriveAttendeesByCampName("Camp B").Count, attendeeService);
 
-            //Her ændre Cam status labelsnee for at fortælle brugeren om en camp er låst eller ej
+            //Her ændres Camp status labels for at fortælle brugeren om en camp er låst eller ej
             switch(campA.IsLocked)
             {
                 case true:

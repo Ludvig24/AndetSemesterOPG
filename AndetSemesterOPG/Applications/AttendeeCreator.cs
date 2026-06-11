@@ -21,6 +21,7 @@ namespace AndetSemesterOPG.Applications
         //static Semaphore CreateAttendeeSemaphore = new Semaphore(10, 10); // Starter med 10 tilladelser, og maks er også 10
         
         private readonly object lockObject = new object();
+
         //Konstruktor der tager en DispatcherTimer, AttendeeService og CampService som parameter, og sætter timeren til at kalde AutoCreateAttendee metoden hvert 5. sekund
         public AttendeeCreator(DispatcherTimer timer, IAttendeeService attendeeService, ICampService campService)
         {
@@ -40,6 +41,7 @@ namespace AndetSemesterOPG.Applications
             
         }
 
+        //Metode som starter Attendee oprettelsen via Threads
         public void StartAttendeeCreation()
         {
             Thread thread1 = new Thread(CreateBulkAttendee);
@@ -52,6 +54,7 @@ namespace AndetSemesterOPG.Applications
             thread2.Start();
         }
 
+        //Metode der opretter deltagere
         public void CreateBulkAttendee()
         {
             
@@ -94,6 +97,7 @@ namespace AndetSemesterOPG.Applications
                 
         }*/
         
+
         //Metode der automatisk opretter deltagere ved at kalde CreateAttendee metoden
         public void AutoCreateAttendee(object sender, EventArgs e)
         {
