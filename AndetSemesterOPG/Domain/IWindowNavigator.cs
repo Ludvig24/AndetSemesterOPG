@@ -8,7 +8,7 @@ namespace AndetSemesterOPG.Domain
     internal interface IWindowNavigator // Tobias
 
     {
-        ////Konstruktor der tager imod de forskellige vinduer som parametre og gemmer dem i instansvariabler
+        // Metode der tager imod de forskellige vinduer som parametre
         void SetWindows(AttendeeWindow attendeeWindow, FestivalWindow festivalWindow, MenuWindow menuWindow, StageArtistWindow stageArtistWindow);
         //Metoder til at åbne de forskellige vinduer, som kalder Show() metoden på det respektive vindue
         void OpenAttendeeWindow();
