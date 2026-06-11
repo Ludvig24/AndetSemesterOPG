@@ -9,6 +9,7 @@ namespace AndetSemesterOPG.Domain
     {
         //Metode der der tager imod en camps navn og dens kapacitet som parametre, og opdaterer observeren med denne information
 
+        //Metode der der tager et camp objekt navn og opdaterer observeren med denne information
         void Update(Camp camp);
 
        

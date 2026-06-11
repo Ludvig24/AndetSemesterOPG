@@ -17,7 +17,7 @@ namespace AndetSemesterOPG.Domain
         void SubscribeCampObserver(ICampObserver observer);
         // en metode som unsubscribes en observer fra camp observer listen, så den ikke længere bliver notificeret når der sker ændringer i camp kapaciteten
         void UnsubscribeCampObserver(ICampObserver observer);
-        // en metode som notifies alle observers i camp observer listen, når der sker ændringer i camp kapaciteten, og sender den relevante information om camp navnet og den nye kapacitet status
+        // en metode som notifies alle observers i camp observer listen, når der sker ændringer i camp kapaciteten, og sender den relevante camp med den ændringer
         void NotifyCampObservers(Camp camp);
         // en metode som tjekker om en given camp har kapacitet til at rumme et givent antal deltagere, ved at hente camp kapaciteten og sammenligne den med det givne antal deltagere, og kaster en exception hvis campen ikke har kapacitet
         void CheckCampCapacity(Camp camp, int attendeeAmount, IAttendeeService attendeeService);
