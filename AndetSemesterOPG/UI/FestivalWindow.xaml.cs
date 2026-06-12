@@ -207,6 +207,13 @@ namespace AndetSemesterOPG.UI
             //attendeeCreator.SemaphoreStart();
             attendeeCreator.StartAttendeeCreation();
         }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            Application.Current.Shutdown();
+
+        }
     }
     
 }

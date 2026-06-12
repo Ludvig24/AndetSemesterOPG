@@ -91,5 +91,12 @@ namespace AndetSemesterOPG.UI
         {
             attendeeService.ResetAttendee();
         }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            Application.Current.Shutdown();
+
+        }
     }
 }
