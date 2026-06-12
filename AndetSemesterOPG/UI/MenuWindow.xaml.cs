@@ -49,5 +49,12 @@ namespace AndetSemesterOPG.UI
             windowNavigator.OpenStageArtistWindow();
             this.Hide();
         }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            Application.Current.Shutdown();
+
+        }
     }
 }
