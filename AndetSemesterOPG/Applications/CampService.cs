@@ -29,17 +29,6 @@ namespace AndetSemesterOPG.Applications
             return campRepository.GetCampCapacity(campName);
         }
 
-        //Metode til at hente den totale kapacitet for alle camps ved at iterere gennem alle camps og summere deres kapacitet
-        public int RetriveTotalCampCapacity()
-        {
-            int totalCapacity = 0;
-            List<Camp> camps = campRepository.GetAllCamps();
-            foreach ( Camp camp in camps)
-            {
-                totalCapacity += camp.CampCapacity;
-            }
-            return totalCapacity;
-        }
 
         //Metode til at hente en liste over alle camps ved at kalde GetAllCamps metoden på campRepository
         public List<Camp> RetrieveAllCamps()

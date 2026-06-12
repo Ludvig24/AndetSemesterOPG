@@ -9,8 +9,7 @@ namespace AndetSemesterOPG.Domain
     {
         // Metode der henter kapaciteten for en given camp ved at kalde repository'et, og returnerer den som en int
         int RetrieveCampCapacity(string campName);
-        // Metode der henter den totale kapacitet for alle camps ved at kalde repository'et, og returnerer den som en int
-        int RetriveTotalCampCapacity();
+
         // Metode der henter alle camps ved at kalde repository'et, og returnerer dem som en liste
         List<Camp> RetrieveAllCamps();
         // en metode som subscriber en observer til camp observer listen, så den kan blive notificeret når der sker ændringer i camp kapaciteten
