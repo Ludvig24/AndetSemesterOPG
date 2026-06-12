@@ -100,7 +100,6 @@ namespace AndetSemesterOPG.Applications
                     LockCamp(camp, attendeeService);
                     campCapacityStatuses[camp.CampName] = 3;
                     NotifyCampObservers(camp);
-
                     break;
                 case double n when (n >= 100 && state <4):
                     camp.CampStatus = CampCapacityStatus.CapacityStatus.OneHundredPercent;
